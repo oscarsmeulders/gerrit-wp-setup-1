@@ -112,7 +112,7 @@ function create_post_type_photo() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('category'),
-			'rewrite' => array('slug'=> 'photography', 'with_front'=>false)
+			'rewrite' => array('slug'=> _( 'photography','gs_lang' ), 'with_front'=>false)
 		)
 	);
 }
@@ -131,7 +131,7 @@ function create_post_type_film() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('category'),
-			'rewrite' => array('slug'=> 'film', 'with_front'=>false)
+			'rewrite' => array('slug'=> _( 'film','gs_lang' ), 'with_front'=>false)
 		)
 	);
 }
