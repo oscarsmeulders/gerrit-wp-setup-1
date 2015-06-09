@@ -20,6 +20,8 @@ $color-home-button-txt: $main-text;
 $color-detail-button-bg: rgba($main-text, 0.1);
 $color-detail-button-bg-hover: rgba($main-text, 0.2);
 
+$color-items-bg-hover: #ffffff;
+
 // fonts
 $browser-context: 17; // Default size
 $primary-font: 'news-gothic-std', sans-serif;
@@ -56,6 +58,18 @@ $menu-button-width-S: 50px;
 $menu-button-width-M: 150px;
 $menu-button-width-L: 150px;
 
+// listing .item .title height
+$item-title-height-S: 40px;
+$item-title-height-M: 40px;
+$item-title-height-L: 40px;
+
+$item-title-height-double-S: 60px;
+$item-title-height-double-M: 60px;
+$item-title-height-double-L: 60px;
+
+$item-img-height-S: 10px;
+$item-img-height-M: 10px;
+$item-img-height-L: 10px;
 
 //$detail-gallery-height-large: (min-height 1000px) (orientation portrait);
 $detail-gallery-height-large: (min-height 1000px);

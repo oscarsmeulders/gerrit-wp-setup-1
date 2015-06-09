@@ -315,6 +315,37 @@ jQuery(document).ready(function($){
 		$('.filters button').removeClass('active');
 		$(who).addClass('active');
 	}
+	//
+	////////////////////////////////////////////////////////////////////////////////////
+	// mouseover the image
+	//
+	$('.items').on( 'mouseover', '.item', function() {
+		$('.item').removeClass('active');
+		$(this).addClass('active');
+	});
+	$('.items').on( 'mouseout mouseleave', '.item', function() {
+		$('.item').removeClass('active');
+	});
+
+
+/*
+	function heightTitleGet() {
+		$('.item').each( function() {
+			$height = $(this).find('div.title').outerHeight();
+			console.log( $height );
+			if (  $height > 42 ) {
+				$(this).find('div.title').addClass('double');
+			} else {
+				$(this).find('div.title').removeClass('double');
+			}
+		});
+	}
+	$( window ).resize(function() {
+		heightTitleGet();
+	});
+	setTimeout(heightTitleGet, 1000);
+*/
+
 	////////////////////////////////////////////////////////////////////////////////////
 	var colWidth = function () {
 		var w = $con.width(),
@@ -423,7 +454,7 @@ jQuery(document).ready(function($){
 	// post-thumbs click on post-next or post-previous
 	$('.post-nav').on( 'mouseover click', '.post-button', function() {
 		$('.post-thumb').removeClass('hidden');
-		
+
 		if ( $(this).hasClass('button-next') ) {
 			$('.post-previous-thumb').addClass('hidden');
 			$('.post-next-thumb').removeClass('hidden');
@@ -431,10 +462,14 @@ jQuery(document).ready(function($){
 			$('.post-previous-thumb').removeClass('hidden');
 			$('.post-next-thumb').addClass('hidden');
 		}
-		
+
 	});
 	$('.post-nav').on( 'mouseout mouseleave', '.post-button', function() {
 		$('.post-thumb').addClass('hidden');
+	});
+
+	$('#menu-main').on( 'click', '.sub-menu-item', function() {
+		location.reload();
 	});
 
 

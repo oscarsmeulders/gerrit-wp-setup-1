@@ -4,6 +4,50 @@
 		<li><a class="" href="#0">Switch to english</a></li>
 	</ul>
 
+
+	<!-- custom pages -->
+	<?php
+		echo '<ul id="menu-main" class="cd-navigation">';
+			// photography
+			$photoOverviewPage = get_field( 'photography_overview', 'option' );
+			if( $photoOverviewPage ) {
+				$post = $photoOverviewPage;	// override $post
+				setup_postdata( $post );
+					echo '<li id="" class="menu-item-has-children"><a href="'. get_the_permalink() .'" class="menu-link main-menu-link">'. get_the_title() .'</a>';
+						$taxonomies = array(
+							'photography_category'
+						);
+						$args = array(
+							'orderby'           => 'name',
+							'order'             => 'ASC',
+							'hide_empty'        => true
+						);
+						$terms = get_terms($taxonomies, $args);
+						echo '<ul class="sub-menu menu-odd  menu-depth-1">';
+							foreach ( $terms as $term ) {
+								echo '<li id="" class="sub-menu-item"><a href="'. get_the_permalink() .'#.'. $term->slug .'" class="menu-link sub-menu-link">'. $term->name .'</a></li>';
+							}
+							echo '<li id="" class="sub-menu-item"><a href="'. get_the_permalink() .'" class="menu-link sub-menu-link">'. __( 'Show all', 'gs_lang' ) .'</a></li>';
+						echo '</ul>';
+					echo '</li>';
+		 		wp_reset_postdata();
+		 	}
+		 	// end photography
+		 	// film
+		 	$filmOverviewPage = get_field( 'film_overview', 'option' );
+			if( $filmOverviewPage ) {
+				$post = $filmOverviewPage;	// override $post
+				setup_postdata( $post );
+					echo '<li id="" class=""><a href="'. get_the_permalink() .'" class="menu-link main-menu-link">'. get_the_title() .'</a></li>';
+				wp_reset_postdata();
+			}
+			// end film
+		echo '</ul>';
+	?>
+	<!-- end custom pages -->
+
+
+
 	<?php wp_nav_menu(
 			array(
 				'theme_location' => 'primary',

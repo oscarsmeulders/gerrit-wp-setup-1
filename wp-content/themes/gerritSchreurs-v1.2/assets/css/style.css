@@ -352,6 +352,13 @@ extends
 #cd-lateral-nav a, #cd-lateral-nav .socials a, #content div.title .post-nav .post-button, #contact div.title .post-nav .post-button, #detail-photography div.cookietrail .post-nav .post-button, #detail-photography div.title .post-nav .post-button, #detail-video div.cookietrail .post-nav .post-button, #detail-video div.title .post-nav .post-button, #portfolio-photography div.filters .post-nav .post-button, #detail-photography .gallery-button, #detail-video .gallery-button, #portfolio-photography div.filters button {
   cursor: pointer; }
 
+@media only screen and (min-width: 320px) {
+  #content div.title .post-nav, #contact div.title .post-nav, #detail-photography div.cookietrail .post-nav, #detail-photography div.title .post-nav, #detail-video div.cookietrail .post-nav, #detail-video div.title .post-nav, #portfolio-photography div.filters .post-nav, #portfolio-photography div.filters, #portfolio-photography div.items div.item > div div.title {
+    display: none; } }
+@media only screen and (min-width: 768px) {
+  #content div.title .post-nav, #contact div.title .post-nav, #detail-photography div.cookietrail .post-nav, #detail-photography div.title .post-nav, #detail-video div.cookietrail .post-nav, #detail-video div.title .post-nav, #portfolio-photography div.filters .post-nav, #portfolio-photography div.filters, #portfolio-photography div.items div.item > div div.title {
+    display: block; } }
+
 #content div.title, #contact div.title, #detail-photography div.cookietrail, #detail-photography div.title, #detail-video div.cookietrail, #detail-video div.title, #portfolio-photography div.filters {
   position: absolute;
   left: 0;
@@ -389,10 +396,11 @@ extends
       #content div.title .post-nav, #contact div.title .post-nav, #detail-photography div.cookietrail .post-nav, #detail-photography div.title .post-nav, #detail-video div.cookietrail .post-nav, #detail-video div.title .post-nav, #portfolio-photography div.filters .post-nav {
         width: 150px; } }
     #content div.title .post-nav .post-button, #contact div.title .post-nav .post-button, #detail-photography div.cookietrail .post-nav .post-button, #detail-photography div.title .post-nav .post-button, #detail-video div.cookietrail .post-nav .post-button, #detail-video div.title .post-nav .post-button, #portfolio-photography div.filters .post-nav .post-button {
-      -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      transition: background-color 0.2s ease-in, color 0.2s ease-in;
+      -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      z-index: 19;
       border: none;
       top: 0px;
       text-transform: uppercase;
@@ -424,13 +432,17 @@ extends
       #content div.title .post-nav .post-button.button-previous, #contact div.title .post-nav .post-button.button-previous, #detail-photography div.cookietrail .post-nav .post-button.button-previous, #detail-photography div.title .post-nav .post-button.button-previous, #detail-video div.cookietrail .post-nav .post-button.button-previous, #detail-video div.title .post-nav .post-button.button-previous, #portfolio-photography div.filters .post-nav .post-button.button-previous {
         float: left; }
     #content div.title .post-nav .post-thumb, #contact div.title .post-nav .post-thumb, #detail-photography div.cookietrail .post-nav .post-thumb, #detail-photography div.title .post-nav .post-thumb, #detail-video div.cookietrail .post-nav .post-thumb, #detail-video div.title .post-nav .post-thumb, #portfolio-photography div.filters .post-nav .post-thumb {
-      -moz-transition: background-color 0.2s ease-in, opacity 0.2s ease-in;
-      -o-transition: background-color 0.2s ease-in, opacity 0.2s ease-in;
-      -webkit-transition: background-color 0.2s ease-in, opacity 0.2s ease-in;
-      transition: background-color 0.2s ease-in, opacity 0.2s ease-in; }
+      -moz-transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      -o-transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      -webkit-transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      z-index: 18; }
       #content div.title .post-nav .post-thumb.hidden, #contact div.title .post-nav .post-thumb.hidden, #detail-photography div.cookietrail .post-nav .post-thumb.hidden, #detail-photography div.title .post-nav .post-thumb.hidden, #detail-video div.cookietrail .post-nav .post-thumb.hidden, #detail-video div.title .post-nav .post-thumb.hidden, #portfolio-photography div.filters .post-nav .post-thumb.hidden {
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-        opacity: 0; }
+        opacity: 0;
+        height: 0px !important; }
+        #content div.title .post-nav .post-thumb.hidden .post-previous-thumb, #contact div.title .post-nav .post-thumb.hidden .post-previous-thumb, #detail-photography div.cookietrail .post-nav .post-thumb.hidden .post-previous-thumb, #detail-photography div.title .post-nav .post-thumb.hidden .post-previous-thumb, #detail-video div.cookietrail .post-nav .post-thumb.hidden .post-previous-thumb, #detail-video div.title .post-nav .post-thumb.hidden .post-previous-thumb, #portfolio-photography div.filters .post-nav .post-thumb.hidden .post-previous-thumb, #content div.title .post-nav .post-thumb.hidden .post-next-thumb, #contact div.title .post-nav .post-thumb.hidden .post-next-thumb, #detail-photography div.cookietrail .post-nav .post-thumb.hidden .post-next-thumb, #detail-photography div.title .post-nav .post-thumb.hidden .post-next-thumb, #detail-video div.cookietrail .post-nav .post-thumb.hidden .post-next-thumb, #detail-video div.title .post-nav .post-thumb.hidden .post-next-thumb, #portfolio-photography div.filters .post-nav .post-thumb.hidden .post-next-thumb {
+          height: 0px; }
     #content div.title .post-nav .post-previous-thumb, #contact div.title .post-nav .post-previous-thumb, #detail-photography div.cookietrail .post-nav .post-previous-thumb, #detail-photography div.title .post-nav .post-previous-thumb, #detail-video div.cookietrail .post-nav .post-previous-thumb, #detail-video div.title .post-nav .post-previous-thumb, #portfolio-photography div.filters .post-nav .post-previous-thumb, #content div.title .post-nav .post-next-thumb, #contact div.title .post-nav .post-next-thumb, #detail-photography div.cookietrail .post-nav .post-next-thumb, #detail-photography div.title .post-nav .post-next-thumb, #detail-video div.cookietrail .post-nav .post-next-thumb, #detail-video div.title .post-nav .post-next-thumb, #portfolio-photography div.filters .post-nav .post-next-thumb {
       -webkit-user-select: none;
       /* Chrome all / Safari all */
@@ -438,9 +450,15 @@ extends
       /* Firefox all */
       -ms-user-select: none;
       /* IE 10+ */
+      -moz-transition: height 0.1s ease-in-out;
+      -o-transition: height 0.1s ease-in-out;
+      -webkit-transition: height 0.1s ease-in-out;
+      transition: height 0.1s ease-in-out;
       background-position: center center;
       background-size: cover;
       position: absolute;
+      border-bottom: 1px solid #FFF;
+      border-left: 1px solid #FFF;
       top: 60px;
       width: 50px;
       height: 50px; }
@@ -471,7 +489,8 @@ extends
       padding-top: 140px; } }
 
 #portfolio-photography .cd-main-content {
-  padding: 120px 10px 10px 10px; }
+  padding: 10px;
+  padding-top: 60px; }
   @media only screen and (min-width: 768px) {
     #portfolio-photography .cd-main-content {
       padding: 190px 30px 30px 30px; } }
@@ -534,10 +553,10 @@ body {
 a {
   color: #05171e;
   text-decoration: underline;
-  -moz-transition: color 0.2s ease-in;
-  -o-transition: color 0.2s ease-in;
-  -webkit-transition: color 0.2s ease-in;
-  transition: color 0.2s ease-in; }
+  -moz-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out; }
   a:hover {
     color: #229dcd;
     text-decoration: none; }
@@ -860,10 +879,10 @@ detail - photography, detail - video
   z-index: 5; }
 #detail-photography .gallery-button, #detail-video .gallery-button {
   z-index: 9;
-  -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-  -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-  -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: rgba(5, 23, 30, 0.1);
   border: none;
   text-transform: uppercase;
@@ -946,10 +965,10 @@ detail - photography, detail - video
 portfolio - photography
 -------------------------------- */
 #portfolio-photography div.filters button {
-  -moz-transition: color 0.2s ease-in, opacity 0.2s ease-in;
-  -o-transition: color 0.2s ease-in, opacity 0.2s ease-in;
-  -webkit-transition: color 0.2s ease-in, opacity 0.2s ease-in;
-  transition: color 0.2s ease-in, opacity 0.2s ease-in;
+  -moz-transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   background: transparent;
   border: none;
   text-transform: uppercase;
@@ -991,19 +1010,70 @@ portfolio - photography
   #portfolio-photography div.items div.item {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
-    -moz-transition: opacity 0.2s ease-in;
-    -o-transition: opacity 0.2s ease-in;
-    -webkit-transition: opacity 0.2s ease-in;
-    transition: opacity 0.2s ease-in; }
+    -moz-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out; }
     #portfolio-photography div.items div.item.loaded {
       filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
       opacity: 1; }
-    #portfolio-photography div.items div.item div {
+    #portfolio-photography div.items div.item > div {
       width: 100%;
       height: 100%;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: auto;
-      background-image: url("../img/ajax-loader.gif"); }
-      #portfolio-photography div.items div.item div img {
+      background-image: url("../img/ajax-loader.gif");
+      overflow: hidden;
+      position: relative; }
+      #portfolio-photography div.items div.item > div img {
+        -moz-transition: top 0.2s ease-in-out;
+        -o-transition: top 0.2s ease-in-out;
+        -webkit-transition: top 0.2s ease-in-out;
+        transition: top 0.2s ease-in-out;
+        top: 0px;
+        position: relative;
         border: 0px solid #f0f0f0; }
+      #portfolio-photography div.items div.item > div div.title {
+        -moz-transition: bottom 0.2s ease-in-out;
+        -o-transition: bottom 0.2s ease-in-out;
+        -webkit-transition: bottom 0.2s ease-in-out;
+        transition: bottom 0.2s ease-in-out;
+        position: absolute;
+        background-color: #ffffff;
+        width: 100%;
+        padding: 10px;
+        text-transform: uppercase;
+        bottom: -40px;
+        height: 40px; }
+        @media only screen and (min-width: 768px) {
+          #portfolio-photography div.items div.item > div div.title {
+            bottom: -40px;
+            height: 40px; } }
+        @media only screen and (min-width: 1170px) {
+          #portfolio-photography div.items div.item > div div.title {
+            bottom: -40px;
+            height: 40px; } }
+        #portfolio-photography div.items div.item > div div.title.double {
+          bottom: -60px;
+          height: 60px; }
+          @media only screen and (min-width: 768px) {
+            #portfolio-photography div.items div.item > div div.title.double {
+              bottom: -60px;
+              height: 60px; } }
+          @media only screen and (min-width: 1170px) {
+            #portfolio-photography div.items div.item > div div.title.double {
+              bottom: -60px;
+              height: 60px; } }
+    @media only screen and (min-width: 768px) {
+      #portfolio-photography div.items div.item.active img {
+        top: -10px; } }
+    @media only screen and (min-width: 1170px) {
+      #portfolio-photography div.items div.item.active img {
+        top: -10px; } }
+    #portfolio-photography div.items div.item.active div.title, #portfolio-photography div.items div.item.active div.title.double {
+      bottom: 0px; }
+
+/* --------------------------------
+end styles
+-------------------------------- */

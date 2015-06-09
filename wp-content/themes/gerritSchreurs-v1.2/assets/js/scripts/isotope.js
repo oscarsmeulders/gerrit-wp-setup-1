@@ -56,6 +56,37 @@ jQuery(document).ready(function($){
 		$('.filters button').removeClass('active');
 		$(who).addClass('active');
 	}
+	//
+	////////////////////////////////////////////////////////////////////////////////////
+	// mouseover the image
+	//
+	$('.items').on( 'mouseover', '.item', function() {
+		$('.item').removeClass('active');
+		$(this).addClass('active');
+	});
+	$('.items').on( 'mouseout mouseleave', '.item', function() {
+		$('.item').removeClass('active');
+	});
+
+
+/*
+	function heightTitleGet() {
+		$('.item').each( function() {
+			$height = $(this).find('div.title').outerHeight();
+			console.log( $height );
+			if (  $height > 42 ) {
+				$(this).find('div.title').addClass('double');
+			} else {
+				$(this).find('div.title').removeClass('double');
+			}
+		});
+	}
+	$( window ).resize(function() {
+		heightTitleGet();
+	});
+	setTimeout(heightTitleGet, 1000);
+*/
+
 	////////////////////////////////////////////////////////////////////////////////////
 	var colWidth = function () {
 		var w = $con.width(),

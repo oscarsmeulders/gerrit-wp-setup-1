@@ -101,8 +101,35 @@ register_nav_menus(
 );
 
 /*-----------------------------------------------------------------------------------*/
-/* Custom post types for Gerrit Schreurs
+/* Custom post types + taxonomies for Gerrit Schreurs
 /*-----------------------------------------------------------------------------------*/
+
+function create_photo_tax() {
+	register_taxonomy(
+		'photography_category',
+		'photography_category',
+		array(
+			'label' => __( 'Category photography' ),
+			'rewrite' => array( 'slug' => 'photography_category' ),
+			'hierarchical' => true,
+		)
+	);
+}
+add_action( 'init', 'create_photo_tax' );
+
+function create_film_tax() {
+	register_taxonomy(
+		'film_category',
+		'film_category',
+		array(
+			'label' => __( 'Category film' ),
+			'rewrite' => array( 'slug' => 'film_category' ),
+			'hierarchical' => true,
+		)
+	);
+}
+add_action( 'init', 'create_film_tax' );
+
 function create_post_type_photo() {
 	register_post_type( 'photography_item',
 		array(
@@ -114,8 +141,8 @@ function create_post_type_photo() {
 			'public' => true,
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
-			'taxonomies' => array('category'),
-			'rewrite' => array('slug'=> _( 'photography','gs_lang' ), 'with_front'=>false)
+			'taxonomies' => array('photography_category'),
+			'rewrite' => array('slug'=> 'photography', 'with_front'=>false)
 		)
 	);
 }
@@ -133,8 +160,8 @@ function create_post_type_film() {
 			'public' => true,
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
-			'taxonomies' => array('category'),
-			'rewrite' => array('slug'=> __( 'film','gs_lang' ), 'with_front'=>false)
+			'taxonomies' => array('film_category'),
+			'rewrite' => array('slug'=> 'film', 'with_front'=>false)
 		)
 	);
 }
