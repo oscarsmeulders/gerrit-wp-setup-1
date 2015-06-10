@@ -13,7 +13,7 @@ get_header();?>
 		<?php $images = array(); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php
-				$title = substr( get_the_title(), 0, 25 ) . '&hellip;';
+				$title = substr( get_the_title(), 0, 30 ) . '&hellip;';
 
 				$post_categories = get_the_terms( $loop->post->ID, 'photography_category' );
 				$cats = array();
@@ -42,7 +42,7 @@ get_header();?>
 						$alt = 		$img['title'];
 						$string =	'<div class="item '. $cat_list . $cat_list_size .'">
 										<div>
-											<a href="#"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" /></a>
+											<a href="'. get_the_permalink() .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" /></a>
 											<div class="title">'. $title .'</div>
 										</div>
 									</div>';

@@ -560,6 +560,9 @@ detail - photography, detail - video
 	div.cookietrail, div.title {
 		@extend %navigation-sub;
 		@include userSelect();
+		h1 a {
+			text-decoration: none !important;
+		}
 	}
 	.gallery {
 		top:0px;
@@ -776,10 +779,11 @@ portfolio - photography
 					width: 100%;
 					padding: 10px;
 					text-transform: uppercase;
-
+					font-size: em(13);
+					
 					bottom: -1 * $item-title-height-S;
 					height: $item-title-height-S;
-
+					
 					@include MQ(M) {
 						bottom: -1 * $item-title-height-M;
 						height: $item-title-height-M;

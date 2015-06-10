@@ -839,6 +839,8 @@ detail - photography, detail - video
   /* Firefox all */
   -ms-user-select: none;
   /* IE 10+ */ }
+  #detail-photography div.cookietrail h1 a, #detail-photography div.title h1 a, #detail-video div.cookietrail h1 a, #detail-video div.title h1 a {
+    text-decoration: none !important; }
 #detail-photography .gallery, #detail-video .gallery {
   top: 0px;
   width: 100%;
@@ -1044,6 +1046,7 @@ portfolio - photography
         width: 100%;
         padding: 10px;
         text-transform: uppercase;
+        font-size: 0.76471em;
         bottom: -40px;
         height: 40px; }
         @media only screen and (min-width: 768px) {

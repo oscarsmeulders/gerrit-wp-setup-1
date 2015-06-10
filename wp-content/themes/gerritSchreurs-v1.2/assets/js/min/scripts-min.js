@@ -348,9 +348,17 @@ jQuery(document).ready(function($){
 
 	////////////////////////////////////////////////////////////////////////////////////
 	var colWidth = function () {
+		
+		if ( $( window ).width() < 768 ) {
+			$mobile = true;
+		} else {
+			$mobile = false;
+		}
+		
 		var w = $con.width(),
 			columnNum = 1,
 			columnWidth = 0;
+			
 		if (w > 1500) {
 			columnNum  = 6;
 		} else if (w > 1200) {
@@ -364,11 +372,15 @@ jQuery(document).ready(function($){
 		}
 		columnWidth = Math.floor(w/columnNum);
 		$con.find('.item').each(function() {
-			var $item = $(this),
-				multiplier_w = $item.attr('class').match(/item-w(\d)/),
-				multiplier_h = $item.attr('class').match(/item-h(\d)/),
-				width = multiplier_w ? columnWidth*multiplier_w[1] : columnWidth,
-				height = multiplier_h ? columnWidth*multiplier_h[1]*0.66666 : columnWidth*0.66666;
+			var $item = $(this);
+			
+			if (!$mobile) {
+				var multiplier_w = $item.attr('class').match(/item-w(\d)/);
+				var multiplier_h = $item.attr('class').match(/item-h(\d)/);
+			}
+			
+			var width = multiplier_w ? columnWidth*multiplier_w[1] : columnWidth;
+			var height = multiplier_h ? columnWidth*multiplier_h[1]*0.66666 : columnWidth*0.66666;
 			$item.css({
 				width: width,
 				height: height
