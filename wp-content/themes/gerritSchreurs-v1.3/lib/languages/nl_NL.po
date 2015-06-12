@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gerritSchreurs-1\n"
+"POT-Creation-Date: 2015-06-06 22:13+0100\n"
+"PO-Revision-Date: 2015-06-06 22:28+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: ../../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+"X-Poedit-SearchPathExcluded-1: _scss\n"
+
+#: functions.php:90
+msgid "Primary Menu"
+msgstr "Hoofdmenu"
+
+#: functions.php:103 functions.php:104 page-home.php:77
+msgid "Photography"
+msgstr "Fotografie"
+
+#: functions.php:105
+msgid "New photography"
+msgstr "Nieuwe fotografie"
+
+#: functions.php:111
+msgid "photography"
+msgstr "fotografie"
+
+#: functions.php:122 functions.php:123 page-home.php:80
+msgid "Film"
+msgstr "Film"
+
+#: functions.php:124
+msgid "New film"
+msgstr "Nieuwe film"
+
+#: functions.php:130
+msgid "film"
+msgstr "film"
+
+#: lib/parts/header-filters.php:4
+msgid "Filter"
+msgstr "Filter"
+
+#: lib/parts/header-filters.php:8
+msgid "Show all"
+msgstr "Toon alles"
+
+#: lib/parts/header-logo-menu.php:1 lib/parts/header-logo-menu.php:2
+msgid "Gerrit Schreurs - Photography & Film"
+msgstr "Gerrit Schreurs - Fotografie & Film"
+
+#: lib/parts/header-logo-menu.php:5
+msgid "Menu"
+msgstr "Menu"
+
+#~ msgid "menu"
+#~ msgstr "nav"
+
+#~ msgid "Archives"
+#~ msgstr "Archieven"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"

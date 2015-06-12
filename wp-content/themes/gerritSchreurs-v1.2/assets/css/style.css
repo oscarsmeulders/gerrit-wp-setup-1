@@ -880,7 +880,7 @@ detail - photography, detail - video
   height: 100%;
   z-index: 5; }
 #detail-photography .gallery-button, #detail-video .gallery-button {
-  z-index: 9;
+  z-index: 19;
   -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;

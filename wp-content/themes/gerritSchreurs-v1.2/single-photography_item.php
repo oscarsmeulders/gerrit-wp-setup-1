@@ -14,14 +14,8 @@ get_header(); ?>
 
 		<!-- cd-main-content -->
 		<main class="cd-main-content">
-			<div class="gallery-buttons">
-				<button class="gallery-button button-previous"></button>
-				<button class="gallery-button button-next"></button>
-				<button class="gallery-button button-zoom"></button>
-				<button class="gallery-button button-info"></button>
-			</div>
 			<div class="gallery">
-	
+
 				<div class="gallery-cell" data-index="0">
 				<img alt=''
 					data-src-base='img-temp/responsive/'
@@ -30,7 +24,7 @@ get_header(); ?>
 								<960:xxx.jpg,
 								>960:xxxx.jpg' />
 				</div>
-	
+
 				<div class="gallery-cell" data-index="1">
 					<img src="img-temp/enlarge/small.jpg" alt="" />
 				</div>
@@ -38,8 +32,14 @@ get_header(); ?>
 					<img src="img-temp/enlarge-1/small.jpg" alt="" />
 				</div>
 			</div>
+			<div class="gallery-buttons">
+				<button class="gallery-button button-previous"></button>
+				<button class="gallery-button button-next"></button>
+				<button class="gallery-button button-zoom"></button>
+				<button class="gallery-button button-info"></button>
+			</div>
 			<div class="content"></div>
-			
+
 		</main>
 		<!-- cd-main-content -->
 
