@@ -1,32 +1,42 @@
-// colors
-$main-text: #05171e;		// main text
+// colors font
+$main-text: #05171e;
 
-$link: #05171e;				// anchor tags
+// links
+$link: #05171e;
 $link-active: lighten($link, 40);
 
-$background: #f0f0f0;		// body background color
+// global background
+$background: #f0f0f0;
 
+// bg of the header
 $color-header: #e4e5e5;
 
-$color-home-panels-bg: $main-text;
+// homepage bg of the slides
+$color-home-panels-bg: #e8e8e8;
 
+// navigation
 $color-menu: #FFFFFF;
 $color-menu-txt: #05171e;
 $color-menu-txt-current: $link-active;
 
+// filters background in photography overview
 $color-filters: #dbdcdd;
 
+// menu button right-top
 $color-home-button: #FFFFFF;
 $color-home-button-txt: $main-text;
 
-$color-detail-button-bg: rgba($main-text, 0.1);
-$color-detail-button-bg-hover: rgba($main-text, 0.2);
+// details buttons + buttons to swap between photo + film projects
+$color-detail-button-bg: #d7d7d7;
+$color-detail-button-bg-hover: #d1d1d3;
 
+// background of overview title in photo
 $color-items-bg-hover: #ffffff;
+
 
 // fonts
 $browser-context: 17; // Default size
-$primary-font: 'news-gothic-std', sans-serif;
+$primary-font: 'news-gothic-std', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 // weights : 400 700
 
 // z-index

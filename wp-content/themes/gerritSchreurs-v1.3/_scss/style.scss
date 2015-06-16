@@ -76,6 +76,7 @@ extends
 			color: $main-text;
 			font-size: em(17);
 			float:right;
+			background-color: $color-detail-button-bg;
 
 			width: $menu-button-width-S / 2;
 			height: $filter-S;
@@ -462,7 +463,7 @@ home
 				@include transform( scale(1.1) );
 			}
 		}
-		div.slideshow {
+		&.left div.slideshow, &.right div.slideshow {
 			height:100%;
 			@include userSelect();
 			background-color: $color-home-panels-bg;
@@ -477,6 +478,9 @@ home
 					background-size: cover;
 				}
 			}
+		}
+		&.right div.slideshow div {
+			height: 50%;
 		}
 	}
 }

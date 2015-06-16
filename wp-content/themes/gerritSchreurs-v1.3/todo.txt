@@ -1,1 +1,2 @@
 - isotope is loading twice when click in menunavigation
+- video-detail to big om 1920 px width screen

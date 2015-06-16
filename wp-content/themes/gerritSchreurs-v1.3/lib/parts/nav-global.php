@@ -1,8 +1,15 @@
 <nav id="cd-lateral-nav">
 
-	<ul class="cd-navigation cd-single-item-wrapper">
-		<li><a class="" href="#0">Switch to english</a></li>
-	</ul>
+
+	<?php
+		$langURL = get_field( 'location_language', 'option' );
+		$langText = get_field( 'text_to_language', 'option' );
+		if( $langURL && $langText ) {
+
+		}
+		echo '<ul class="cd-navigation cd-single-item-wrapper cd-language"><li><a class="" href="'. $langURL .'">'. $langText .'</a></li></ul>';
+	?>
+
 
 
 	<!-- custom pages -->

@@ -56,6 +56,11 @@ function custom_dashboard_help() {
 			</li>
 
 			<li>
+				film-listing<br/>
+				600x400px
+			</li>
+
+			<li>
 				square<br/>
 				200x200px
 			</li>
@@ -64,6 +69,11 @@ function custom_dashboard_help() {
 				photography-listing-home<br/>
 				1000x200px
 			</li>
+			<li>
+				film-listing-home<br/>
+				1000x600px
+			</li>
+
 		</ul>';
 }
 add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
@@ -92,8 +102,10 @@ add_action( 'after_setup_theme', 'image_sizes_theme_setup' );
 function image_sizes_theme_setup() {
 	add_image_size( 'content-page', 1600 ); // 1600 pixels wide (and unlimited height)
 	add_image_size( 'photography-listing', 600, 400, true );
+	add_image_size( 'film-listing', 600, 400, true );
 	add_image_size( 'square', 300, 300, true );
 	add_image_size( 'photography-listing-home', 1000, 200, true );
+	add_image_size( 'film-listing-home', 1000, 600, true );
 }
 
 
@@ -251,6 +263,11 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Social Settings',
 		'menu_title'	=> 'Social',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Switch language',
+		'menu_title'	=> 'Language',
 		'parent_slug'	=> 'theme-general-settings',
 	));
 
