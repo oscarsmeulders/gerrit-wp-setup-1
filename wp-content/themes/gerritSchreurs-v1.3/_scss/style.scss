@@ -361,6 +361,20 @@ buttons
 .button-info {
 	background-image: url('../img/button-info.svg');
 }
+.no-svg {
+	.button-next {
+		background-image: url('../img/arrow-left.png');
+	}
+	.button-previous {
+		background-image: url('../img/arrow-right.png');
+	}
+	.button-zoom {
+		background-image: url('../img/button-zoom.png');
+	}
+	.button-info {
+		background-image: url('../img/button-info.png');
+	}
+}
 /* --------------------------------
 containers
 -------------------------------- */
@@ -423,7 +437,7 @@ home
 			}
 		}
 		div.button {
-			@include transition(width 0.2s ease-in-out, height 0.2s ease-in-out, line-height, 0.2s ease-in-out);
+			@include transition(scale-x 0.2s ease-in-out, scale-y 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out);
 			@extend %cursor-pointer;
 			position: absolute;
 			top: 0;

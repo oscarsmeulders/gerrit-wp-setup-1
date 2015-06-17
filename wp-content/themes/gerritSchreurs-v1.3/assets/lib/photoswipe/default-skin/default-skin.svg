@@ -1,1 +1,35 @@
-<svg width="264" height="88" viewBox="0 0 264 88" xmlns="http://www.w3.org/2000/svg"><title>default-skin 2</title><g fill="none" fill-rule="evenodd"><g><path d="M67.002 59.5v3.768c-6.307.84-9.184 5.75-10.002 9.732 2.22-2.83 5.564-5.098 10.002-5.098V71.5L73 65.585 67.002 59.5z" id="Shape" fill="#fff"/><g fill="#fff"><path d="M13 29v-5h2v3h3v2h-5zM13 15h5v2h-3v3h-2v-5zM31 15v5h-2v-3h-3v-2h5zM31 29h-5v-2h3v-3h2v5z" id="Shape"/></g><g fill="#fff"><path d="M62 24v5h-2v-3h-3v-2h5zM62 20h-5v-2h3v-3h2v5zM70 20v-5h2v3h3v2h-5zM70 24h5v2h-3v3h-2v-5z"/></g><path d="M20.586 66l-5.656-5.656 1.414-1.414L22 64.586l5.656-5.656 1.414 1.414L23.414 66l5.656 5.656-1.414 1.414L22 67.414l-5.656 5.656-1.414-1.414L20.586 66z" fill="#fff"/><path d="M111.785 65.03L110 63.5l3-3.5h-10v-2h10l-3-3.5 1.785-1.468L117 59l-5.215 6.03z" fill="#fff"/><path d="M152.215 65.03L154 63.5l-3-3.5h10v-2h-10l3-3.5-1.785-1.468L147 59l5.215 6.03z" fill="#fff"/><g><path id="Rectangle-11" fill="#fff" d="M160.957 28.543l-3.25-3.25-1.413 1.414 3.25 3.25z"/><path d="M152.5 27c3.038 0 5.5-2.462 5.5-5.5s-2.462-5.5-5.5-5.5-5.5 2.462-5.5 5.5 2.462 5.5 5.5 5.5z" id="Oval-1" stroke="#fff" stroke-width="1.5"/><path fill="#fff" d="M150 21h5v1h-5z"/></g><g><path d="M116.957 28.543l-1.414 1.414-3.25-3.25 1.414-1.414 3.25 3.25z" fill="#fff"/><path d="M108.5 27c3.038 0 5.5-2.462 5.5-5.5s-2.462-5.5-5.5-5.5-5.5 2.462-5.5 5.5 2.462 5.5 5.5 5.5z" stroke="#fff" stroke-width="1.5"/><path fill="#fff" d="M106 21h5v1h-5z"/><path fill="#fff" d="M109.043 19.008l-.085 5-1-.017.085-5z"/></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-58 -35 264 88" enable-background="new -58 -35 264 88" xml:space="preserve">
+<title>default-skin 2</title>
+<g>
+	<g>
+		<path id="Shape" fill="#FFFFFF" d="M9,24.5v3.8C2.7,29.1-0.2,34-1,38c2.2-2.8,5.6-5.1,10-5.1v3.6l6-5.9L9,24.5z"/>
+		<g>
+			<path id="Shape_1_" fill="#FFFFFF" d="M-45-6v-5h2v3h3v2H-45z M-45-20h5v2h-3v3h-2V-20z M-27-20v5h-2v-3h-3v-2H-27z M-27-6h-5v-2
+				h3v-3h2V-6z"/>
+		</g>
+		<g>
+			<path fill="#FFFFFF" d="M4-11v5H2v-3h-3v-2H4z M4-15h-5v-2h3v-3h2V-15z M12-15v-5h2v3h3v2H12z M12-11h5v2h-3v3h-2V-11z"/>
+		</g>
+		<path fill="#FFFFFF" d="M-37.4,31l-5.7-5.7l1.4-1.4l5.7,5.7l5.7-5.7l1.4,1.4l-5.7,5.7l5.7,5.7l-1.4,1.4l-5.7-5.7l-5.7,5.7
+			l-1.4-1.4L-37.4,31z"/>
+		<g>
+			<path id="Rectangle-11" fill="#FFFFFF" d="M103-6.5l-3.2-3.2l-1.4,1.4l3.2,3.2L103-6.5z"/>
+			<path id="Oval-1" fill="none" stroke="#FFFFFF" stroke-width="1.5" d="M94.5-8c3,0,5.5-2.5,5.5-5.5S97.5-19,94.5-19
+				S89-16.5,89-13.5S91.5-8,94.5-8z"/>
+			<path fill="#FFFFFF" d="M92-14h5v1h-5V-14z"/>
+		</g>
+		<g>
+			<path fill="#FFFFFF" d="M59-6.5L57.5-5l-3.2-3.2l1.4-1.4L59-6.5z"/>
+			<path fill="none" stroke="#FFFFFF" stroke-width="1.5" d="M50.5-8c3,0,5.5-2.5,5.5-5.5S53.5-19,50.5-19S45-16.5,45-13.5
+				S47.5-8,50.5-8z"/>
+			<path fill="#FFFFFF" d="M48-14h5v1h-5V-14z"/>
+			<path fill="#FFFFFF" d="M51-16L51-11l-1,0l0.1-5L51-16z"/>
+		</g>
+	</g>
+</g>
+<polygon fill="#FFFFFF" points="56.2,24 49.9,30.2 48.9,29.2 54.1,24 48.9,18.8 49.9,17.8 "/>
+<polygon fill="#FFFFFF" points="98.1,17.8 99.1,18.8 93.9,24 99.1,29.2 98.1,30.2 91.9,24 "/>
+</svg>

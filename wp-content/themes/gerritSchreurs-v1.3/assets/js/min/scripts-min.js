@@ -86,48 +86,7 @@ jQuery(document).ready(function($){
 
 var pswpElement = document.querySelectorAll('.pswp')[0];
 
-// build items array
-var items = [
-	{
-		mediumImage: {
-			src: 'img-temp/enlarge/medium.jpg',
-			w: 1500,
-			h: 979
-		},
-		originalImage: {
-			src: 'img-temp/enlarge/large.jpg',
-			w: 3000,
-			h: 1957
-		}
-	},
-	{
-		mediumImage: {
-			src: 'img-temp/enlarge-1/medium.jpg',
-			w: 1500,
-			h: 998
-		},
-		originalImage: {
-			src: 'img-temp/enlarge-1/large.jpg',
-			w: 3000,
-			h: 1995
-		}
-	}
 
-];
-
-// define options (if needed)
-var options = {
-	// optionName: 'option value'
-	// for example:
-	index: 0, // start at first slide
-	captionEl: false,
-	arrowEl: false,
-	shareEl: false,
-	fullscreenEl: true,
-	counterEl: false,
-	zoomEl: true,
-	tapToClose: false, // Tap on sliding area should close gallery
-};
 
 
 
@@ -208,9 +167,19 @@ function pswpStartCustom() {
 }
 
 
-$('.gallery-cell').on( 'click', 'img', function() {
-	var count = $(this).parent().attr('data-index');
-	// options.index = count;
+$('.gallery-buttons').on('click', '.button-zoom', function() {
+	var count = $('.is-selected').attr('data-index');
+
+	options = {
+		index: count, // start with the photo which is selected in detail
+		captionEl: false,
+		arrowEl: true,
+		shareEl: false,
+		fullscreenEl: true,
+		counterEl: false,
+		zoomEl: true,
+		tapToClose: false, // Tap on sliding area should close gallery
+	};
 	pswpStartCustom();
 });
 

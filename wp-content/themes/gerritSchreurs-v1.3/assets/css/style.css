@@ -85,21 +85,34 @@ header {
   /* Firefox all */
   -ms-user-select: none;
   /* IE 10+ */
-  margin: 15px 0 0 10px; }
+  margin: 16px 0 0 10px; }
   @media only screen and (min-width: 768px) {
     #logo {
       margin: 40px 0 0 30px; } }
   @media only screen and (min-width: 1170px) {
     #logo {
       margin: 40px 0 0 40px; } }
-  #logo img {
+  #logo div {
     display: block;
+    width: 180px;
+    height: 18px;
     -webkit-user-select: none;
     /* Chrome all / Safari all */
     -moz-user-select: none;
     /* Firefox all */
     -ms-user-select: none;
-    /* IE 10+ */ }
+    /* IE 10+ */
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: auto 18px;
+    background-image: url("../img/logo/gerrit-schreurs.svg"); }
+    @media only screen and (min-width: 768px) {
+      #logo div {
+        width: 382px;
+        height: 18px; } }
+
+.no-svg #logo div {
+  background-image: url("../img/logo/gerrit-schreurs.png"); }
 
 /*
 #cd-top-nav {
@@ -297,7 +310,7 @@ header {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 1em;
-    background: url("../img/cd-arrow.svg") no-repeat center center;
+    background: url("../img/menu-arrow.svg") no-repeat center center;
     background-size: 8px 11px;
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
@@ -313,6 +326,10 @@ header {
     -webkit-transform: translateY(-50%) rotate(90deg);
     transform: translateY(-50%) rotate(90deg); }
 
+.no-svg #cd-lateral-nav .item-has-children > a::after,
+.no-svg #cd-lateral-nav .menu-item-has-children > a::after {
+  background: url("../img/menu-arrow.png") no-repeat center center; }
+
 #cd-lateral-nav .socials {
   overflow: hidden;
   *zoom: 1;
@@ -322,7 +339,7 @@ header {
     width: 32px;
     float: left;
     padding: 0;
-    background-image: url("../img/cd-socials.svg");
+    background-image: url("../img/menu-socials.svg");
     background-repeat: no-repeat;
     background-size: 256px 64px;
     background-color: #f0f0f0;
@@ -367,6 +384,9 @@ header {
         background-position: -128px -32px; }
       .no-touch #cd-lateral-nav .socials a:hover.cd-instagram {
         background-position: -224px -32px; }
+
+.no-svg #cd-lateral-nav .socials a {
+  background-image: url("../img/menu-socials.png"); }
 
 /* --------------------------------
 extends
@@ -677,6 +697,15 @@ buttons
 .button-info {
   background-image: url("../img/button-info.svg"); }
 
+.no-svg .button-next {
+  background-image: url("../img/arrow-left.png"); }
+.no-svg .button-previous {
+  background-image: url("../img/arrow-right.png"); }
+.no-svg .button-zoom {
+  background-image: url("../img/button-zoom.png"); }
+.no-svg .button-info {
+  background-image: url("../img/button-info.png"); }
+
 /* --------------------------------
 containers
 -------------------------------- */
@@ -725,10 +754,10 @@ home
       left: 0px;
       right: 20px; }
   #home .panel div.button {
-    -moz-transition: width 0.2s ease-in-out, height 0.2s ease-in-out, line-height, ease-in-out 0.2s;
-    -o-transition: width 0.2s ease-in-out, height 0.2s ease-in-out, line-height, ease-in-out 0.2s;
-    -webkit-transition: width 0.2s ease-in-out, height 0.2s ease-in-out, line-height, ease-in-out 0.2s;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, line-height, ease-in-out 0.2s;
+    -moz-transition: scale-x 0.2s ease-in-out, scale-y 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+    -o-transition: scale-x 0.2s ease-in-out, scale-y 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+    -webkit-transition: scale-x 0.2s ease-in-out, scale-y 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+    transition: scale-x 0.2s ease-in-out, scale-y 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
     position: absolute;
     top: 0;
     bottom: 0;

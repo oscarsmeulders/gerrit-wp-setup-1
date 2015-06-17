@@ -88,19 +88,31 @@ header {
 	float: left;
 	@include userSelect();
 
-	margin: 15px 0 0 $padding-S;
+	margin: 16px 0 0 $padding-S;
 	@include MQ(M) {
 		margin: 40px 0 0 $padding-M;
 	}
 	@include MQ(L) {
 		margin: 40px 0 0 $padding-L;
 	}
-	img {
+	div {
 		display: block;
+		width: 180px;
+		height: 18px;
 		@include userSelect();
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: auto 18px ;
+		background-image: url('../img/logo/gerrit-schreurs.svg');
+		@include MQ(M) {
+			width: 382px;
+			height: 18px;
+		}
 	}
 }
-
+.no-svg #logo div {
+	background-image: url('../img/logo/gerrit-schreurs.png');
+}
 /*
 #cd-top-nav {
 	position: absolute;
@@ -317,7 +329,7 @@ header {
 		position: absolute;
 		@include center(y);
 		right: 1em;
-		background: url('../img/cd-arrow.svg') no-repeat center center;
+		background: url('../img/menu-arrow.svg') no-repeat center center;
 		background-size: 8px 11px;
 
 		@include transition-property(transform);
@@ -327,6 +339,12 @@ header {
 	&.submenu-open::after {
 		@include transform(translateY(-50%) rotate(90deg));
 
+	}
+}
+.no-svg #cd-lateral-nav .item-has-children > a,
+.no-svg #cd-lateral-nav .menu-item-has-children > a {
+	&::after {
+		background: url('../img/menu-arrow.png') no-repeat center center;
 	}
 }
 
@@ -339,7 +357,7 @@ header {
 		width: 32px;
 		float: left;
 		padding: 0;
-		background-image: url('../img/cd-socials.svg');
+		background-image: url('../img/menu-socials.svg');
 		background-repeat: no-repeat;
 		background-size: 256px 64px;
 		background-color: $background;
@@ -415,6 +433,13 @@ header {
 			&.cd-instagram {
 				background-position: -224px -32px;
 			}
+		}
+	}
+}
+.no-svg {
+	#cd-lateral-nav .socials {
+		a {
+			background-image: url('../img/menu-socials.png');
 		}
 	}
 }

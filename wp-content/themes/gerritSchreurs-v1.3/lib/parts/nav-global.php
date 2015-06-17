@@ -1,6 +1,5 @@
 <nav id="cd-lateral-nav">
 
-
 	<?php
 		$langURL = get_field( 'location_language', 'option' );
 		$langText = get_field( 'text_to_language', 'option' );
@@ -9,8 +8,6 @@
 		}
 		echo '<ul class="cd-navigation cd-single-item-wrapper cd-language"><li><a class="" href="'. $langURL .'">'. $langText .'</a></li></ul>';
 	?>
-
-
 
 	<!-- custom pages -->
 	<?php
@@ -84,12 +81,12 @@
 
 		$instagramLink = get_field( 'instagram_link', 'option' );
 		if( $instagramLink ) {
-			echo '<a target="_blank" class="cd-instagram cd-img-replace" href="'. $instagramLink .'">LinkedIN</a>';
+			echo '<a target="_blank" class="cd-instagram cd-img-replace" href="'. $instagramLink .'">Instagram</a>';
 		}
 
 		$tumblrLink = get_field( 'tumblr_link', 'option' );
 		if( $tumblrLink ) {
-			echo '<a target="_blank" class="cd-tumblr cd-img-replace" href="'. $tumblrLink .'">LinkedIN</a>';
+			echo '<a target="_blank" class="cd-tumblr cd-img-replace" href="'. $tumblrLink .'">Tumblr</a>';
 		}
 
 		$googleLink = get_field( 'google_plus_link', 'option' );

@@ -26,7 +26,7 @@ get_header(); ?>
 				</div>
 
 				<div class="gallery-cell" data-index="1">
-					<img src="img-temp/enlarge/small.jpg" alt="" />
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img-temp/enlarge/small.jpg" alt="" />
 				</div>
 				<div class="gallery-cell" data-index="2">
 					<img src="img-temp/enlarge-1/small.jpg" alt="" />
@@ -47,4 +47,37 @@ get_header(); ?>
 	<?php endwhile; ?>
 <?php endif; ?>
 
+
+<script type="text/javascript">
+items = [
+	{
+		mediumImage: {
+			src: '<?php echo get_stylesheet_directory_uri(); ?>/img-temp/enlarge/medium.jpg',
+			w: 1500,
+			h: 979
+		},
+		originalImage: {
+			src: '<?php echo get_stylesheet_directory_uri(); ?>/img-temp/enlarge/large.jpg',
+			w: 3000,
+			h: 1957
+		}
+	},
+	{
+		mediumImage: {
+			src: '<?php echo get_stylesheet_directory_uri(); ?>/img-temp/enlarge-1/medium.jpg',
+			w: 1500,
+			h: 998
+		},
+		originalImage: {
+			src: '<?php echo get_stylesheet_directory_uri(); ?>/img-temp/enlarge-1/large.jpg',
+			w: 3000,
+			h: 1995
+		}
+	}
+
+];
+</script>
+
+
+<?php get_template_part( 'lib/parts/detail', 'photo-zoom' ); ?>
 <?php get_footer();?>
