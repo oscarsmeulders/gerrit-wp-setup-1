@@ -1,0 +1,444 @@
+
+
+/* --------------------------------
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+
+.cd-img-replace { /* replace text with a background-image */
+	display: inline-block;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+
+.overflow-hidden {
+	overflow: auto;
+}
+
+/* --------------------------------
+
+Main components
+
+-------------------------------- */
+
+.cd-main-content, .cd-main-content-fixed {
+	/* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
+	min-height: 100%;
+	position: relative;
+	background-color: $background;
+	z-index: $content-zindex;
+
+	//we assign a top padding since the header is in position absolute or fixed
+	// padding-top: $header-S;
+
+	/* Force Hardware Acceleration in WebKit */
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+
+	@include transition-property(transform);
+	@include transition-duration(.4s);
+
+	&.lateral-menu-is-open {
+		/* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+		@include transform(translateX( $menu-width * -1 ));
+	}
+//	@include MQ(M) {
+//		padding-top: $header-M;
+//	}
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: $header-S;
+	width: 100%;
+	background: $color-header;
+	z-index: $header-zindex;
+
+	/* Force Hardware Acceleration in WebKit */
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+
+	@include transition-property(transform);
+	@include transition-duration(.4s);
+
+	&.lateral-menu-is-open {
+		/* translate to show the lateral menu */
+		@include transform(translateX( $menu-width * -1 ));
+	}
+
+	//assign this class to the header if you want a fixed navigation
+	&.is-fixed {
+		position: fixed;
+	}
+
+	@include MQ(M) {
+		height: $header-M;
+	}
+	@include MQ(L) {
+		height: $header-L;
+	}
+}
+
+#logo {
+	display: block;
+	float: left;
+	@include userSelect();
+
+	margin: 16px 0 0 $padding-S;
+	@include MQ(M) {
+		margin: 40px 0 0 $padding-M;
+	}
+	@include MQ(L) {
+		margin: 40px 0 0 $padding-L;
+	}
+	div {
+		display: block;
+		width: 180px;
+		height: 18px;
+		@include userSelect();
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: auto 18px ;
+		background-image: url('../img/logo/gerrit-schreurs.svg');
+		@include MQ(M) {
+			width: 382px;
+			height: 18px;
+		}
+	}
+}
+.no-svg #logo div {
+	background-image: url('../img/logo/gerrit-schreurs.png');
+}
+/*
+#cd-top-nav {
+	position: absolute;
+	top: 0;
+	right: 120px;
+	height: 100%;
+
+	display: none;
+
+	ul {
+		height: 100%;
+		padding-top: 18px;
+	}
+
+	li {
+		display: inline-block;
+		margin-right: 1em;
+	}
+
+	a {
+		display: inline-block;
+		padding: .5em;
+		color: $main-text;
+		text-transform: uppercase;
+		//font-weight: 600;
+
+		&.current {
+			background-color: $color-menu-txt-current;
+		}
+
+		.no-touch &:hover {
+			color: $main-text;
+		}
+	}
+
+	@include MQ(M) {
+		display: block;
+	}
+}
+*/
+
+#cd-menu-trigger {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: $menu-button-width-S;
+	background-color: $color-menu;
+	@include userSelect();
+
+	.cd-menu-text {
+		height: 100%;
+		text-transform: uppercase;
+		color: $main-text;
+		display: none;
+	}
+
+	.cd-menu-icon {
+		/* this span is the central line in the menu menu */
+		display: inline-block;
+		position: absolute;
+		@include center; // mixin inside partials > _mixings.scss
+		width: 18px;
+		height: 2px;
+		background-color: $main-text;
+
+		/* these are the upper and lower lines in the menu menu */
+		&::before, &:after {
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: inherit;
+			left: 0;
+		}
+
+		&::before {
+			bottom: 5px;
+		}
+
+		&::after {
+			top: 5px;
+		}
+	}
+
+	&.is-clicked {
+		.cd-menu-icon {
+			background-color: rgba(#FFF, 0);
+
+			&::before, &::after {
+				background-color: $main-text;
+			}
+
+			&::before {
+				bottom: 0;
+				@include transform(rotate(45deg));
+			}
+
+			&::after {
+				top: 0;
+				@include transform(rotate(-45deg));
+			}
+		}
+	}
+
+	@include MQ(M) {
+		width: 150px;
+		padding-left: 40px;
+
+		.cd-menu-text {
+			display: inline-block;
+			line-height: $header-M + 2px;
+		}
+
+		.cd-menu-icon {
+			left: auto;
+			right: 40px;
+			@include transform(translateX(0));
+		}
+	}
+}
+
+#cd-lateral-nav {
+	position: fixed;
+	height: 100%;
+	right: 0;
+	top: 0;
+	visibility: hidden;
+	@include MQ(M) {
+		padding-top: 15px;
+	}
+
+
+	/* the secondary navigation is covered by the main element */
+	z-index: $secondary-nav; // see partials > _variables.scss
+
+	width: $menu-width;
+	background-color: $color-menu;
+
+	overflow-y: auto;
+
+	/* Force Hardware Acceleration in WebKit */
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+
+	-webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+	-moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+	transition: transform .4s 0s, visibility 0s .4s;
+
+	/* this creates the subtle slide in animation of the navigation */
+	@include transform(translateX( $menu-width / 3 ));
+
+	.cd-navigation {
+		margin: 10px 0 16px;
+		&.cd-language {
+			margin-bottom: 47px;
+		}
+	}
+
+	.sub-menu {
+		padding: 0 10px 20px 15px;
+		display: none;
+	}
+
+	a {
+		display: block;
+		line-height: 2em;
+		padding: 0 16px 0 32px;
+		color: $main-text;
+		text-transform: uppercase;
+		text-decoration: none;
+		@include transition(color 0.2s ease-in);
+		@extend %cursor-pointer;
+		&.current, &.current-menu-item {
+			color: $color-menu-txt-current;
+		}
+		.no-touch &:hover {
+			color: $link-active;
+		}
+	}
+	.current-menu-item a, .current a {
+		color: $color-menu-txt-current !important;
+	}
+
+	@include MQ(M) {
+		.cd-navigation {
+			margin: 20px 0;
+		}
+	}
+
+	&.lateral-menu-is-open {
+		@include transform(translateX(0));
+		visibility: visible;
+		-webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+		-moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
+		transition: transform .4s 0s, visibility 0s 0s;
+
+		/* smooth the scrolling on touch devices - webkit browsers */
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+
+/* style menu items which have a submenu  */
+#cd-lateral-nav .item-has-children > a, #cd-lateral-nav .menu-item-has-children > a {
+	position: relative;
+
+	/* this is the right arrow to show that the item has a submenu  */
+	&::after {
+		content: '';
+		display: block;
+		height: 11px;
+		width: 8px;
+		position: absolute;
+		@include center(y);
+		right: 1em;
+		background: url('../img/menu-arrow.svg') no-repeat center center;
+		background-size: 8px 11px;
+
+		@include transition-property(transform);
+		@include transition-duration(.2s);
+	}
+
+	&.submenu-open::after {
+		@include transform(translateY(-50%) rotate(90deg));
+
+	}
+}
+.no-svg #cd-lateral-nav .item-has-children > a,
+.no-svg #cd-lateral-nav .menu-item-has-children > a {
+	&::after {
+		background: url('../img/menu-arrow.png') no-repeat center center;
+	}
+}
+
+#cd-lateral-nav .socials {
+	@include clearfix;
+	padding: 0 32px;
+
+	a {
+		height: 32px;
+		width: 32px;
+		float: left;
+		padding: 0;
+		background-image: url('../img/menu-socials.svg');
+		background-repeat: no-repeat;
+		background-size: 256px 64px;
+		background-color: $color-social-bg;
+		margin-right: .5em;
+		margin-bottom: .5em;
+		@include border-radius(16px);
+		@include transition(background-color 0.2s ease-in);
+		@extend %cursor-pointer;
+		&.cd-twitter {
+			background-position: 0 0;
+		}
+
+		&.cd-github {
+			background-position: -32px 0;
+		}
+
+		&.cd-facebook {
+			background-position: -64px 0;
+		}
+
+		&.cd-google {
+			background-position: -96px 0;
+		}
+
+		&.cd-linkedin {
+			background-position: -160px 0;
+		}
+
+		&.cd-google {
+			background-position: -192px 0;
+		}
+
+		&.cd-tumblr {
+			background-position: -128px 0;
+		}
+
+		&.cd-instagram {
+			background-position: -224px 0;
+		}
+
+		.no-touch &:hover {
+			background-color: $color-social-bg-hover;
+
+			&.cd-twitter {
+				background-position: 0 -32px;
+			}
+
+			&.cd-github {
+				background-position: -32px -32px;
+			}
+
+			&.cd-facebook {
+				background-position: -64px -32px;
+			}
+
+			&.cd-google {
+				background-position: -96px -32px;
+			}
+
+			&.cd-linkedin {
+				background-position: -160px -32px;
+			}
+
+			&.cd-google {
+				background-position: -192px -32px;
+			}
+
+			&.cd-tumblr {
+				background-position: -128px -32px;
+			}
+
+			&.cd-instagram {
+				background-position: -224px -32px;
+			}
+		}
+	}
+}
+.no-svg {
+	#cd-lateral-nav .socials {
+		a {
+			background-image: url('../img/menu-socials.png');
+		}
+	}
+}

@@ -1,0 +1,2 @@
+<a id="logo" alt="<?php _e( 'Gerrit Schreurs - Photography & Film', 'gs_lang' ); ?>" href="/"><div></div></a><nav id="cd-top-nav"></nav>
+<a id="cd-menu-trigger" href="#"><span class="cd-menu-text"><?php _e( 'Menu', 'gs_lang' ); ?></span><span class="cd-menu-icon"></span></a>

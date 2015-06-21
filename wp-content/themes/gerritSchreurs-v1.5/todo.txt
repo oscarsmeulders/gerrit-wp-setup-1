@@ -1,0 +1,42 @@
+-----------------------
+Global
+	- uitschrijven WP dashboard
+	- hernoem alle JS document, zodat we er later ook uitkomen
+
+	- logo variable via global theme settings
+	- menu hover kleur meegeven.
+
+-----------------------
+Homepage
+
+
+-----------------------
+Film overview
+
+
+-----------------------
+Film detail
+	- video-detail to big om 1920 px width screen
+	- titel cookietrail keuze maken
+
+-----------------------
+Photo overview
+	- isotope is loading twice when click a filter in menunavigation
+
+
+-----------------------
+content
+	- rechter page maken
+	- Contact maken
+
+
+-----------------------
+TESTEN met een lege database
+	! PASOP wel ACF bewaren via export
+
+
+-----------------------
+detail photo vergroten
+	-geen buttons als er geen tweede beeld is!
+	- photoswipe buttons visueel corrigeren
+	- no script https://github.com/kvendrik/responsive-images.js
