@@ -2,9 +2,8 @@
 Global
 	- uitschrijven WP dashboard
 	- hernoem alle JS document, zodat we er later ook uitkomen
-
-	- logo variable via global theme settings
-	- menu hover kleur meegeven.
+	- meta info in global
+	- seo plugin instaleren?
 
 -----------------------
 Homepage
@@ -22,12 +21,10 @@ Film detail
 -----------------------
 Photo overview
 	- isotope is loading twice when click a filter in menunavigation
-
+	- titels beter poistioneren + dynamisch als deze over twee regels vallen.
 
 -----------------------
 content
-	- rechter page maken
-	- Contact maken
 
 
 -----------------------
@@ -37,6 +34,8 @@ TESTEN met een lege database
 
 -----------------------
 detail photo vergroten
-	-geen buttons als er geen tweede beeld is!
+
 	- photoswipe buttons visueel corrigeren
 	- no script https://github.com/kvendrik/responsive-images.js
+	- info van foto maken.
+	- alt tag bekijken van het beeld, liever een icon

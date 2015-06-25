@@ -164,10 +164,10 @@ header {
 	@include userSelect();
 	&:hover {
 		.cd-menu-text {
-			color: $link-active;
+			//color: $link-active;
 		}
 		.cd-menu-icon {
-			background-color: $link-active;
+			//background-color: $link-active;
 		}
 	}
 
@@ -206,7 +206,7 @@ header {
 
 		}
 		&:hover {
-			background-color: $link-active;
+			//background-color: $link-active;
 		}
 	}
 

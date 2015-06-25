@@ -4,8 +4,21 @@
 define( 'gs_version', 1.0 );
 define( 'TEMPLATEPATH', get_template_directory_uri(), true );
 
+
 /*-----------------------------------------------------------------------------------*/
-/* clean dashboard
+/* set shortcodes
+/*-----------------------------------------------------------------------------------*/
+include_once( TEMPLATEPATH . "/lib/functions/shortcodes.php");
+
+
+/*-----------------------------------------------------------------------------------*/
+/* set menu walker
+/*-----------------------------------------------------------------------------------*/
+include_once( TEMPLATEPATH . "/lib/functions/menu_walker.php");
+
+
+/*-----------------------------------------------------------------------------------*/
+/* clean dashboard + clean menu admin
 /*-----------------------------------------------------------------------------------*/
 function remove_dashboard_widgets() {
 	global $wp_meta_boxes;
@@ -22,17 +35,21 @@ function remove_dashboard_widgets() {
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
+function remove_menus(){
 
-/*-----------------------------------------------------------------------------------*/
-/* set shortcodes
-/*-----------------------------------------------------------------------------------*/
-include_once( TEMPLATEPATH . "/lib/functions/shortcodes.php");
+	//remove_menu_page( 'index.php' );                  //Dashboard
+	remove_menu_page( 'edit.php' );                   //Posts
+	//remove_menu_page( 'upload.php' );                 //Media
+	//remove_menu_page( 'edit.php?post_type=page' );    //Pages
+	remove_menu_page( 'edit-comments.php' );          //Comments
+	//remove_menu_page( 'themes.php' );                 //Appearance
+	//remove_menu_page( 'plugins.php' );                //Plugins
+	//remove_menu_page( 'users.php' );                  //Users
+	remove_menu_page( 'tools.php' );                  //Tools
+	//remove_menu_page( 'options-general.php' );        //Settings
 
-
-/*-----------------------------------------------------------------------------------*/
-/* set menu walker
-/*-----------------------------------------------------------------------------------*/
-include_once( TEMPLATEPATH . "/lib/functions/menu_walker.php");
+}
+add_action( 'admin_menu', 'remove_menus' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -92,7 +109,7 @@ function language_theme_setup(){
 /*-----------------------------------------------------------------------------------*/
 /* add featured image in post and page
 /*-----------------------------------------------------------------------------------*/
-add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+// add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -108,12 +125,8 @@ function image_sizes_theme_setup() {
 
 /*
 	responsive voor vier scherm formaten,
-	we rekenen altijd vanuit de breedte (nodig voor WP, willen niet croppen)
+	we rekenen altijd vanuit de breedte (nodig voor WP, we willen niet croppen)
 
-	<768:s-width.jpg,
-	<900:m-width.jpg,
-	<1200:l-width.jpg,
-	>1200:xl-width.jpg'
 
 	s = 480px
 	m = 768px
@@ -151,6 +164,9 @@ register_nav_menus(
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom post types + taxonomies for Gerrit Schreurs
+	for the icons:
+	https://developer.wordpress.org/resource/dashicons/#format-video
+*/
 /*-----------------------------------------------------------------------------------*/
 
 function create_photo_tax() {
@@ -160,7 +176,7 @@ function create_photo_tax() {
 		array(
 			'label' => __( 'Category photography' ),
 			'rewrite' => array( 'slug' => 'photography_category' ),
-			'hierarchical' => true,
+			'hierarchical' => true
 		)
 	);
 }
@@ -173,7 +189,7 @@ function create_film_tax() {
 		array(
 			'label' => __( 'Category film' ),
 			'rewrite' => array( 'slug' => 'film_category' ),
-			'hierarchical' => true,
+			'hierarchical' => true
 		)
 	);
 }
@@ -191,7 +207,8 @@ function create_post_type_photo() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('photography_category'),
-			'rewrite' => array('slug'=> 'photography', 'with_front'=>false)
+			'rewrite' => array('slug'=> 'photography', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-image'
 		)
 	);
 }
@@ -210,11 +227,30 @@ function create_post_type_film() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('film_category'),
-			'rewrite' => array('slug'=> 'film', 'with_front'=>false)
+			'rewrite' => array('slug'=> 'film', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-video'
 		)
 	);
 }
 add_action( 'init', 'create_post_type_film' );
+/////////
+function create_post_type_slideshow() {
+	register_post_type( 'slideshow_item',
+		array(
+			'labels' => array(
+				'name' => __( 'Slideshow','gs_lang' ),
+				'singular_name' => __( 'Slideshow','gs_lang' ),
+				'add_new' => __( 'New slideshow','gs_lang' ),
+			),
+			'public' => true,
+			'has_archive' => false,
+			'supports' => array('title'),
+			'rewrite' => array('slug'=> 'slideshow', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-gallery'
+		)
+	);
+}
+add_action( 'init', 'create_post_type_slideshow' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
@@ -268,7 +304,7 @@ function shortcode_empty_paragraph_fix( $content ) {
 
 }
 add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
-add_filter('acf/load_field/name=description', 'my_acf_load_field');
+//add_filter('acf/load_field/name=description', 'my_acf_load_field');
 
 
 /*-----------------------------------------------------------------------------------*/

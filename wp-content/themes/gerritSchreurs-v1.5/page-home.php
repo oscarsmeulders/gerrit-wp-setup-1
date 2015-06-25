@@ -105,10 +105,10 @@ get_header(); ?>
 -->
 
 				<div class="one"
-					data-cycle-progressive="#images-one"
+					data-cycle-progressive="#images-photography"
 					data-cycle-slides="> div.slide">
 						<?php
-							$slide_ID = 'images-one';
+							$slide_ID = 'images-photography';
 							echo slideshow_create_photo( $slide_ID, $images_photo );
 						?>
 				</div>
@@ -126,10 +126,10 @@ get_header(); ?>
 		<div class="panel right">
 			<div class="slideshow">
 				<div class="one"
-					data-cycle-progressive="#images-one"
+					data-cycle-progressive="#images-film"
 					data-cycle-slides="> div.slide">
 						<?php
-							$slide_ID = 'images-one';
+							$slide_ID = 'images-film';
 							echo slideshow_create_film( $slide_ID, $images_film );
 						?>
 				</div>
