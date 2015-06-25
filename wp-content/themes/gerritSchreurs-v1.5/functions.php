@@ -92,7 +92,7 @@ function language_theme_setup(){
 /*-----------------------------------------------------------------------------------*/
 /* add featured image in post and page
 /*-----------------------------------------------------------------------------------*/
-add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+// add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -215,6 +215,23 @@ function create_post_type_film() {
 	);
 }
 add_action( 'init', 'create_post_type_film' );
+/////////
+function create_post_type_slideshow() {
+	register_post_type( 'slideshow_item',
+		array(
+			'labels' => array(
+				'name' => __( 'Slideshow','gs_lang' ),
+				'singular_name' => __( 'Slideshow','gs_lang' ),
+				'add_new' => __( 'New slideshow','gs_lang' ),
+			),
+			'public' => true,
+			'has_archive' => false,
+			'supports' => array('title'),
+			'rewrite' => array('slug'=> 'slideshow', 'with_front'=>false)
+		)
+	);
+}
+add_action( 'init', 'create_post_type_slideshow' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts

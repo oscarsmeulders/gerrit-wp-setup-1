@@ -1,14 +1,14 @@
 <?php
 /**
- * The template for displaying any single page.
+ * 	Template Name: Content - Contact
  *
- */
+*/
+get_header(); ?>
 
-get_header();?>
-<body id="content" <?php body_class('divide-two'); ?> >
+<body id="contact" <?php body_class('right divide-two'); ?> >
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'lib/parts/header', 'title' ); ?>
+			<?php get_template_part( 'lib/parts/header', 'title-trans' ); ?>
 
 			<?php //cd-main-content ?>
 			<main class="cd-main-content">

@@ -26,7 +26,7 @@ Photo overview
 
 -----------------------
 content
-	- rechter page maken
+
 	- Contact maken
 
 
@@ -37,6 +37,6 @@ TESTEN met een lege database
 
 -----------------------
 detail photo vergroten
-	-geen buttons als er geen tweede beeld is!
+
 	- photoswipe buttons visueel corrigeren
 	- no script https://github.com/kvendrik/responsive-images.js

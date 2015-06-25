@@ -1,10 +1,11 @@
 <?php
 /**
- * The template for displaying any single page.
+ * 	Template Name: Content - left
  *
- */
+*/
+get_header(); ?>
 
-get_header();?>
+<?php //same page as the default ?>
 <body id="content" <?php body_class('divide-two'); ?> >
 	<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : the_post(); ?>
