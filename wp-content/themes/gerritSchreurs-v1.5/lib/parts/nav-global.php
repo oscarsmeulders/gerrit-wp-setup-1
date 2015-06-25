@@ -9,7 +9,7 @@
 		echo '<ul class="cd-navigation cd-single-item-wrapper cd-language"><li><a class="" href="'. $langURL .'">'. $langText .'</a></li></ul>';
 	?>
 
-	<!-- custom pages -->
+	<?php  //custom pages ?>
 	<?php
 		echo '<ul id="menu-main" class="cd-navigation">';
 			// photography
@@ -48,7 +48,7 @@
 			// end film
 		echo '</ul>';
 	?>
-	<!-- end custom pages -->
+	<?php //end custom pages ?>
 
 
 
@@ -99,7 +99,8 @@
 			echo '<a target="_blank" class="cd-github cd-img-replace" href="'. $githubLink .'">Git Hub</a>';
 		}
 		?>
-	</div> <!-- socials -->
+	</div>
+	<?php //socials ?>
 </nav>
 
 

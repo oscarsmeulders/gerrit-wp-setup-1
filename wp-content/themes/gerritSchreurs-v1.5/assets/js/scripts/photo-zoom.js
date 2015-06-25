@@ -76,7 +76,7 @@ function pswpStartCustom() {
 	});
 
 
-	console.log('pswpStartCustom');
+	//console.log('pswpStartCustom');
 	// Note that init() method is called after gettingData event is bound
 	gallery.init();
 

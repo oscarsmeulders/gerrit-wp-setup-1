@@ -16,7 +16,9 @@ jQuery(document).ready(function($){
 	$('.post-nav').on( 'mouseout mouseleave', '.post-button', function() {
 		$('.post-thumb').addClass('hidden');
 	});
-
+	
+	
+	//////
 	$('#menu-main').on( 'click', '.sub-menu-item', function() {
 		location.reload();
 	});

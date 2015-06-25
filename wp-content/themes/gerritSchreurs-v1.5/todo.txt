@@ -1,7 +1,7 @@
 -----------------------
 Global
 	- uitschrijven WP dashboard
-	- hernoem alle JS document, zodat we er later ook uitkomen
+
 	- meta info in global
 	- seo plugin instaleren?
 
@@ -15,13 +15,12 @@ Film overview
 
 -----------------------
 Film detail
-	- video-detail to big om 1920 px width screen
 	- titel cookietrail keuze maken
 
 -----------------------
 Photo overview
 	- isotope is loading twice when click a filter in menunavigation
-	- titels beter poistioneren + dynamisch als deze over twee regels vallen.
+	- titels beter positioneren + dynamisch als deze over twee regels vallen.
 
 -----------------------
 content

@@ -142,7 +142,7 @@ jQuery(document).ready(function($){
 		});
 	};
 	isotopeFilter = function(hash) {
-		console.log('isotope filter : ' + hash);
+		//console.log('isotope filter : ' + hash);
 		$con.isotope({ filter: hash });
 	}
 
@@ -150,7 +150,7 @@ jQuery(document).ready(function($){
 	hash = window.location.hash.substr(1);
 	isotope();
 	if (hash) {
-		console.log ('hash : ' + hash);
+		//console.log ('hash : ' + hash);
 		isotopeFilter(hash);
 
 		$('.filters').find('button').each(function() {

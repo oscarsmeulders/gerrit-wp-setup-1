@@ -544,8 +544,19 @@
 		"outputAbbreviatedPath": "\/assets\/js\/min\/scripts-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
+		"outputStyle": 2,
 		"syntaxCheckerStyle": 0
+		},
+	"\/assets\/js\/scripts\/film-detail.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/scripts\/film-detail.js",
+		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/film-detail-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/assets\/js\/scripts\/film-overview.js": {
 		"fileType": 64,
@@ -553,17 +564,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/scripts\/film-overview.js",
 		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/film-overview-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/scripts\/flickity.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/flickity.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/flickity-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -580,61 +580,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/scripts\/isotope.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/isotope.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/isotope-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 0
-		},
-	"\/assets\/js\/scripts\/min\/equalHeights-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/min\/equalHeights-min.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/min\/equalHeights-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/scripts\/min\/isotope-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/min\/isotope-min.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/min\/isotope-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/scripts\/min\/slideshow-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/min\/slideshow-min.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/min\/slideshow-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/scripts\/min\/vimeo-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/min\/vimeo-min.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/min\/vimeo-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/assets\/js\/scripts\/navigation.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -646,34 +591,45 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/scripts\/photoswipe_custom.js": {
+	"\/assets\/js\/scripts\/pages-slideshow.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/photoswipe_custom.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/photoswipe_custom-min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/scripts\/pages-slideshow.js",
+		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/pages-slideshow-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/scripts\/slideshow.js": {
+	"\/assets\/js\/scripts\/photo-detail.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/slideshow.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/slideshow-min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/scripts\/photo-detail.js",
+		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/photo-detail-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/scripts\/vimeo.js": {
+	"\/assets\/js\/scripts\/photo-overview.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/assets\/js\/scripts\/photo-overview.js",
+		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/photo-overview-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/assets\/js\/scripts\/photo-zoom.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/scripts\/vimeo.js",
-		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/vimeo-min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/scripts\/photo-zoom.js",
+		"outputAbbreviatedPath": "\/assets\/js\/scripts\/min\/photo-zoom-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1739,37 +1695,37 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/photoswipe_custom.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/film-overview.js",
 			"position": 2,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/flickity.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/film-detail.js",
 			"position": 3,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/isotope.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/photo-detail.js",
 			"position": 4,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/film-overview.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/photo-overview.js",
 			"position": 5,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/vimeo.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/photo-zoom.js",
 			"position": 6,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/slideshow.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/scripts\/pages-slideshow.js",
 			"position": 7,
 			"type": 0
 			}

@@ -1,6 +1,6 @@
 <header>
 	<?php get_template_part( 'lib/parts/header', 'logo-menu' ); ?>
-	<!-- cookie -->
+	<?php //cookie ?>
 	<div class="cookietrail">
 		<?php 
 		// cookie trail photography
@@ -26,10 +26,9 @@
 	 	}
 	 	wp_reset_postdata();
 	 	// end photography
-	 	?>
+	 	?> 	
 		 	
-		 	
-		<!-- post-nav -->
+		<?php //post-nav ?>
 		<div class="post-nav">
 			<?php
 				$size = 			'square';
@@ -86,12 +85,7 @@
 				<div class="post-previous-thumb hidden" style="background-image: url('<?php echo $previous_img_url[0]; ?>');"></div>
 			</div>
 		</div>
-		<!-- end post-nav -->
+		<?php //post-nav ?>
 	</div>
-	<!-- end cookie -->
+	<?php //cookie ?>
 </header>
-<?php
-	//echo previous_post_link('%link', 'Previous', $in_same_cat = true);
-	//echo next_post_link('%link', 'Next', $in_same_cat = true);
-?>
-

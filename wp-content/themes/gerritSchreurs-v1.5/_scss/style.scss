@@ -628,6 +628,10 @@ detail - photography, detail - video
 			margin: auto;
 			@include vertical-align;
 			position: absolute;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: auto;
+			background-image: url('../img/ajax-loader.gif');
 
 			img {
 				@include vertical-align;
@@ -710,6 +714,7 @@ detail - photography, detail - video
 			@include MQ(L) {
 				padding-left: $padding-L;
 				padding-right: $padding-L;
+				width: 82%;
 			}
 			@include MQ(XL) {
 				padding-left: $padding-L;

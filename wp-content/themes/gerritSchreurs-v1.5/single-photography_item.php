@@ -12,7 +12,7 @@ get_header(); ?>
 
 		<?php get_template_part( 'lib/parts/header', 'cookie-photography' ); ?>
 
-		<!-- cd-main-content -->
+		<?php //cd-main-content ?>
 		<main class="cd-main-content">
 			<div class="gallery">
 
@@ -40,19 +40,15 @@ get_header(); ?>
 							$img_url_xl = 	wp_get_attachment_image_src( $img_id, $size_xl );
 							$img_url_o = 	wp_get_attachment_image_src( $img_id, $size_orginal );
 
-							$alt = 		$img['title'];
+							//$alt = 		$img['title'];
+							$alt = '';
 
 							$xml_string .= "
-								{
-									mediumImage: {
-										src: '". $img_url_xl[0] ."',
-										w: ". $img_url_xl[1] .",
-										h: ". $img_url_xl[2] ."
+								{	mediumImage: {
+										src: '". $img_url_xl[0] ."', w: ". $img_url_xl[1] .", h: ". $img_url_xl[2] ."
 									},
 									originalImage: {
-										src: '". $img_url_o[0] ."',
-										w: ". $img_url_o[1] .",
-										h: ". $img_url_o[2] ."
+										src: '". $img_url_o[0]  ."', w: ". $img_url_o[1]  .", h: ". $img_url_o[2]  ."
 									}
 								},";
 
@@ -87,7 +83,7 @@ get_header(); ?>
 			<div class="content"></div>
 
 		</main>
-		<!-- /cd-main-content -->
+		<?php //cd-main-content ?>
 
 		<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
 	<?php endwhile; ?>
