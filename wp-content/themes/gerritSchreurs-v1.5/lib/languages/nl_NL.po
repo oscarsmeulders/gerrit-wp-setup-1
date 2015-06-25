@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gerritSchreurs-1\n"
-"POT-Creation-Date: 2015-06-06 22:13+0100\n"
-"PO-Revision-Date: 2015-06-06 22:28+0100\n"
+"POT-Creation-Date: 2015-06-25 09:24+0100\n"
+"PO-Revision-Date: 2015-06-25 09:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -17,49 +17,75 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: _scss\n"
 
-#: functions.php:90
+#: functions.php:161
 msgid "Primary Menu"
 msgstr "Hoofdmenu"
 
-#: functions.php:103 functions.php:104 page-home.php:77
+#: functions.php:179
+msgid "Category photography"
+msgstr "Categorie fotografie"
+
+#: functions.php:192
+msgid "Category film"
+msgstr "Categorie film"
+
+#: functions.php:204 functions.php:205 page-home-old.php:161 page-home.php:121
 msgid "Photography"
 msgstr "Fotografie"
 
-#: functions.php:105
+#: functions.php:206
 msgid "New photography"
 msgstr "Nieuwe fotografie"
 
-#: functions.php:111
-msgid "photography"
-msgstr "fotografie"
-
-#: functions.php:122 functions.php:123 page-home.php:80
+#: functions.php:224 functions.php:225 page-home-old.php:190 page-home.php:142
 msgid "Film"
 msgstr "Film"
 
-#: functions.php:124
+#: functions.php:226
 msgid "New film"
 msgstr "Nieuwe film"
 
-#: functions.php:130
-msgid "film"
-msgstr "film"
+#: functions.php:243 functions.php:244
+msgid "Slideshow"
+msgstr "Slideshow"
+
+#: functions.php:245
+msgid "New slideshow"
+msgstr "Nieuwe slideshow"
+
+#: index.php:32
+msgid "Comment"
+msgstr "Reactie"
+
+#: index.php:32
+msgid "1 Comment"
+msgstr "1 Reactie"
+
+#: index.php:32
+msgid "% Comments"
+msgstr "% Reacties"
 
 #: lib/parts/header-filters.php:4
 msgid "Filter"
 msgstr "Filter"
 
-#: lib/parts/header-filters.php:8
+#: lib/parts/header-filters.php:19 lib/parts/nav-global.php:34
 msgid "Show all"
 msgstr "Toon alles"
 
-#: lib/parts/header-logo-menu.php:1 lib/parts/header-logo-menu.php:2
+#: lib/parts/header-logo-menu.php:1
 msgid "Gerrit Schreurs - Photography & Film"
 msgstr "Gerrit Schreurs - Fotografie & Film"
 
-#: lib/parts/header-logo-menu.php:5
+#: lib/parts/header-logo-menu.php:2
 msgid "Menu"
 msgstr "Menu"
+
+#~ msgid "photography"
+#~ msgstr "fotografie"
+
+#~ msgid "film"
+#~ msgstr "film"
 
 #~ msgid "menu"
 #~ msgstr "nav"

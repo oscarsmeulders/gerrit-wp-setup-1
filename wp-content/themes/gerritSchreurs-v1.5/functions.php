@@ -5,7 +5,7 @@ define( 'gs_version', 1.0 );
 define( 'TEMPLATEPATH', get_template_directory_uri(), true );
 
 /*-----------------------------------------------------------------------------------*/
-/* clean dashboard
+/* clean dashboard + clean menu admin
 /*-----------------------------------------------------------------------------------*/
 function remove_dashboard_widgets() {
 	global $wp_meta_boxes;
@@ -22,6 +22,21 @@ function remove_dashboard_widgets() {
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
+function remove_menus(){
+
+	//remove_menu_page( 'index.php' );                  //Dashboard
+	remove_menu_page( 'edit.php' );                   //Posts
+	//remove_menu_page( 'upload.php' );                 //Media
+	//remove_menu_page( 'edit.php?post_type=page' );    //Pages
+	remove_menu_page( 'edit-comments.php' );          //Comments
+	//remove_menu_page( 'themes.php' );                 //Appearance
+	//remove_menu_page( 'plugins.php' );                //Plugins
+	//remove_menu_page( 'users.php' );                  //Users
+	//remove_menu_page( 'tools.php' );                  //Tools
+	//remove_menu_page( 'options-general.php' );        //Settings
+
+}
+add_action( 'admin_menu', 'remove_menus' );
 
 /*-----------------------------------------------------------------------------------*/
 /* set shortcodes
@@ -151,6 +166,9 @@ register_nav_menus(
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom post types + taxonomies for Gerrit Schreurs
+	for the icons:
+	https://developer.wordpress.org/resource/dashicons/#format-video
+*/
 /*-----------------------------------------------------------------------------------*/
 
 function create_photo_tax() {
@@ -160,7 +178,7 @@ function create_photo_tax() {
 		array(
 			'label' => __( 'Category photography' ),
 			'rewrite' => array( 'slug' => 'photography_category' ),
-			'hierarchical' => true,
+			'hierarchical' => true
 		)
 	);
 }
@@ -173,7 +191,7 @@ function create_film_tax() {
 		array(
 			'label' => __( 'Category film' ),
 			'rewrite' => array( 'slug' => 'film_category' ),
-			'hierarchical' => true,
+			'hierarchical' => true
 		)
 	);
 }
@@ -191,7 +209,8 @@ function create_post_type_photo() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('photography_category'),
-			'rewrite' => array('slug'=> 'photography', 'with_front'=>false)
+			'rewrite' => array('slug'=> 'photography', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-image'
 		)
 	);
 }
@@ -210,7 +229,8 @@ function create_post_type_film() {
 			'has_archive' => false,
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('film_category'),
-			'rewrite' => array('slug'=> 'film', 'with_front'=>false)
+			'rewrite' => array('slug'=> 'film', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-video'
 		)
 	);
 }
@@ -227,7 +247,8 @@ function create_post_type_slideshow() {
 			'public' => true,
 			'has_archive' => false,
 			'supports' => array('title'),
-			'rewrite' => array('slug'=> 'slideshow', 'with_front'=>false)
+			'rewrite' => array('slug'=> 'slideshow', 'with_front'=>false),
+			'menu_icon' => 'dashicons-format-gallery'
 		)
 	);
 }
