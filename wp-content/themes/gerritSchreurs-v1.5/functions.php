@@ -4,6 +4,19 @@
 define( 'gs_version', 1.0 );
 define( 'TEMPLATEPATH', get_template_directory_uri(), true );
 
+
+/*-----------------------------------------------------------------------------------*/
+/* set shortcodes
+/*-----------------------------------------------------------------------------------*/
+include_once( TEMPLATEPATH . "/lib/functions/shortcodes.php");
+
+
+/*-----------------------------------------------------------------------------------*/
+/* set menu walker
+/*-----------------------------------------------------------------------------------*/
+include_once( TEMPLATEPATH . "/lib/functions/menu_walker.php");
+
+
 /*-----------------------------------------------------------------------------------*/
 /* clean dashboard + clean menu admin
 /*-----------------------------------------------------------------------------------*/
@@ -32,22 +45,11 @@ function remove_menus(){
 	//remove_menu_page( 'themes.php' );                 //Appearance
 	//remove_menu_page( 'plugins.php' );                //Plugins
 	//remove_menu_page( 'users.php' );                  //Users
-	//remove_menu_page( 'tools.php' );                  //Tools
+	remove_menu_page( 'tools.php' );                  //Tools
 	//remove_menu_page( 'options-general.php' );        //Settings
 
 }
 add_action( 'admin_menu', 'remove_menus' );
-
-/*-----------------------------------------------------------------------------------*/
-/* set shortcodes
-/*-----------------------------------------------------------------------------------*/
-include_once( TEMPLATEPATH . "/lib/functions/shortcodes.php");
-
-
-/*-----------------------------------------------------------------------------------*/
-/* set menu walker
-/*-----------------------------------------------------------------------------------*/
-include_once( TEMPLATEPATH . "/lib/functions/menu_walker.php");
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -123,12 +125,8 @@ function image_sizes_theme_setup() {
 
 /*
 	responsive voor vier scherm formaten,
-	we rekenen altijd vanuit de breedte (nodig voor WP, willen niet croppen)
+	we rekenen altijd vanuit de breedte (nodig voor WP, we willen niet croppen)
 
-	<768:s-width.jpg,
-	<900:m-width.jpg,
-	<1200:l-width.jpg,
-	>1200:xl-width.jpg'
 
 	s = 480px
 	m = 768px
@@ -306,7 +304,7 @@ function shortcode_empty_paragraph_fix( $content ) {
 
 }
 add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
-add_filter('acf/load_field/name=description', 'my_acf_load_field');
+//add_filter('acf/load_field/name=description', 'my_acf_load_field');
 
 
 /*-----------------------------------------------------------------------------------*/

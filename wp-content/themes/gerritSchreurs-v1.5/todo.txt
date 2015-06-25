@@ -2,7 +2,8 @@
 Global
 	- uitschrijven WP dashboard
 	- hernoem alle JS document, zodat we er later ook uitkomen
-
+	- meta info in global
+	- seo plugin instaleren?
 
 -----------------------
 Homepage
