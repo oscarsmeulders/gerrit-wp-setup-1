@@ -307,8 +307,30 @@ add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
 //add_filter('acf/load_field/name=description', 'my_acf_load_field');
 
 
+
+
 /*-----------------------------------------------------------------------------------*/
-/* Options pages
+/* Set ACF to custom folder
+/*-----------------------------------------------------------------------------------*/
+add_filter('acf/settings/path', 'my_acf_settings_path');
+function my_acf_settings_path( $path ) {
+    $path = get_stylesheet_directory() . '/lib/acf/';
+    return $path;
+}
+ 
+
+add_filter('acf/settings/dir', 'my_acf_settings_dir');
+function my_acf_settings_dir( $dir ) {
+    $dir = get_stylesheet_directory_uri() . '/lib/acf/';
+    return $dir;
+}
+
+add_filter('acf/settings/show_admin', '__return_false'); // hide menu
+
+include_once( get_stylesheet_directory() . '/lib/acf/acf.php' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Options pages if ACF is loaded
 /*-----------------------------------------------------------------------------------*/
 if( function_exists('acf_add_options_page') ) {
 
@@ -331,4 +353,10 @@ if( function_exists('acf_add_options_page') ) {
 	));
 
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Include the ACF gerrit settings
+/*-----------------------------------------------------------------------------------*/
+include_once( TEMPLATEPATH . "/lib/functions/acf_fields.php");
+
 ?>

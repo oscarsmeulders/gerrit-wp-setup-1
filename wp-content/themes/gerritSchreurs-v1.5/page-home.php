@@ -17,6 +17,7 @@ get_header(); ?>
 		function rndDuration () {
 			return rand(200,800) * 10;
 		}
+		$size = 	'content-page';
 		// images listing
 		$images_photo = array();
 		if(have_rows('photography_images')):
@@ -24,7 +25,6 @@ get_header(); ?>
 
 				$img = 		get_sub_field('photography_image');
 				$img_id = 	$img['ID'];
-				$size = 	'content-page';
 				$img_url = 	wp_get_attachment_image_src( $img_id, $size );
 				$string =	"<div class='slide' data-cycle-speed='". rndSpeed() ."' data-cycle-timeout='". rndDuration() ."' style='background-image: url(". $img_url[0] .")'></div>";
 				if( $img_id ) {
@@ -41,7 +41,6 @@ get_header(); ?>
 
 				$img = 		get_sub_field('film_image');
 				$img_id = 	$img['ID'];
-				$size = 	'content-page';
 				$img_url = 	wp_get_attachment_image_src( $img_id, $size );
 				$string =	"<div class='slide' data-cycle-speed='". rndSpeed() ."' data-cycle-timeout='". rndDuration() ."' style='background-image: url(". $img_url[0] .")'></div>";
 				if( $img_id ) {
