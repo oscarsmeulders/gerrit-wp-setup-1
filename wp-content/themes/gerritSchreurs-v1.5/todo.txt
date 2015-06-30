@@ -1,9 +1,13 @@
 -----------------------
 Global
 	- uitschrijven WP dashboard
-
+	- dashboard OS maken.
 	- meta info in global
 	- seo plugin instaleren?
+	- 404 maken
+	- logo niet linken naar / naar naar homepage of WP instance
+	- geen taal ingevult dan nav wel omlaag zetten. dus door bij taal altijd een spatie meegeven.
+	- theme setting hoger in WP-admin menu
 
 -----------------------
 Homepage
@@ -21,20 +25,18 @@ Film detail
 Photo overview
 	- isotope is loading twice when click a filter in menunavigation
 	- titels beter positioneren + dynamisch als deze over twee regels vallen.
+	- titels wat groter
 
 -----------------------
 content
 
 
 -----------------------
-TESTEN met een lege database
-	! PASOP wel ACF bewaren via export
-
-
------------------------
 detail photo vergroten
-
+	- als er geen categorieen zijn geen fout melding geven.
 	- photoswipe buttons visueel corrigeren
 	- no script https://github.com/kvendrik/responsive-images.js
 	- info van foto maken.
 	- alt tag bekijken van het beeld, liever een icon
+
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

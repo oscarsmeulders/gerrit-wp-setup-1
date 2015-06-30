@@ -593,6 +593,95 @@ content
 	}
 }
 /* --------------------------------
+Error
+-------------------------------- */
+#error {
+	.cd-main-content {
+		//@extend %paddings-with-sub;
+		//@extend %paddings-with-sub-no-padding;
+
+		height:100%;
+		width: 100%;
+		z-index: $content-zindex;
+		overflow: hidden;
+	}
+	div.title {
+		@extend %navigation-sub;
+		@include userSelect();
+		&.trans {
+			//background-color: rgba($color-filters, 0.7);
+		}
+	}
+	.panel {
+		height:100%;
+		width: 100%;
+		@include selection($main-text, $background);
+		&.text {
+			padding-top: ($header-S + $filter-S + $padding-S);
+			@include MQ(M) {
+				padding-top: ($header-M + $filter-M + $padding-M);
+			}
+			@include MQ(L) {
+				padding-top: ($header-L + $filter-L + $padding-L);
+			}
+		}
+	}
+	div.button {
+		@extend %cursor-pointer;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right:0;
+		margin: auto;
+		font-size: em(14);
+		text-align: center;
+		text-transform: uppercase;
+		@include selection($color-home-button-txt, $color-home-button);
+		background-color: $color-error-bg;
+
+		color: $color-error-txt;
+		.contents {
+			color: $color-error-txt !important;
+		}
+
+		z-index: 999;
+		font-size: em(17);
+		top: $header-S;
+		line-height: 300px;
+		width: 300px;
+		height: 300px;
+		@include border-radius(300px);
+
+		@include MQ(M) {
+			font-size: em(25);
+			top: $header-M;
+			line-height: 500px;
+			width: 500px;
+			height: 500px;
+			@include border-radius(250px);
+		}
+		@include MQ(L) {
+			font-size: em(31);
+			top: $header-L;
+			line-height: 500px;
+			width: 500px;
+			height: 500px;
+			@include border-radius(250px);
+
+		}
+		@include transform( scale(1.0) );
+		@include transition(all 0.2s ease-in-out);
+		&:hover {
+			@include transform( scale(1.2) );
+		}
+
+	}
+
+
+}
+
+/* --------------------------------
 detail - photography, detail - video
 -------------------------------- */
 #detail-photography, #detail-video {

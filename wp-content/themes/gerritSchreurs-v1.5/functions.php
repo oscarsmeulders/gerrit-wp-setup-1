@@ -3,6 +3,7 @@
 // Define the version so we can easily replace it throughout the theme
 define( 'gs_version', 1.0 );
 define( 'TEMPLATEPATH', get_template_directory_uri(), true );
+define( 'SITEPATH', site_url(), true );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -57,45 +58,124 @@ add_action( 'admin_menu', 'remove_menus' );
 /*-----------------------------------------------------------------------------------*/
 function my_custom_dashboard_widgets() {
 	global $wp_meta_boxes;
-	wp_add_dashboard_widget('custom_help_widget', 'Images', 'custom_dashboard_help');
+	wp_add_dashboard_widget('sos_global', 'Contact', 'custom_dashboard_sos');
+	wp_add_dashboard_widget('sos_updates', 'Updates', 'custom_dashboard_sos_updates');
+	wp_add_dashboard_widget('sos_remarks', 'Install', 'custom_dashboard_sos_remarks');
+	wp_add_dashboard_widget('images_help_widget', 'Images', 'custom_dashboard_help');
 }
+function custom_dashboard_sos() {
+	echo '<img src="'. get_template_directory_uri() .'/lib/sos/img/sos_logo.jpg">';
+	echo '<h1>Oscar Smeulders</h1>
+		<p>
+			<span>Phone</span>&nbsp;&nbsp;<a href="tel:0621570942">06 215 70 942</a><br/>
+			<span>Email</span>&nbsp;&nbsp;<a href="mailto:info@oscarsmeulders.com">info@oscarsmeulders.com</a><br/>
+			<span>Www</span>&nbsp;&nbsp;<a href="http://www.oscarsmeulders.com">oscarsmeulders.com</a>
+		</p>';
+}
+
+function custom_dashboard_sos_updates() {
+	echo '<table style="width:100%">
+		<thead>
+			<tr>
+				<td style="font-weight:600">When</td>
+				<td style="font-weight:600">What</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2015-06-27</td>
+				<td><strong>Changed the admin welcome screen</strong></td>
+			</tr>
+		</tbody>
+	</table>';
+}
+
+function custom_dashboard_sos_remarks() {
+	echo '<ol>
+			<li><strong>When activating the theme</strong></li>
+			<li>Create a homepage</li>
+			<li>Then create a photography + film page</li>
+			<li>Select for both the right template</li>
+			<li>Link the photography + film page in the <em><a href="'. SITEPATH .'/wp-admin/admin.php?page=theme-general-settings">Theme settings</a></em></li>
+		</ol>';
+	echo '<ol>
+			<li><a href="'. SITEPATH .'/wp-admin/nav-menus.php">Create a menu</a> and select this menu to <em><a href="'. SITEPATH .'/wp-admin/nav-menus.php">Primary Menu</a></em></li>
+		</ol>';
+}
+
 function custom_dashboard_help() {
-	echo '<p>here all the info how to size the images all over the website</p>
-		<ul>
-			<li>
-				content-page<br/>
-				1400px width
-			</li>
+	echo '<p>
+		Images used in the gerrit-theme will be resized to different sizes. Below a listing of all sizes and where they are cropped (or not).
 
-			<li>
-				photography-listing<br/>
-				600x400px
-			</li>
+		<table style="width:100%">
+		<thead>
+			<tr>
+				<td style="font-weight:600">Name</td>
+				<td style="font-weight:600">Where</td>
+				<td style="font-weight:600">Size (px)</td>
+				<td style="font-weight:600">C</td>
+			</tr>
+		</thead>
+		<tbody>
 
-			<li>
-				film-listing<br/>
-				600x400px
-			</li>
-
-			<li>
-				square<br/>
-				200x200px
-			</li>
-
-			<li>
-				photography-listing-home<br/>
-				1000x200px - OLD
-			</li>
-			<li>
-				film-listing-home<br/>
-				1000x600px - OLD
-			</li>
-
-		</ul>';
+			<tr>
+				<td>square</td>
+				<td>Nav between posts</td>
+				<td>200 x 200</td>
+				<td>*</td>
+			</tr>
+			<tr>
+				<td>photography-listing</td>
+				<td>Overview</td>
+				<td>600 x 400</td>
+				<td>*</td>
+			</tr>
+			<tr>
+				<td>film-listing</td>
+				<td>Overview</td>
+				<td>600 x 400</td>
+				<td>*</td>
+			</tr>
+			<tr>
+				<td>content-page</td>
+				<td>Content + homepage</td>
+				<td>1400 width</td>
+				<td>&nbsp</td>
+			</tr>
+			<tr>
+				<td>detail-s</td>
+				<td>Responsive</td>
+				<td>480 width</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>detail-m</td>
+				<td>Responsive</td>
+				<td>768 width</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>detail-l</td>
+				<td>Responsive</td>
+				<td>900 width</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>detail-xl</td>
+				<td>Responsive</td>
+				<td>1600 width</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>detail-orginal</td>
+				<td>Responsive</td>
+				<td>3000 width</td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+		</table>';
 }
 add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
-
-
 
 /*-----------------------------------------------------------------------------------*/
 /* set language PO & MO files
@@ -105,11 +185,10 @@ function language_theme_setup(){
     load_theme_textdomain('gs_lang', TEMPLATEPATH . '/lib/languages');
 }
 
-
 /*-----------------------------------------------------------------------------------*/
 /* add featured image in post and page
 /*-----------------------------------------------------------------------------------*/
-// add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+// add_theme_support('post-thumbnails', array( 'post', 'page' ) );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -121,27 +200,20 @@ function image_sizes_theme_setup() {
 	add_image_size( 'photography-listing', 600, 400, true );
 	add_image_size( 'film-listing', 600, 400, true );
 	add_image_size( 'square', 300, 300, true );
-
-
-/*
+	/*
 	responsive voor vier scherm formaten,
 	we rekenen altijd vanuit de breedte (nodig voor WP, we willen niet croppen)
-
-
 	s = 480px
 	m = 768px
 	l = 900px
 	xl = 1600px
 	orignal = 3000px
-*/
+	*/
 	add_image_size( 'detail-s', 480 );
 	add_image_size( 'detail-m', 768 );
 	add_image_size( 'detail-l', 900 );
 	add_image_size( 'detail-xl', 1600 );
 	add_image_size( 'detail-orginal', 3000 );
-
-	//add_image_size( 'photography-listing-home', 1000, 200, true );
-	//add_image_size( 'film-listing-home', 1000, 600, true );
 }
 
 
@@ -317,7 +389,7 @@ function my_acf_settings_path( $path ) {
     $path = get_stylesheet_directory() . '/lib/acf/';
     return $path;
 }
- 
+
 
 add_filter('acf/settings/dir', 'my_acf_settings_dir');
 function my_acf_settings_dir( $dir ) {
