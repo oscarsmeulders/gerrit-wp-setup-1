@@ -338,6 +338,7 @@ table {
 			font-size: em(15);
 			padding-right: 10px;
 			text-align: left;
+			@include opacity(0.75);
 			//background-color: rgba(#ffff00, 0.2);
 		}
 	}
@@ -345,9 +346,17 @@ table {
 /* --------------------------------
 buttons
 -------------------------------- */
-.button-next, .button-previous, .button-zoom, .button-info {
+.button-next, .button-previous, .button-zoom, .button-info, .button-close {
 	background-position: center center;
 	background-repeat: no-repeat;
+	@include transition(opacity 0.2s ease-in-out);
+	@include opacity(1);
+	&.hidden {
+		@include opacity(0);
+	}
+	&.displayNone {
+		display: none;
+	}
 }
 .button-next {
 	background-image: url('../img/arrow-left.svg');
@@ -363,6 +372,9 @@ buttons
 	@extend %hideMobile;
 	background-image: url('../img/button-info.svg');
 }
+.button-close {
+	background-image: url('../img/button-close.svg');
+}
 .no-svg {
 	.button-next {
 		background-image: url('../img/arrow-left.png');
@@ -377,6 +389,10 @@ buttons
 	.button-info {
 		@extend %hideMobile;
 		background-image: url('../img/button-info.png');
+	}
+	.button-close {
+		@extend %hideMobile;
+		background-image: url('../img/button-close.png');
 	}
 }
 /* --------------------------------
@@ -396,7 +412,7 @@ containers
 			padding-left: $padding-L;
 			padding-right: $padding-L;
 		}
-		&.half {
+		&.half  {
 			@include MQ(L) {
 				@include column(0.5, left);
 				&:first-child {
@@ -409,10 +425,60 @@ containers
 				}
 			}
 		}
+		&.client {
+			@include MQ(L) {
+				/*
+				@include column(0.5, left);
+				&:ntn-child(even) {
+					padding-left: $padding-L;
+					padding-right: $padding-L / 2;
+				}
+				&:ntn-child(odd) {
+					padding-left: $padding-L / 2;
+					padding-right: $padding-L;
+				}
+				*/
+			}
+			span {
+				width: 50%;
+				display: block;
+				float:left;
+				padding-right: 20px;
+				font-weight: 700;
+				@include transition(color 0.2s ease-in-out);
+			}
+			a {
+				@include transition(background-position 0.2s ease-in-out);
+				text-decoration: none !important;
+				color: $main-text !important;
+				display: block;
+				background-image: url('../img/arrow-link.svg');
+				background-position: 100% center;
+				background-repeat: no-repeat;
+				&:hover {
+					background-position: 101% center;
+					color: $link-active !important;
+					span {
+						color: $link-active !important;
+					}
+				}
+			}
+		}
+		
 	}
 
 }
-
+.no-svg {
+	.cd-wrapper {
+		.cd-container{
+			&.client {
+				a {
+					background-image: url('../img/arrow-link.png');
+				}
+			}
+		}
+	}
+}
 /* --------------------------------
 end containers + typografie
 -------------------------------- */
@@ -512,7 +578,10 @@ content
 		//@extend %paddings-with-sub-no-padding;
 
 		height:100%;
-		width: 50%;
+		width: 100%;
+		@include MQ(M) {
+			width: 50%;
+		}
 	}
 	.cd-main-content {
 		z-index: $content-zindex;
@@ -731,8 +800,6 @@ detail - photography, detail - video
 					max-width: 85%;
 				}
 			}
-
-
 		}
 	}
 	.gallery-buttons {
@@ -741,48 +808,107 @@ detail - photography, detail - video
 		width: 100%;
 		height: 100%;
 		z-index: 5;
-
+		.gallery-button {
+			z-index: $content-nav-zindex;
+			@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+			@extend %cursor-pointer;
+			@include selection($color-home-button-txt, $color-home-button);
+			background-color: transparent;
+			border: none;
+			text-transform: uppercase;
+			color: $main-text;
+			font-size: em(17);
+	
+			width: $button-detail-S;
+			height: $button-detail-S;
+	
+			margin: auto;
+			position: absolute;
+			@extend %top-with-sub-no-padding;
+			left: 0;
+			bottom: 0;
+			right: auto;
+	
+			&:focus {
+				outline:0;
+			}
+			&.button-next {
+				left:auto;
+				right: 0px;
+			}
+			&.button-zoom {
+				left:auto;
+				right: 0px;
+				bottom: 120px;
+			}
+			&.button-info {
+				left:auto;
+				right: 0px;
+				bottom: 240px;
+			}
+		}
 	}
-	.gallery-button {
-		z-index: $content-nav-zindex;
-		@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
-		@extend %cursor-pointer;
-		@include selection($color-home-button-txt, $color-home-button);
-		background-color: transparent;
-		border: none;
-		text-transform: uppercase;
-		color: $main-text;
-		font-size: em(17);
-
-		width: $button-detail-S;
-		height: $button-detail-S;
-
-		margin: auto;
+	
+	.info {
 		position: absolute;
-		@extend %top-with-sub-no-padding;
-		left: 0;
-		bottom: 0;
-		right: auto;
-
-		&:focus {
-			outline:0;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		@extend %paddings-with-sub-no-padding;
+		@include transition(opacity 0.2s ease-in-out);
+		@include opacity(1);
+		&.hidden {
+			@include opacity(0);
 		}
-		&:hover {
-			background-color: $color-detail-button-bg-hover;
+		&.displayNone {
+			display: none;
 		}
-		&.button-next {
-			left:auto;
-			right: 0px;
-		}
-		&.button-zoom {
-			left:auto;
-			right: 0px;
-			bottom: 120px;
-		}
-		&.button-info {
-			left:auto;
-			right: 0px;
-			bottom: 240px;
+		
+		.information {
+			.close {
+				position: absolute;
+				right:0px;
+				top:0px;
+				.button-close {
+					z-index: $content-nav-zindex;
+					@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+					@extend %cursor-pointer;
+					@include selection($color-home-button-txt, $color-home-button);
+					background-color: transparent;
+					border: none;
+					text-transform: uppercase;
+					color: $main-text;
+					font-size: em(17);
+			
+					width: $button-detail-S;
+					height: $button-detail-S;
+					&:focus {
+						outline:0;
+					}
+				}
+			}
+			h1, h2, h3, h4, h5, h6 {
+				margin-right: 30px;
+			}
+			background-color: $color-info-panels-bg;
+			margin: auto;
+			position: absolute;
+			@include vertical-align;
+			
+			padding: $padding-S $padding-S $padding-S/2 $padding-S;
+			width: $info-panel-width-S;
+			//height: $info-panel-height-S;
+			@include MQ(M) {
+				padding: $padding-M $padding-M $padding-M/2 $padding-M;
+				width: $info-panel-width-M;
+				//height: $info-panel-height-M;
+			}
+			@include MQ(L) {
+				padding: $padding-L $padding-L $padding-L/2 $padding-L;
+				width: $info-panel-width-L;
+				//height: $info-panel-height-L;
+			}	
 		}
 	}
 	.video {
@@ -843,6 +969,16 @@ detail - photography, detail - video
 
 }
 
+.no-touch {
+	#detail-photography, #detail-video {
+		.button-close, .gallery-button {
+			&:hover {
+				background-color: $color-detail-button-bg-hover !important;
+			}
+		} 
+	}
+}
+
 /* --------------------------------
 portfolio - film
 -------------------------------- */
@@ -878,7 +1014,7 @@ portfolio - film
 
 			}
 			>.item-title {
-				padding-top: 20px;
+				padding-top: 10px;
 				@include transition(opacity 0.2s ease-in-out);
 			}
 			padding-right: $padding-S;
@@ -890,27 +1026,38 @@ portfolio - film
 					@include opacity (0);
 				}
 			}
+			
+			font-size: em(15);
+			line-height: em(17);
 
 		}
 		@include MQ(M) {
 			div.item {
 				padding-right: $padding-M;
 				padding-bottom: $padding-M;
-				width: 50%;
+				width: 33.333333%;
+				font-size: em(15);
+				line-height: em(17);
+				
 			}
 		}
 		@include MQ(L) {
 			div.item {
 				padding-right: $padding-L;
 				padding-bottom: $padding-L;
-				width: 33.333333%;
+				width: 25%;
+				font-size: em(17);
+				line-height: em(19);
+				>.item-title {
+					padding-top: 20px;
+				}
 			}
 		}
 		@include MQ(XL) {
 			div.item {
 				padding-right: $padding-L;
 				padding-bottom: $padding-L;
-				width: 25%;
+				width: 20%;
 			}
 		}
 	}
@@ -975,6 +1122,7 @@ portfolio - photography
 			> div {
 				width: 100%;
 				height: 100%;
+				background-color: $color-items-bg-hover;
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: auto;
@@ -993,34 +1141,22 @@ portfolio - photography
 					position: absolute;
 					background-color: $color-items-bg-hover;
 					width: 100%;
-					padding: 10px;
+					padding: 15px 10px 10px 10px;
 					text-transform: uppercase;
-					font-size: em(13);
-
-					bottom: -1 * $item-title-height-S;
-					height: $item-title-height-S;
+					display: table;
+					font-weight: 400;
+					font-size: em(15);
+					line-height: em(17);
 
 					@include MQ(M) {
-						bottom: -1 * $item-title-height-M;
-						height: $item-title-height-M;
+						font-size: em(15);
+						line-height: em(17);
 					}
 					@include MQ(L) {
-						bottom: -1 * $item-title-height-L;
-						height: $item-title-height-L;
+						font-size: em(17);
+						line-height: em(19);
 					}
-					&.double {
-						bottom: -1 * $item-title-height-double-S;
-						height: $item-title-height-double-S;
-
-						@include MQ(M) {
-							bottom: -1 * $item-title-height-double-M;
-							height: $item-title-height-double-M;
-						}
-						@include MQ(L) {
-							bottom: -1 * $item-title-height-double-L;
-							height: $item-title-height-double-L;
-						}
-					}
+					
 				}
 			}
 			&.active {
@@ -1034,7 +1170,7 @@ portfolio - photography
 					}
 				}
 				div.title, div.title.double {
-					bottom: 0px;
+					//bottom: 0px;
 				}
 			}
 		}

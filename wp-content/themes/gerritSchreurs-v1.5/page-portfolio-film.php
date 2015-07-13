@@ -12,9 +12,9 @@ get_header();?>
 		<?php get_template_part( 'lib/parts/header', 'title' ); ?>
 
 
-		<!-- cd-main-content -->
+		<?php // cd-main-content ?>
 		<main class="cd-main-content">
-			<!-- items -->
+			<?php // items ?>
 			<div class="items">
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 					<?php
@@ -26,19 +26,19 @@ get_header();?>
 						$img_url = 		wp_get_attachment_image_src( $img_id, $size );
 						$img_alt =		$img['title'];
 					?>
-					<!-- item -->
+					<?php // item ?>
 					<div class="item">
 						<div class="item-image">
 							<?php echo '<a href="'. get_the_permalink() .'"><img class="ll" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $img_alt .'" /></a>'; ?>
 						</div>
 						<div class="item-title equalHeights"><h4><?php echo $title ?></h4></div>
 					</div>
-					<!-- end item -->
+					<?php // item ?>
 				<?php endwhile; ?>
 			</div>
-			<!-- end items -->
+			<?php // items ?>
 		</main>
-		<!-- end cd-main-content -->
+		<?php // cd-main-content ?>
 	<?php endif; ?>
 	<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
 

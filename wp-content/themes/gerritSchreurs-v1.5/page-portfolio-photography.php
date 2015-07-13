@@ -13,8 +13,8 @@ get_header();?>
 		<?php $images = array(); ?>
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php
-				$title = substr( get_the_title(), 0, 30 ) . '&hellip;';
-
+				//$title = substr( get_the_title(), 0, 80 ) . '&hellip;';
+				$title = get_the_title();
 				$post_categories = get_the_terms( $loop->post->ID, 'photography_category' );
 				$cats = array();
 				$cat_list = '';
@@ -28,8 +28,8 @@ get_header();?>
 				if(have_rows('images_obj')):
 					while( have_rows('images_obj') ): the_row();
 
-						$size = get_sub_field_object('double_size');
-						$value = $size['value'][0];
+						$double = get_sub_field_object('double_size');
+						$value = $double['value'][0];
 						$cat_list_size = '';
 						if ($value) {
 							$cat_list_size = " item-w2 item-h2 ";
@@ -59,9 +59,9 @@ get_header();?>
 		<?php endwhile; ?>
 	<?php endif; ?>
 
-		<!-- cd-main-content -->
+		<?php // cd-main-content ?>
 		<main class="cd-main-content">
-			<!-- items -->
+			<?php // items ?>
 			<div class="items">
 				<?php
 					foreach ($images as $obj) {
@@ -69,9 +69,9 @@ get_header();?>
 					}
 				?>
 			</div>
-			<!-- end items -->
+			<?php // end items ?>
 		</main>
-		<!-- end cd-main-content -->
+		<?php // end cd-main-content ?>
 
 		<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
 

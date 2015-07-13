@@ -11,9 +11,9 @@
 		if( $filmOverviewPage ) {
 			$post = $filmOverviewPage;	// override $post
 			setup_postdata( $post );
-			$title .= '<a href="'. get_the_permalink() .'">'. get_the_title() .'</a>'. $divider;
+			$title .= '<a href="'. get_the_permalink() .'">'. get_the_title() .'</a>';
 
-			echo '<h1 class="light">'. $title . $title_post .'</h1>';
+			echo '<h1 class="light">'. $title . '</h1>';
 
 	 	}
 	 	wp_reset_postdata();

@@ -358,6 +358,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/img\/arrow-link.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1053,
+		"inputAbbreviatedPath": "\/assets\/img\/arrow-link.png",
+		"outputAbbreviatedPath": "\/assets\/img\/arrow-link.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/img\/arrow-right.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -365,6 +376,17 @@
 		"initialSize": 1241,
 		"inputAbbreviatedPath": "\/assets\/img\/arrow-right.png",
 		"outputAbbreviatedPath": "\/assets\/img\/arrow-right.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/img\/button-close.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1106,
+		"inputAbbreviatedPath": "\/assets\/img\/button-close.png",
+		"outputAbbreviatedPath": "\/assets\/img\/button-close.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -711,6 +733,26 @@
 		"initialSize": 547,
 		"inputAbbreviatedPath": "\/assets\/lib\/photoswipe\/default-skin\/default-skin.png",
 		"outputAbbreviatedPath": "\/assets\/lib\/photoswipe\/default-skin\/default-skin.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/lib\/photoswipe\/gerrit-skin\/gerrit-skin.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/lib\/photoswipe\/gerrit-skin\/gerrit-skin.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/assets\/lib\/photoswipe\/gerrit-skin\/gerrit-skin.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 547,
+		"inputAbbreviatedPath": "\/assets\/lib\/photoswipe\/gerrit-skin\/gerrit-skin.png",
+		"outputAbbreviatedPath": "\/assets\/lib\/photoswipe\/gerrit-skin\/gerrit-skin.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

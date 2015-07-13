@@ -11,7 +11,7 @@ get_header(); ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<?php get_template_part( 'lib/parts/header', 'title-film' ); ?>
 
-		<!-- cd-main-content -->
+		<?php // cd-main-content ?>
 		<main class="cd-main-content">
 			<div class="video">
 				<div class="videoContainer">
@@ -21,14 +21,14 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="content">
-				<!-- cd-wrapper -->
+				<?php // cd-wrapper ?>
 				<div class="cd-wrapper">
 					<div class="cd-container">
 						<h3><?php the_title(); ?></h3>
 					</div>
 				</div>
-				<!-- end cd-wrapper -->
-				<!-- cd-wrapper -->
+				<?php // cd-wrapper ?>
+				<?php // cd-wrapper ?>
 				<div class="cd-wrapper">
 					<div class="cd-container half">
 						<?php $content = get_field(description_content); ?>
@@ -51,9 +51,10 @@ get_header(); ?>
 
 					</div>
 				</div>
-				<!-- end cd-wrapper -->
+				<?php // cd-wrapper ?>
+			</div>
 		</main>
-		<!-- cd-main-content -->
+		<?php // cd-main-content ?>
 
 		<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
 	<?php endwhile; ?>

@@ -33,16 +33,13 @@ get_header(); ?>
 							$count++;
 							$img = 		get_sub_field('image_obj');
 							$img_id = 	$img['ID'];
-
 							$img_url_s = 	wp_get_attachment_image_src( $img_id, $size_s );
 							$img_url_m = 	wp_get_attachment_image_src( $img_id, $size_m );
 							$img_url_l = 	wp_get_attachment_image_src( $img_id, $size_l );
 							$img_url_xl = 	wp_get_attachment_image_src( $img_id, $size_xl );
 							$img_url_o = 	wp_get_attachment_image_src( $img_id, $size_orginal );
-
-							//$alt = 		$img['title'];
-							$alt = '';
-
+							$alt = 		$img['title'];
+							
 							$xml_string .= "
 								{	mediumImage: {
 										src: '". $img_url_xl[0] ."', w: ". $img_url_xl[1] .", h: ". $img_url_xl[2] ."
@@ -52,12 +49,12 @@ get_header(); ?>
 									}
 								},";
 
-							$string =	'<div class="gallery-cell" data-index="'. ($count-1) .'">
-											<img alt="'. $alt .'"
-												data-src="	<768:'. $img_url_s[0] .',
+							$string =	'<div class="gallery-cell" data-index="'. ($count-1) .'" data-title="'. $alt .'">
+											<img data-src="	<768:'. $img_url_s[0] .',
 															<900:'. $img_url_m[0] .',
 															<1200:'. $img_url_l[0] .',
 															>1200:'. $img_url_xl[0] .'" />
+											<noscript><img src="'. $img_url_l[0] .'" /></noscript>
 										</div>';
 							echo $string;
 							array_push($images_enlarge, $xml_string );
@@ -80,8 +77,30 @@ get_header(); ?>
 				<button class="gallery-button button-zoom"></button>
 				<button class="gallery-button button-info"></button>
 			</div>
-			<div class="content"></div>
-
+			
+			
+			<div class="info hidden displayNone">
+				<div class="information">
+					<?php
+					$title = get_the_title();
+					echo '<h1>'. $title .'</h1>';
+					if(have_rows('who_does_what')):
+						echo '<table><tbody>';
+						while( have_rows('who_does_what') ): the_row();
+							$what = get_sub_field('what');
+							$who = get_sub_field('who');
+							echo '<tr><td>'. $what .'</td><td>'. $who .'</td></tr>';
+						endwhile;
+						echo '<tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr>';
+						echo '</tbody></table>';
+					endif;
+					?>
+					<div class="close">
+						<button class="button-close"></button>
+					</div>					
+				</div>
+			</div>
+			
 		</main>
 		<?php //cd-main-content ?>
 

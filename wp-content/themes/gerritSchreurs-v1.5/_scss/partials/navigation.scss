@@ -289,6 +289,12 @@ header {
 				margin-bottom: 47px;
 			}
 		}
+		.small {
+			a {
+				font-size: em(15);
+				@include opacity(0.6);
+			}
+		}
 	}
 
 	.sub-menu {
@@ -310,6 +316,7 @@ header {
 		}
 		.no-touch &:hover {
 			color: $link-active;
+			@include opacity(1);
 		}
 	}
 	.current-menu-item a, .current a {

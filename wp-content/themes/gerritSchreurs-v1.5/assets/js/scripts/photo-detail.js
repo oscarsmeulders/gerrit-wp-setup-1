@@ -28,5 +28,37 @@ jQuery(document).ready(function($){
 	});
 	////////////////////////////////////////////////
 
+	
+	$('.gallery-buttons .button-info').on( 'click', function() {
+		menuShowHide('.info');
+	});
+	$('.info .button-close').on( 'click', function() {
+		menuShowHide('.info');
+	});
+	
+	function menuShowHide(who) {
+		console.log('doe je het?');
+		if (!$(who).hasClass('hidden')) {
+			$(who).addClass('hidden').delay(200).queue(function(next){
+				$(who).addClass('displayNone').dequeue();
+			});
+			
+			$('.gallery-buttons .button-info').removeClass('hidden');
+			$('.gallery-buttons .button-zoom').removeClass('hidden');
+			$('.gallery-buttons .button-next').removeClass('hidden');
+			$('.gallery-buttons .button-previous').removeClass('hidden');
+		} else {
+			$(who).removeClass('displayNone').delay(200).queue(function(next){
+				$(who).removeClass('hidden').dequeue();
+			});
+			
+			$('.gallery-buttons .button-info').addClass('hidden');
+			$('.gallery-buttons .button-zoom').addClass('hidden');
+			$('.gallery-buttons .button-next').addClass('hidden');
+			$('.gallery-buttons .button-previous').addClass('hidden');
+		}
+		
+	}
 
+	
 });

@@ -61,33 +61,34 @@ jQuery(document).ready(function($){
 	// mouseover the image
 	//
 	if ( $('#portfolio-photography').length ) {
-		$('.items').on( 'mouseover', '.item', function() {
+		$('.no-touch').find('.items').on( 'mouseover', '.item', function() {
 			$('.item').removeClass('active');
 			$(this).addClass('active');
+			$(this).find('div.title').css( 'bottom', 0 );
 		});
 		$('.items').on( 'mouseout mouseleave', '.item', function() {
 			$('.item').removeClass('active');
+			$('.item').find('div.title').css( 'bottom', function() {
+				return $(this).attr('data-title-px');
+			});
 		});
 	}
 
-
-/*
+	////////////////////////////////////////////////////////////////////////////////////
+	// height of the title
+	//
 	function heightTitleGet() {
 		$('.item').each( function() {
 			$height = $(this).find('div.title').outerHeight();
-			console.log( $height );
-			if (  $height > 42 ) {
-				$(this).find('div.title').addClass('double');
-			} else {
-				$(this).find('div.title').removeClass('double');
-			}
+			$(this).find('div.title').css( 'bottom', function( index ) {
+				return (15 + $height) * -1;
+			}).attr('data-title-px', (15 + $height) * -1 );
 		});
 	}
 	$( window ).resize(function() {
 		heightTitleGet();
 	});
-	setTimeout(heightTitleGet, 1000);
-*/
+	setTimeout(heightTitleGet, 100);
 
 	////////////////////////////////////////////////////////////////////////////////////
 	var colWidth = function () {

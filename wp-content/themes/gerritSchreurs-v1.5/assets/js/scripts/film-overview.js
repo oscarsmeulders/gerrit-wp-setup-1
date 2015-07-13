@@ -24,10 +24,10 @@ jQuery(document).ready(function($){
 
 	// film overview page hover over item, fade the rest away
 	if ( $('#portfolio-film').length ) {
-		$( '.item' ).on( 'mouseover', function() {
+		$('.no-touch').find('.item').on( 'mouseover', function() {
 			allToAlpha( $(this) );
 		});
-		$( '.item' ).on( 'mouseout', function() {
+		$('.no-touch').find('.item').on( 'mouseout', function() {
 			$('.item').each(function() {
 				$(this).removeClass('active');
 			});

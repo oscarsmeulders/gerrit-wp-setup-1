@@ -1,6 +1,31 @@
 <?php
 
 	///////////////////////////////////////////////////////////////
+	// [col nmb="half"]
+	function client_func( $atts, $content = null ) {
+		$a = shortcode_atts( array(
+			'name' => '',
+			'where' => '',
+			'link' => ''
+		), $atts );
+		
+		$tmpName = '<span>'.esc_attr($a['name']).'</span>';
+		$tmpWhere = ''.esc_attr($a['where']).'';
+		if (esc_attr($a['link'])) {
+			$tmpLinkStart = '<a href="'.esc_attr($a['link']).'" target="_blank">';
+			$tmpLinkEnd = '</a>';
+		} else {
+			$tmpLinkStart = '';
+			$tmpLinkEnd = '';
+		}
+		
+		$tmpVar = '';
+		$tmpVar .= '<div class="cd-container client">'.$tmpLinkStart.$tmpName.$tmpWhere.$tmpLinkEnd.'</div>';
+		return $tmpVar;
+	}
+	add_shortcode('client', 'client_func');
+	
+	///////////////////////////////////////////////////////////////
 	function row_func( $atts, $content = null ) {
 		$tmpVar = '';
 		$tmpVar .= '<div class="cd-wrapper">';

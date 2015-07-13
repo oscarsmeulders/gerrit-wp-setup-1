@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 
 	// post-thumbs click on post-next or post-previous
-	$('.post-nav').on( 'mouseover click', '.post-button', function() {
+	$('.no-touch').find('.post-nav').on( 'mouseover click', '.post-button', function() {
 		$('.post-thumb').removeClass('hidden');
 
 		if ( $(this).hasClass('button-next') ) {

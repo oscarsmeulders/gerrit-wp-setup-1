@@ -62,6 +62,8 @@ function my_custom_dashboard_widgets() {
 	wp_add_dashboard_widget('sos_updates', 'Updates', 'custom_dashboard_sos_updates');
 	wp_add_dashboard_widget('sos_remarks', 'Install', 'custom_dashboard_sos_remarks');
 	wp_add_dashboard_widget('images_help_widget', 'Images', 'custom_dashboard_help');
+	wp_add_dashboard_widget('shortcodes_help_widget', 'Shortcodes', 'custom_dashboard_help_shortcodes');
+	
 }
 function custom_dashboard_sos() {
 	echo '<img src="'. get_template_directory_uri() .'/lib/sos/img/sos_logo.jpg">';
@@ -83,6 +85,10 @@ function custom_dashboard_sos_updates() {
 		</thead>
 		<tbody>
 			<tr>
+				<td>2015-07-08</td>
+				<td><strong>Added shortcodes to welcome screen</strong></td>
+			</tr>
+			<tr>
 				<td>2015-06-27</td>
 				<td><strong>Changed the admin welcome screen</strong></td>
 			</tr>
@@ -93,14 +99,58 @@ function custom_dashboard_sos_updates() {
 function custom_dashboard_sos_remarks() {
 	echo '<ol>
 			<li><strong>When activating the theme</strong></li>
-			<li>Create a homepage</li>
+			<li>Create a homepage. And let <a href="'. SITEPATH .'/wp-admin/options-reading.php">Wordpress know</a> that this is the home.</li>
 			<li>Then create a photography + film page</li>
-			<li>Select for both the right template</li>
+			<li>Select for both the correct template</li>
 			<li>Link the photography + film page in the <em><a href="'. SITEPATH .'/wp-admin/admin.php?page=theme-general-settings">Theme settings</a></em></li>
-		</ol>';
-	echo '<ol>
 			<li><a href="'. SITEPATH .'/wp-admin/nav-menus.php">Create a menu</a> and select this menu to <em><a href="'. SITEPATH .'/wp-admin/nav-menus.php">Primary Menu</a></em></li>
 		</ol>';
+}
+
+function custom_dashboard_help_shortcodes() {
+	echo '<p>
+		Shortcodes used in the theme, these are only usable in the content templates.
+
+		<table style="width:100%">
+		<thead>
+			<tr>
+				<td style="font-weight:600">Shortcode&nbsp;</td>
+				<td style="font-weight:600; width:100%">Explaination</td>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td valign="top">[row]</td>
+				<td>Start a row</td>
+			</tr>
+			<tr>
+				<td valign="top">[row-end]</td>
+				<td>End a row</td>
+			</tr>
+			
+			<tr>
+				<td valign="top">[col]</td>
+				<td>Start a col, extra value can be <strong>[col nmb="half"]</strong>. If a half is used, be aware to alway add two, because the column will be half the size.</td>
+			</tr>
+			<tr>
+				<td valign="top">[col-end]</td>
+				<td>End a col</td>
+			</tr>
+			<tr>
+				<td valign="top">[client]</td>
+				<td><strong>[client name="" where="" link=""]</strong><br/>
+					name="<em>Name of the client</em>"<br/>
+					where="<em>Where is the client based</em>"<br/>
+					link="<em>If you want to link to the client, always add: http:// or https:// in front</em>"
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">[br]</td>
+				<td>This shortcode will add a white line (break) in the content.</td>
+			</tr>
+		</tbody>
+		</table>';
 }
 
 function custom_dashboard_help() {
@@ -113,7 +163,7 @@ function custom_dashboard_help() {
 				<td style="font-weight:600">Name</td>
 				<td style="font-weight:600">Where</td>
 				<td style="font-weight:600">Size (px)</td>
-				<td style="font-weight:600">C</td>
+				<td align="center" style="font-weight:600">Cropped</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -122,19 +172,19 @@ function custom_dashboard_help() {
 				<td>square</td>
 				<td>Nav between posts</td>
 				<td>200 x 200</td>
-				<td>*</td>
+				<td align="center">*</td>
 			</tr>
 			<tr>
 				<td>photography-listing</td>
 				<td>Overview</td>
 				<td>600 x 400</td>
-				<td>*</td>
+				<td align="center">*</td>
 			</tr>
 			<tr>
 				<td>film-listing</td>
 				<td>Overview</td>
 				<td>600 x 400</td>
-				<td>*</td>
+				<td align="center">*</td>
 			</tr>
 			<tr>
 				<td>content-page</td>
@@ -280,7 +330,8 @@ function create_post_type_photo() {
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('photography_category'),
 			'rewrite' => array('slug'=> 'photography', 'with_front'=>false),
-			'menu_icon' => 'dashicons-format-image'
+			'menu_icon' => 'dashicons-format-image',
+			'menu_position' => 5
 		)
 	);
 }
@@ -300,7 +351,8 @@ function create_post_type_film() {
 			'supports' => array('title','post-thumbnails'),
 			'taxonomies' => array('film_category'),
 			'rewrite' => array('slug'=> 'film', 'with_front'=>false),
-			'menu_icon' => 'dashicons-format-video'
+			'menu_icon' => 'dashicons-format-video',
+			'menu_position' => 5
 		)
 	);
 }
@@ -318,7 +370,8 @@ function create_post_type_slideshow() {
 			'has_archive' => false,
 			'supports' => array('title'),
 			'rewrite' => array('slug'=> 'slideshow', 'with_front'=>false),
-			'menu_icon' => 'dashicons-format-gallery'
+			'menu_icon' => 'dashicons-format-gallery',
+			'menu_position' => 5
 		)
 	);
 }
@@ -335,9 +388,10 @@ function gs_scripts()  {
 
 	// get the theme directory styles and link to it in the header
 	wp_enqueue_style( 'gs_style_flickity', 			get_template_directory_uri() . '/assets/lib/flickity/flickity.css', 						array('gs_style_reset'), '10000', 'all' );
-	wp_enqueue_style( 'gs_style_photoswipe', 		get_template_directory_uri() . '/assets/lib/photoswipe/photoswipe.css', 					array('gs_style_reset', 'gs_style_flickity'), '10000', 'all' );
-	wp_enqueue_style( 'gs_style_photoswipe_skin', 	get_template_directory_uri() . '/assets/lib/photoswipe/default-skin/default-skin.css',		array('gs_style_reset', 'gs_style_photoswipe'), '10000', 'all' );
-	wp_enqueue_style( 'gs_style',			 		get_template_directory_uri() . '/assets/css/style.css',										array('gs_style_reset', 'gs_style_photoswipe_skin'), '10000', 'all' );
+	wp_enqueue_style( 'gs_style',			 		get_template_directory_uri() . '/assets/css/style.css',										array('gs_style_reset', 'gs_style_flickity'), '10000', 'all' );
+	wp_enqueue_style( 'gs_style_photoswipe', 		get_template_directory_uri() . '/assets/lib/photoswipe/photoswipe.css', 					array('gs_style_reset', 'gs_style'), '10000', 'all' );
+	wp_enqueue_style( 'gs_style_photoswipe_skin', 	get_template_directory_uri() . '/assets/lib/photoswipe/gerrit-skin/gerrit-skin.css',		array('gs_style_reset', 'gs_style_photoswipe'), '10000', 'all' );
+	
 
 	// jquery
 	if( !is_admin()){
@@ -411,7 +465,8 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Theme Settings',
 		'menu_slug' 	=> 'theme-general-settings',
 		'capability'	=> 'edit_posts',
-		'redirect'		=> false
+		'redirect'		=> false,
+		'position'		=> 4
 	));
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Social Settings',
@@ -430,5 +485,53 @@ if( function_exists('acf_add_options_page') ) {
 /* Include the ACF gerrit settings
 /*-----------------------------------------------------------------------------------*/
 include_once( TEMPLATEPATH . "/lib/functions/acf_fields.php");
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	Flushing the Rewrite Rules After Switching a Theme
+	Let's do an easy one: How do you flush rewrite rules after switching to a new theme, because the new theme has new custom post types?
+	// http://code.tutsplus.com/tutorials/fifty-actions-of-wordpress-50-examples-1-to-10--cms-21578
+	// Example Source: http://wpdevsnippets.com/flush-rewrite-rules/
+/*-----------------------------------------------------------------------------------*/
+
+add_action( 'after_switch_theme', 'after_switch_theme_example' );
+ 
+function after_switch_theme_example() {
+    flush_rewrite_rules();
+}
+ 
+
+/*-----------------------------------------------------------------------------------*/
+/*	Changing the Logo Above the Login Form
+// Example Source: http://wpsnippy.com/add-custom-login-logo-in-your-wordpress-blog/
+/*-----------------------------------------------------------------------------------*/
+add_action( 'login_enqueue_scripts', 'login_enqueue_scripts_example' );
+function login_enqueue_scripts_example() {
+ 
+    echo '<style type="text/css">'
+            . '#login h1 a {'
+                . 'background-image: url(' . get_bloginfo( 'template_directory' ) . '/lib/sos/img/sos_logo.jpg);'
+                . 'background-size: 100% !important;'
+                . 'padding-bottom: 10px;'
+                . 'width: 150px;'
+                . 'height: 150px;'
+            . '}'
+        . '</style>';
+         
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	Redirecting User to the Homepage After Logout
+/*-----------------------------------------------------------------------------------*/ 
+add_action( 'wp_logout', 'wp_logout_example' );
+ 
+function wp_logout_example() {
+    wp_redirect( home_url() );
+    exit();
+}
+
+
+
 
 ?>
