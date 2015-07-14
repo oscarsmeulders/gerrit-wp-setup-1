@@ -351,6 +351,7 @@ buttons
 	background-repeat: no-repeat;
 	@include transition(opacity 0.2s ease-in-out);
 	@include opacity(1);
+	
 	&.hidden {
 		@include opacity(0);
 	}
@@ -395,6 +396,32 @@ buttons
 		background-image: url('../img/button-close.png');
 	}
 }
+
+/* --------------------------------
+	Stylings for the circular overlay
+-------------------------------- */
+.mat-hover {
+	overflow: hidden !important;
+	transition: all .3s ease-out;
+	&.hovered { /*makes it 'elevate'*/
+		transform: scale(1) !important;
+	}
+	
+	.notransition{ /*used to reset the ripple without an animatiion*/
+		transition: none !important;
+	}
+	
+	.ripple { 
+		position: absolute;
+		border-radius: 100%;
+		width: 0;
+		height: 0;
+		background: $color-home-button-hover;
+		transition: all .3s ease-out;
+	}
+}
+
+
 /* --------------------------------
 containers
 -------------------------------- */

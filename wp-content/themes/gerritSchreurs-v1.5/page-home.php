@@ -117,7 +117,7 @@ get_header(); ?>
 				if( $photoOverviewPage ) {
 					$post = $photoOverviewPage;	// override $post
 					setup_postdata( $post );
-						echo '<a href="'. get_the_permalink() .'"><div class="button">'. __( 'Photography', 'gs_lang' ) .'</div></a>';
+						echo '<a href="'. get_the_permalink() .'"><div class="mat-hover button">'. __( 'Photography', 'gs_lang' ) .'</div></a>';
 			 		wp_reset_postdata();
 			 	}
 			?>
@@ -138,7 +138,7 @@ get_header(); ?>
 				if( $filmOverviewPage ) {
 					$post = $filmOverviewPage;	// override $post
 					setup_postdata( $post );
-						echo '<a href="'. get_the_permalink() .'"><div class="button">'. __( 'Film', 'gs_lang' ) .'</div></a>';
+						echo '<a href="'. get_the_permalink() .'"><div class="mat-hover button">'. __( 'Film', 'gs_lang' ) .'</div></a>';
 			 		wp_reset_postdata();
 			 	}
 			?>
