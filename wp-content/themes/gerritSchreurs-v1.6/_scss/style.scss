@@ -1,0 +1,1278 @@
+@import 'bourbon';										// bourbon.io/
+
+@import "compass/utilities/general/clearfix";
+@import "compass/css3";
+@import "compass/css3/selection";
+
+@import 'partials/variables';							// colors, fonts etc...
+@import 'partials/mixins';								// custom mixins
+@import 'partials/layout';								// responsive grid and media queries
+@import 'partials/navigation';							// navigation + header
+
+
+/* --------------------------------
+extends
+-------------------------------- */
+%cursor-pointer {
+	cursor: pointer;
+}
+
+%hideMobile {
+	@include MQ(S) {	// hide at mobile
+		display: none;
+	}
+	@include MQ(M) {	// show on all the rest
+		display: block;
+	}
+}
+
+%navigation-sub {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	float:left;
+	z-index: 9999;
+
+	background-color: $color-filters;
+	background-color: rgba($color-filters, 0.7);
+
+	height: $filter-S;
+	padding-top: 13px;
+	padding-left: $padding-S;
+	padding-right: 0;
+	top: $header-S;
+	@include MQ(M) {
+		height: $filter-M;
+		top: $header-M;
+		padding-left: $padding-M;
+	}
+	@include MQ(L) {
+		height: $filter-L;
+		padding-top: 20px;
+		padding-left: $padding-L;
+		top: $header-L;
+	}
+	.post-nav {
+		@extend %hideMobile;
+		top:0px;
+		right:0px;
+		position: absolute;
+		float:right;
+		width: $menu-button-width-S;
+		@include MQ(M) {
+			width: $menu-button-width-M;
+		}
+		@include MQ(L) {
+			width: $menu-button-width-L;
+		}
+		.post-button {
+			@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+			@extend %cursor-pointer;
+			@include selection($color-home-button-txt, $color-home-button);
+
+			z-index: 19;
+			border: none;
+			top: 0px;
+			text-transform: uppercase;
+			color: $main-text;
+			font-size: em(17);
+			float:right;
+			background-color: $color-detail-button-bg;
+			width: $menu-button-width-S / 2;
+			height: $filter-S;
+			@include MQ(M) {
+				width: $menu-button-width-M / 2;
+				height: $filter-M;
+			}
+			@include MQ(L) {
+				width: $menu-button-width-L / 2;
+				height: $filter-L;
+			}
+
+			&:focus {
+				outline:0;
+			}
+			&:hover {
+				background-color: $color-detail-button-bg-hover;
+			}
+			&.button-next {
+				float:right;
+			}
+			&.button-previous {
+				float:left;
+			}
+		}
+		.post-thumb {
+			@include transition(height 0.2s ease-in-out, opacity 0.2s ease-in-out);
+			z-index: 18;
+			&.hidden {
+				@include opacity(0);
+				height: 0px !important;
+				.post-previous-thumb, .post-next-thumb {
+					height: 0px;
+				}
+			}
+		}
+		.post-previous-thumb, .post-next-thumb {
+			@include userSelect();
+			@include transition(height 0.1s ease-in-out);
+			background-position: center center;
+			background-size: cover;
+			position: absolute;
+
+			//border-bottom: 1px solid $color-detail-button-bg;
+			//border-left: 1px solid $color-detail-button-bg;
+
+			top: $filter-S;
+			width: $menu-button-width-S;
+			height: $menu-button-width-S;
+			@include MQ(M) {
+				top: $filter-M;
+				width: $menu-button-width-M;
+				height: $menu-button-width-M;
+			}
+			@include MQ(L) {
+				top: $filter-L;
+				width: $menu-button-width-L;
+				height: $menu-button-width-L;
+			}
+
+			&.hidden {
+				@include opacity(0);
+			}
+		}
+	}
+}
+
+%paddings-no-sub {
+	// change the padding compared to the header
+	padding: $padding-S;
+	padding-top: $header-S + $padding-S;
+	@include MQ(M) {
+		padding: $padding-M;
+		padding-top: $header-M + $padding-M;
+	}
+	@include MQ(L) {
+		padding: $padding-L;
+		padding-top: $header-L + $padding-L;
+	}
+}
+
+%paddings-no-sub-filters {
+	// change the padding compared to the header
+	padding: $padding-S;
+	padding-top: $header-S + $padding-S;
+	@include MQ(M) {
+		padding: ($header-M + $filter-M + $padding-M) $padding-M $padding-M $padding-M;
+		//padding-top: $header-M + $padding-M;
+	}
+	@include MQ(L) {
+		padding: ($header-L + $filter-L + $padding-L) $padding-L $padding-L $padding-L;
+		//padding-top: $header-L + $padding-L;
+	}
+}
+
+%paddings-with-sub {
+	// change paddings content div
+	padding: ($header-S + $filter-S + $padding-S) $padding-S $padding-S $padding-S;
+	@include MQ(M) {
+		padding: ($header-M + $filter-M + $padding-M) $padding-M $padding-M $padding-M;
+	}
+	@include MQ(L) {
+		padding: ($header-L + $filter-L + $padding-L) $padding-L $padding-L $padding-L;
+	}
+	// end change paddings content div
+}
+
+%paddings-with-sub-no-padding {
+	// change paddings content div
+	padding: ($header-S + $filter-S) 0 0 0;
+	@include MQ(M) {
+		padding: ($header-M + $filter-M) 0 0 0;
+	}
+	@include MQ(L) {
+		padding: ($header-L + $filter-L) 0 0 0;
+	}
+	// end change paddings content div
+}
+%top-with-sub-no-padding {
+	// change paddings content div
+	top: ($header-S + $filter-S);
+	@include MQ(M) {
+		top: ($header-M + $filter-M);
+	}
+	@include MQ(L) {
+		top: ($header-L + $filter-L);
+	}
+	// end change paddings content div
+}
+
+
+/* --------------------------------
+containers + typografie + style
+-------------------------------- */
+
+html * {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+	@include box-sizing(border-box);
+	@include selection($main-text, $background);
+}
+* {
+	font-family: $primary-font; // variables inside partials > _variables.scss
+	font-size: em(17);
+	color: $main-text;
+	outline: 0px;
+
+}
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: $primary-font; // variables inside partials > _variables.scss
+	font-size: em(17);
+	line-height: em(27);
+	color: $main-text;
+	background-color: $background;
+}
+
+a {
+	color: $link;
+	text-decoration: underline;
+	@include transition(color 0.2s ease-in-out);
+	&:hover {
+		color: $link-active;
+		text-decoration: none;
+		//@include opacity(1);
+	}
+}
+p {
+	margin-bottom: 20px;
+}
+/* heading */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-size: em(21);
+	line-height: em(23);
+	font-weight: 700;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	a {
+		text-decoration: none;
+		color: $main-text;
+	}
+}
+h1.light, .h1.light {
+	font-weight: 400;
+	.trans {
+		@include opacity(0.5);
+		@include transition(opacity 0.2s ease-in-out);
+		&:hover {
+			@include opacity(1);	
+		}
+	}
+}
+h2, .h2 {
+	font-size: em(21);
+	font-weight: 400;
+}
+h3, .h3 {
+	font-size: em(19);
+	line-height: em(21);
+}
+h4, .h4 {
+	font-size: em(19);
+	line-height: em(21);
+	font-weight: 400;
+}
+h5, .h5,
+h6, .h6 {
+	font-size: em(17);
+	line-height: em(21);
+	font-weight: 700;
+}
+h6, .h6 {
+	font-weight: 400;
+}
+/* end headings */
+
+.cd-wrapper {
+	ul, ol {
+		list-style: disc;
+		list-style-position: outside;
+		margin-left: 20px;
+		li {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+hr {
+	display: block;
+	height: 1px;
+    border: 0;
+    border-top: 1px solid $main-text;
+    margin: 1em 0;
+    padding: 0;
+}
+strong {
+	font-weight: 700;
+}
+/* --------------------------------
+table
+-------------------------------- */
+table {
+	tr {
+		width: 100%;
+		float: left;
+		@include MQ(M) {
+			width: 50%;
+		}
+	}
+	th, td {
+		//display: table-cell;
+		padding-bottom: 10px;
+		//background-color: rgba(#ff00ff, 0.2);
+		vertical-align: top;
+		white-space: normal;
+		&:first-child {
+			width: auto;
+			min-width: 100px;
+			font-size: em(15);
+			padding-right: 10px;
+			text-align: left;
+			@include opacity(0.75);
+			//background-color: rgba(#ffff00, 0.2);
+		}
+	}
+}
+/* --------------------------------
+buttons
+-------------------------------- */
+.button-next, .button-previous, .button-zoom, .button-info, .button-close {
+	background-position: center center;
+	background-repeat: no-repeat;
+	@include transition(opacity 0.2s ease-in-out);
+	@include opacity(1);
+	
+	&.hidden {
+		@include opacity(0);
+	}
+	&.displayNone {
+		display: none;
+	}
+}
+.button-next {
+	background-image: url('../img/arrow-left.svg');
+}
+.button-previous {
+	background-image: url('../img/arrow-right.svg');
+}
+.button-zoom {
+	@extend %hideMobile;
+	background-image: url('../img/button-zoom.svg');
+}
+.button-info {
+	@extend %hideMobile;
+	background-image: url('../img/button-info.svg');
+}
+.button-close {
+	background-image: url('../img/button-close.svg');
+}
+.no-svg {
+	.button-next {
+		background-image: url('../img/arrow-left.png');
+	}
+	.button-previous {
+		background-image: url('../img/arrow-right.png');
+	}
+	.button-zoom {
+		@extend %hideMobile;
+		background-image: url('../img/button-zoom.png');
+	}
+	.button-info {
+		@extend %hideMobile;
+		background-image: url('../img/button-info.png');
+	}
+	.button-close {
+		@extend %hideMobile;
+		background-image: url('../img/button-close.png');
+	}
+}
+
+/* --------------------------------
+	Stylings for the circular overlay
+-------------------------------- */
+.mat-hover {
+	overflow: hidden !important;
+	transition: all .3s ease-out;
+	&.hovered { /*makes it 'elevate'*/
+		transform: scale(1) !important;
+	}
+	
+	.notransition{ /*used to reset the ripple without an animatiion*/
+		transition: none !important;
+	}
+	
+	.ripple { 
+		position: absolute;
+		border-radius: 100%;
+		width: 0;
+		height: 0;
+		background: $color-home-button-hover;
+		transition: all .3s ease-out;
+	}
+}
+
+
+/* --------------------------------
+containers
+-------------------------------- */
+.cd-wrapper {
+	.cd-container {
+		@include column(1, left);
+
+		padding-left: $padding-S;
+		padding-right: $padding-S;
+		@include MQ(M) {
+			padding-left: $padding-M;
+			padding-right: $padding-M;
+		}
+		@include MQ(L) {
+			padding-left: $padding-L;
+			padding-right: $padding-L;
+		}
+		&.half  {
+			@include MQ(L) {
+				@include column(0.5, left);
+				&:first-child {
+					padding-left: $padding-L;
+					padding-right: $padding-L / 2;
+				}
+				&:last-child {
+					padding-left: $padding-L / 2;
+					padding-right: $padding-L;
+				}
+			}
+		}
+		&.client {
+			@include MQ(L) {
+				/*
+				@include column(0.5, left);
+				&:ntn-child(even) {
+					padding-left: $padding-L;
+					padding-right: $padding-L / 2;
+				}
+				&:ntn-child(odd) {
+					padding-left: $padding-L / 2;
+					padding-right: $padding-L;
+				}
+				*/
+			}
+			span {
+				width: 50%;
+				display: block;
+				float:left;
+				padding-right: 20px;
+				font-weight: 700;
+				@include transition(color 0.2s ease-in-out);
+			}
+			a {
+				@include transition(background-position 0.2s ease-in-out);
+				text-decoration: none !important;
+				color: $main-text !important;
+				display: block;
+				background-image: url('../img/arrow-link.svg');
+				background-position: 100% center;
+				background-repeat: no-repeat;
+				&:hover {
+					background-position: 101% center;
+					color: $link-active !important;
+					span {
+						color: $link-active !important;
+					}
+				}
+			}
+		}
+		
+	}
+
+}
+.no-svg {
+	.cd-wrapper {
+		.cd-container{
+			&.client {
+				a {
+					background-image: url('../img/arrow-link.png');
+				}
+			}
+		}
+	}
+}
+/* --------------------------------
+end containers + typografie
+-------------------------------- */
+/* --------------------------------
+home
+-------------------------------- */
+#home {
+	&.balk .panel:hover {
+		div.button div {
+			background-color: rgba($background, 0.9);
+		}
+	}
+	.panel {
+		//overflow: hidden;
+		position:absolute;
+		height:100%;
+		width: 50%;
+		//
+		@extend %paddings-no-sub;
+
+		//
+		&.left {
+			left:0px;
+			padding-right: 0px;
+		}
+		&.right {
+			right:0px;
+			padding-left: 0px;
+			/*
+			div.button {
+				left:0px;
+				right: 20px;
+			}
+			*/
+		}
+		&.left div.slideshow, &.right div.slideshow {
+			height:100%;
+			@include userSelect();
+			background-color: $color-home-panels-bg;
+			div {
+				@include userSelect();
+				height: 100%;
+				div.slide {
+					width: 100%;
+					height: 100%;
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+			}
+		}
+	}
+	&.sticker div.button {
+		@extend %cursor-pointer;
+		position: absolute;
+		bottom: 0;
+		left: 20px;
+		right:0;
+		margin: auto;
+		font-size: em(14);
+		text-align: center;
+		text-transform: uppercase;
+		@include selection($color-home-button-txt, $color-home-button);
+		background-color: $color-home-button;
+		color: $background;
+		z-index: 999;
+
+		top: $header-S;
+		line-height: 100px;
+		width: 100px;
+		height: 100px;
+		@include MQ(M) {
+			font-size: em(17);
+			top: $header-M;
+			line-height: 200px;
+			width: 200px;
+			height: 200px;
+			@include border-radius(100px);
+		}
+		@include MQ(L) {
+			font-size: em(17);
+			top: $header-L;
+			line-height: 200px;
+			width: 200px;
+			height: 200px;
+			@include border-radius(100px);
+		}
+		@include border-radius(50px);
+		@include transform( scale(1.0) );
+		@include transition(all 0.2s ease-in-out);
+		&:hover {
+			@include transform( scale(1.2) );
+		}
+	}
+	&.balk {
+		div.button {
+			position: absolute;
+			overflow: hidden;
+
+			bottom: $padding-S * 2;
+			padding-right: $padding-S;
+			@include MQ(M) {
+				bottom: $padding-M * 2;
+				padding-right: $padding-M;
+			}
+			@include MQ(L) {
+				bottom: $padding-L * 2;
+				padding-right: $padding-L;
+			}
+			width: 100%;
+			height: 100px;
+			z-index: 999;
+
+			div {
+				@extend %cursor-pointer;
+				@include transition(all 0.2s ease-in-out);
+				@include selection($color-home-button-txt, $color-home-button);
+				
+				font-size: em(24);
+				text-align: center;
+				text-transform: uppercase;
+				
+				background-color: rgba($background, 0.5);
+				line-height: 100px;
+				width: 100%;
+				height: 100px;
+				color:$main-text;
+				@include MQ(L) {
+					font-size: em(30);
+				}
+				&:hover {
+					background-color: rgba($background, 0.9);
+				}
+
+				
+			}
+		}
+		.right div.button {
+			margin-left: 0;
+			padding-right: $padding-S;
+			@include MQ(M) {
+				padding-right: $padding-M;
+			}
+			@include MQ(L) {
+				padding-right: $padding-L;
+			}
+		}
+	}
+}
+
+/* --------------------------------
+content
+-------------------------------- */
+
+#content, #contact {
+	.cd-main-content, .cd-main-content-fixed {
+		//@extend %paddings-with-sub;
+		//@extend %paddings-with-sub-no-padding;
+
+		height:100%;
+		width: 100%;
+		@include MQ(M) {
+			width: 50%;
+		}
+	}
+	.cd-main-content {
+		z-index: $content-zindex;
+	}
+	.cd-main-content-fixed {
+		@extend %hideMobile; 
+		z-index: $content-fixed-zindex;
+		position: fixed;
+		left:auto;
+		right:0;
+		top:0;
+		bottom: 0;
+		.slide {
+			width: 100%;
+			height: 100%;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+	div.title {
+		@extend %navigation-sub;
+		@include userSelect();
+		&.trans {
+			//background-color: rgba($color-filters, 0.7);
+		}
+	}
+	&.divide-two .panel {
+		height:100%;
+		width: 100%;
+		@include selection($main-text, $background);
+		&.text {
+			padding-top: ($header-S + $filter-S + $padding-S);
+			@include MQ(M) {
+				padding-top: ($header-M + $filter-M + $padding-M);
+			}
+			@include MQ(L) {
+				padding-top: ($header-L + $filter-L + $padding-L);
+			}
+		}
+		&.image {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			.slideshow {
+				width: 100%;
+				height: 100%;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		}
+	}
+	&.right {
+		.cd-main-content-fixed {
+			position: fixed;
+			left:0;
+			right:auto;
+			top:0;
+			bottom: 0;
+		}
+		.cd-main-content {
+			float:right
+		}
+	}
+}
+#contact {
+	.cd-main-content-fixed {
+		width: 100%;
+	}
+	.cd-main-content {
+		background: transparent;
+		.cd-container, p, h1, h2, h3, h4, h5, h6 {
+			color: $background !important;
+			a {
+				color: $background !important;
+			}
+		}
+	}
+}
+/* --------------------------------
+Error
+-------------------------------- */
+#error {
+	.cd-main-content {
+		//@extend %paddings-with-sub;
+		//@extend %paddings-with-sub-no-padding;
+
+		height:100%;
+		width: 100%;
+		z-index: $content-zindex;
+		overflow: hidden;
+	}
+	div.title {
+		@extend %navigation-sub;
+		@include userSelect();
+		&.trans {
+			//background-color: rgba($color-filters, 0.7);
+		}
+	}
+	.panel {
+		height:100%;
+		width: 100%;
+		@include selection($main-text, $background);
+		&.text {
+			padding-top: ($header-S + $filter-S + $padding-S);
+			@include MQ(M) {
+				padding-top: ($header-M + $filter-M + $padding-M);
+			}
+			@include MQ(L) {
+				padding-top: ($header-L + $filter-L + $padding-L);
+			}
+		}
+	}
+	div.button {
+		@extend %cursor-pointer;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right:0;
+		margin: auto;
+		font-size: em(14);
+		text-align: center;
+		text-transform: uppercase;
+		@include selection($color-home-button-txt, $color-home-button);
+		background-color: $color-error-bg;
+
+		color: $color-error-txt;
+		.contents {
+			color: $color-error-txt !important;
+		}
+
+		z-index: 999;
+		font-size: em(17);
+		top: $header-S;
+		line-height: 300px;
+		width: 300px;
+		height: 300px;
+		@include border-radius(300px);
+
+		@include MQ(M) {
+			font-size: em(25);
+			top: $header-M;
+			line-height: 500px;
+			width: 500px;
+			height: 500px;
+			@include border-radius(250px);
+		}
+		@include MQ(L) {
+			font-size: em(31);
+			top: $header-L;
+			line-height: 500px;
+			width: 500px;
+			height: 500px;
+			@include border-radius(250px);
+
+		}
+		@include transform( scale(1.0) );
+		@include transition(all 0.2s ease-in-out);
+		&:hover {
+			@include transform( scale(1.2) );
+		}
+
+	}
+
+
+}
+
+/* --------------------------------
+detail - photography, detail - video
+-------------------------------- */
+#detail-photography, #detail-video {
+	.cd-main-content {
+		//@extend %paddings-with-sub;
+		@extend %paddings-with-sub-no-padding;
+		height: 100%;
+	}
+	div.cookietrail, div.title {
+		@extend %navigation-sub;
+		@include userSelect();
+		h1 a {
+			color: $main-text;
+			text-decoration: none !important;
+			&:hover {
+				color: $link-active;
+			}
+		}
+	}
+	.gallery {
+		top:0px;
+		width: 100%;
+		height: 100%;
+		z-index: $content-zindex;
+		.flickity-viewport {
+			width: 100%; /* full width */
+			height: 100%;
+		}
+		.gallery-cell {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			margin: auto;
+			@include vertical-align;
+			position: absolute;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: auto;
+			background-image: url('../img/ajax-loader.gif');
+
+			img {
+				@include vertical-align;
+				margin: 0 auto;
+				max-height: 90%;
+				max-width: 70%;
+				@include MQ(M) {
+					max-width: 85%;
+				}
+			}
+		}
+	}
+	.gallery-buttons {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		.gallery-button {
+			z-index: $content-nav-zindex;
+			@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+			@extend %cursor-pointer;
+			@include selection($color-home-button-txt, $color-home-button);
+			background-color: transparent;
+			border: none;
+			text-transform: uppercase;
+			color: $main-text;
+			font-size: em(17);
+	
+			width: $button-detail-S;
+			height: $button-detail-S;
+	
+			margin: auto;
+			position: absolute;
+			@extend %top-with-sub-no-padding;
+			left: 0;
+			bottom: 0;
+			right: auto;
+	
+			&:focus {
+				outline:0;
+			}
+			&.button-next {
+				left:auto;
+				right: 0px;
+			}
+			&.button-zoom {
+				left:auto;
+				right: 0px;
+				bottom: 120px;
+			}
+			&.button-info {
+				left:auto;
+				right: 0px;
+				bottom: 240px;
+			}
+		}
+	}
+	
+	.info {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+		@extend %paddings-with-sub-no-padding;
+		@include transition(opacity 0.2s ease-in-out);
+		@include opacity(1);
+		&.hidden {
+			@include opacity(0);
+		}
+		&.displayNone {
+			display: none;
+		}
+		
+		.information {
+			.close {
+				position: absolute;
+				right:0px;
+				top:0px;
+				.button-close {
+					z-index: $content-nav-zindex;
+					@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+					@extend %cursor-pointer;
+					@include selection($color-home-button-txt, $color-home-button);
+					background-color: transparent;
+					border: none;
+					text-transform: uppercase;
+					color: $main-text;
+					font-size: em(17);
+			
+					width: $button-detail-S;
+					height: $button-detail-S;
+					&:focus {
+						outline:0;
+					}
+				}
+			}
+			h1, h2, h3, h4, h5, h6 {
+				margin-right: 30px;
+			}
+			background-color: $color-info-panels-bg;
+			margin: auto;
+			position: absolute;
+			@include vertical-align;
+			
+			padding: $padding-S $padding-S $padding-S/2 $padding-S;
+			width: $info-panel-width-S;
+			//height: $info-panel-height-S;
+			@include MQ(M) {
+				padding: $padding-M $padding-M $padding-M/2 $padding-M;
+				width: $info-panel-width-M;
+				//height: $info-panel-height-M;
+			}
+			@include MQ(L) {
+				padding: $padding-L $padding-L $padding-L/2 $padding-L;
+				width: $info-panel-width-L;
+				//height: $info-panel-height-L;
+			}	
+		}
+	}
+	.video {
+		top:0px;
+		width: 100%;
+		z-index: $content-zindex;
+
+		div.videoContainer {
+			text-align: center;
+			width: 100%;
+			margin: auto;
+			padding-left: $padding-S;
+			padding-right: $padding-S;
+			@include MQ(M) {
+				padding-left: $padding-M;
+				padding-right: $padding-M;
+			}
+			@include MQ(L) {
+				padding-left: $padding-L;
+				padding-right: $padding-L;
+				width: 82%;
+			}
+			@include MQ(XL) {
+				padding-left: $padding-L;
+				padding-right: $padding-L;
+				width: 80%;
+			}
+			.videoWrapper {
+				position: relative;
+
+				margin-bottom: $padding-S;
+				padding-top: $padding-S;
+				@include MQ(M) {
+					margin-bottom: $padding-M;
+					padding-top: $padding-M;
+				}
+				@include MQ(L) {
+					margin-bottom: $padding-L;
+					padding-top: $padding-L;
+				}
+
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+			}
+			.videoWrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.content {
+
+	}
+
+}
+
+.no-touch {
+	#detail-photography, #detail-video {
+		.button-close, .gallery-button {
+			&:hover {
+				background-color: $color-detail-button-bg-hover !important;
+			}
+		} 
+	}
+}
+
+/* --------------------------------
+portfolio - film
+-------------------------------- */
+#portfolio-film {
+	.cd-main-content {
+		@extend %paddings-no-sub-filters;
+		padding-right: 0px;
+	}
+	div.title {
+		@extend %hideMobile;
+		@extend %navigation-sub;
+		@include userSelect();
+	}
+	div.items {
+		top:0px;
+		width: 100%;
+		div.item {
+			@include opacity(1);
+			@include transition(opacity 0.2s ease-in-out);
+			&.loaded {
+				@include opacity(1);
+			}
+			float: left;
+
+			>.item-image {
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: auto;
+				background-image: url('../img/ajax-loader.gif');
+				img {
+					width: 100%;
+				}
+
+			}
+			>.item-title {
+				padding-top: 10px;
+				@include transition(opacity 0.2s ease-in-out);
+			}
+			padding-right: $padding-S;
+			padding-bottom: $padding-M;
+			width: 100%;
+			&.active {
+				@include opacity (0.2);
+				>.item-title {
+					@include opacity (0);
+				}
+			}
+			
+			font-size: em(15);
+			line-height: em(17);
+
+		}
+		@include MQ(M) {
+			div.item {
+				padding-right: $padding-M;
+				padding-bottom: $padding-M;
+				width: 33.333333%;
+				font-size: em(15);
+				line-height: em(17);
+				
+			}
+		}
+		@include MQ(L) {
+			div.item {
+				padding-right: $padding-L;
+				padding-bottom: $padding-L;
+				width: 25%;
+				font-size: em(17);
+				line-height: em(19);
+				>.item-title {
+					padding-top: 20px;
+				}
+			}
+		}
+		@include MQ(XL) {
+			div.item {
+				padding-right: $padding-L;
+				padding-bottom: $padding-L;
+				width: 20%;
+			}
+		}
+	}
+}
+/* --------------------------------
+portfolio - photography
+-------------------------------- */
+#portfolio-photography {
+	.cd-main-content {
+		@extend %paddings-no-sub-filters;
+	}
+	div.filters {
+		@extend %hideMobile;
+		@extend %navigation-sub;
+		button {
+			@include transition(color 0.2s ease-in-out, opacity 0.2s ease-in-out);
+			@extend %cursor-pointer;
+			@include selection($color-home-button-txt, $color-home-button);
+			background: transparent;
+			border: none;
+			text-transform: uppercase;
+			color: $main-text;
+			font-size: em(17);
+			padding: 0;
+			margin: 0;
+			margin-right: 20px;
+
+			&:focus {
+				outline:0;
+			}
+			&:hover {
+				//border-bottom: 1px solid $link-active;
+				color: $link-active;
+			}
+			&.current, &.active {
+				color: $link-active;
+			}
+			&.hidden {
+				@include opacity(0);
+			}
+			&.displayNone {
+				display: none;
+			}
+		}
+		span {
+			@include selection($color-home-button-txt, $color-home-button);
+			text-transform: uppercase;
+			margin-right: 20px;
+			font-weight: 700;
+		}
+	}
+	div.items {
+		top:0px;
+		width: 100%;
+
+		div.item {
+			@include opacity(0);
+			@include transition(opacity 0.2s ease-in-out);
+			&.loaded {
+				@include opacity(1);
+			}
+			> div {
+				width: 100%;
+				height: 100%;
+				background-color: $color-items-bg-hover;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: auto;
+				background-image: url('../img/ajax-loader.gif');
+				overflow: hidden;
+				position: relative;
+				img {
+					@include transition(top 0.2s ease-in-out);
+					top:0px;
+					position: relative;
+					border: 0px solid $background;
+				}
+				div.title {
+					@extend %hideMobile;
+					@include transition(bottom 0.2s ease-in-out);
+					position: absolute;
+					background-color: $color-items-bg-hover;
+					width: 100%;
+					padding: 15px 10px 10px 10px;
+					text-transform: uppercase;
+					display: table;
+					font-weight: 400;
+					font-size: em(15);
+					line-height: em(17);
+
+					@include MQ(M) {
+						font-size: em(15);
+						line-height: em(17);
+					}
+					@include MQ(L) {
+						font-size: em(17);
+						line-height: em(19);
+					}
+					
+				}
+			}
+			&.active {
+				img {
+					//top: -1 * $item-img-height-S;
+					@include MQ(M) {
+						top: -1 * $item-img-height-M;
+					}
+					@include MQ(L) {
+						top: -1 * $item-img-height-L;
+					}
+				}
+				div.title, div.title.double {
+					//bottom: 0px;
+				}
+			}
+		}
+	}
+}
+
+/* --------------------------------
+end styles
+-------------------------------- */
