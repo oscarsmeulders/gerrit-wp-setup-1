@@ -13,7 +13,7 @@ acf_add_local_field_group(array (
 			'instructions' => 'A <em>Photography</em> project can contain more images.<br/>
 These images will the resized to divers formats.<br/>
 In the overview the image will be cropped to <em>600 x 400px</em>. In all other cases the image won\'t be cropped.<br/>
-The original images should be at least <em>5000px</em> width (if possible).<br/>
+The original images should be at least <em>3000px</em> width (if possible).<br/>
 If this is not possible, the fallback will be that the extra <em>zoom</em> is disabled.',
 			'required' => 1,
 			'conditional_logic' => 0,
@@ -106,6 +106,56 @@ If this is not possible, the fallback will be that the extra <em>zoom</em> is di
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'photography_item',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_55a683d29e4b7',
+	'title' => 'Google Analytics',
+	'fields' => array (
+		array (
+			'key' => 'field_55a6842a2a91b',
+			'label' => 'Tracking ID',
+			'name' => 'ga_id',
+			'type' => 'text',
+			'instructions' => 'Please provide a Google Analytics Tracking ID',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'acf-options-google-analytics',
+			),
+		),
+		array (
+			array (
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'theme-general-settings',
 			),
 		),
 	),

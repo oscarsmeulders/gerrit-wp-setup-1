@@ -1,6 +1,6 @@
 -----------------------
 Global
-	- seo plugin instaleren?
+	
 
 -----------------------
 Homepage
@@ -12,11 +12,11 @@ Film overview
 
 -----------------------
 Film detail
-	- titel cookietrail keuze maken
+	
 
 -----------------------
 Photo overview
-	- isotope is loading twice when click a filter in menunavigation
+	
 
 -----------------------
 content

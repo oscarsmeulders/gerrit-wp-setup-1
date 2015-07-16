@@ -10,7 +10,7 @@
 		), $atts );
 		
 		$tmpName = '<span>'.esc_attr($a['name']).'</span>';
-		$tmpWhere = ''.esc_attr($a['where']).'';
+		$tmpWhere = '<span>'.esc_attr($a['where']).'</span>';
 		if (esc_attr($a['link'])) {
 			$tmpLinkStart = '<a href="'.esc_attr($a['link']).'" target="_blank">';
 			$tmpLinkEnd = '</a>';

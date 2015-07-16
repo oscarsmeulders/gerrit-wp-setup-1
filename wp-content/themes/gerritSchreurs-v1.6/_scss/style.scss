@@ -460,26 +460,26 @@ containers
 			}
 		}
 		&.client {
-			@include MQ(L) {
-				/*
-				@include column(0.5, left);
-				&:ntn-child(even) {
-					padding-left: $padding-L;
-					padding-right: $padding-L / 2;
-				}
-				&:ntn-child(odd) {
-					padding-left: $padding-L / 2;
-					padding-right: $padding-L;
-				}
-				*/
-			}
+			
 			span {
-				width: 50%;
-				display: block;
-				float:left;
-				padding-right: 20px;
-				font-weight: 700;
 				@include transition(color 0.2s ease-in-out);
+				&:first-child {
+					font-weight: 700;	
+					width: 50%;
+					display: block;
+					float:left;
+					padding-right: 20px;
+				}
+				@include MQ(S) {
+					&:nth-child(2){
+						display: none;
+					}
+				}
+				@include MQ(M) {
+					&:nth-child(2){
+						display: block;
+					}
+				}
 			}
 			a {
 				@include transition(background-position 0.2s ease-in-out);
@@ -640,8 +640,11 @@ home
 				width: 100%;
 				height: 100px;
 				color:$main-text;
+				@include MQ(M) {
+					font-size: em(28);
+				}
 				@include MQ(L) {
-					font-size: em(30);
+					font-size: em(36);
 				}
 				&:hover {
 					background-color: rgba($background, 0.9);

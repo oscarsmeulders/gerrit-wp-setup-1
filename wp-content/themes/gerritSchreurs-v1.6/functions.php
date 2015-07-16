@@ -459,6 +459,7 @@ function my_acf_settings_dir( $dir ) {
     return $dir;
 }
 
+
 add_filter('acf/settings/show_admin', '__return_false'); // hide menu
 include_once( get_stylesheet_directory() . '/lib/acf/acf.php' );
 
@@ -486,14 +487,17 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Language',
 		'parent_slug'	=> 'theme-general-settings',
 	));
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Google Analytics',
+		'menu_title'	=> 'Google Analytics',
+		'parent_slug'	=> 'theme-general-settings',
+	));
 
 }
-
 /*-----------------------------------------------------------------------------------*/
 /* Include the ACF gerrit settings
 /*-----------------------------------------------------------------------------------*/
 include_once( TEMPLATEPATH . "/lib/functions/acf_fields.php");
-
 
 /*-----------------------------------------------------------------------------------*/
 /*	Flushing the Rewrite Rules After Switching a Theme

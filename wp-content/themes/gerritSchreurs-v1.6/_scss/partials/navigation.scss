@@ -97,12 +97,12 @@ header {
 	}
 	div {
 		display: block;
-		width: 180px;
+		width: 190px;
 		height: 18px;
 		@include userSelect();
 		background-position: left center;
 		background-repeat: no-repeat;
-		background-size: auto 18px ;
+		background-size: 382px 18px;
 		background-image: url('../img/logo/gerrit-schreurs.svg');
 		@include MQ(M) {
 			width: 382px;

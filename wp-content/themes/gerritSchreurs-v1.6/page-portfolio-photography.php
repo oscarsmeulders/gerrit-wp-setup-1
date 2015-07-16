@@ -39,8 +39,6 @@ get_header();?>
 						} else {
 							$img = 		get_sub_field('image_obj');	
 						}
-						//$img = 		get_sub_field('thumb');
-						echo $img;
 						$img_id = 	$img['ID'];
 						$size = 	'photography-listing';
 						$img_url = 	wp_get_attachment_image_src( $img_id, $size );
