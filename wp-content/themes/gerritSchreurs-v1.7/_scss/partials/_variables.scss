@@ -1,0 +1,103 @@
+// colors font
+$main-text: #ffffff;
+
+// links
+$link: #ffff00;
+$link-active: #ffff00;
+
+// global background
+$background: #05171e;
+
+// bg of the header
+$color-header: #122329;
+
+// homepage bg of the slides
+$color-home-panels-bg: #122329;
+
+// panel info
+$color-info-panels-bg: $color-header;
+
+// navigation
+$color-menu: #1e2f35;
+$color-menu-txt: #05171e;
+$color-menu-txt-current: $link-active;
+
+// filters background in photography overview
+$color-filters: #37454b;
+
+// menu button right-top
+$color-home-button: #FFFFFF;
+$color-home-button-hover: rgba(#05171e, 0.1);
+$color-home-button-txt: $main-text;
+
+// details buttons + buttons to swap between photo + film projects
+$color-detail-button-bg: #414e54;
+$color-detail-button-bg-hover: rgba(255,255,255,0.2); //#4a575c
+
+// background of overview title in photo
+$color-items-bg-hover: $color-header;
+
+$color-social-bg: $color-header;
+$color-social-bg-hover: #4a575c;
+
+$color-error-bg: $link-active;
+$color-error-txt: $background;
+// fonts
+$browser-context: 17; // Default size
+$primary-font: 'news-gothic-std', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// weights : 400 700
+
+// z-index
+$secondary-nav: 1;
+$header-zindex: 6;
+
+$content-zindex: 5;
+$content-fixed-zindex: 4;
+$content-nav-zindex: 19;
+
+// heights && paddings
+$header-S: 50px;
+$header-M: 50px;
+$header-L: 100px;
+
+$padding-S: 10px;
+$padding-M: 20px;
+$padding-L: 40px;
+
+$filter-S: 50px;
+$filter-M: 50px;
+$filter-L: 60px;
+
+$button-detail-S: 60px;
+$button-detail-M: 60px;
+$button-detail-L: 60px;
+
+$info-panel-width-S: 80%;
+$info-panel-width-M: 400px;
+$info-panel-width-L: 600px;
+
+$info-panel-height-S: 80%;
+$info-panel-height-M: 400px;
+$info-panel-height-L: 600px;
+
+// menu
+$menu-width: 300px;
+$menu-button-width-S: 50px;
+$menu-button-width-M: 150px;
+$menu-button-width-L: 150px;
+
+// listing .item .title height
+$item-title-height-S: 40px;
+$item-title-height-M: 40px;
+$item-title-height-L: 40px;
+
+$item-title-height-double-S: 60px;
+$item-title-height-double-M: 60px;
+$item-title-height-double-L: 60px;
+
+$item-img-height-S: 10px;
+$item-img-height-M: 10px;
+$item-img-height-L: 10px;
+
+//$detail-gallery-height-large: (min-height 1000px) (orientation portrait);
+$detail-gallery-height-large: (min-height 1000px);

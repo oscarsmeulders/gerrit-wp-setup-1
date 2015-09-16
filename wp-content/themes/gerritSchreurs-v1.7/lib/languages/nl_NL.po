@@ -1,0 +1,103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gerritSchreurs-1\n"
+"POT-Creation-Date: 2015-06-29 20:14+0200\n"
+"PO-Revision-Date: 2015-06-29 20:14+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+"X-Poedit-SearchPathExcluded-1: _scss\n"
+"X-Poedit-SearchPathExcluded-2: lib/acf\n"
+
+#: 404.php:17
+msgid "Not Found"
+msgstr "Niet gevonden"
+
+#: functions.php:231
+msgid "Primary Menu"
+msgstr "Hoofdmenu"
+
+#: functions.php:249
+msgid "Category photography"
+msgstr "Categorie fotografie"
+
+#: functions.php:262
+msgid "Category film"
+msgstr "Categorie film"
+
+#: functions.php:274 functions.php:275 page-home-old.php:161 page-home.php:120
+msgid "Photography"
+msgstr "Fotografie"
+
+#: functions.php:276
+msgid "New photography"
+msgstr "Nieuwe fotografie"
+
+#: functions.php:294 functions.php:295 page-home-old.php:190 page-home.php:141
+msgid "Film"
+msgstr "Film"
+
+#: functions.php:296
+msgid "New film"
+msgstr "Nieuwe film"
+
+#: functions.php:313 functions.php:314
+msgid "Slideshow"
+msgstr "Slideshow"
+
+#: functions.php:315
+msgid "New slideshow"
+msgstr "Nieuwe slideshow"
+
+#: lib/parts/header-filters.php:4
+msgid "Filter"
+msgstr "Filter"
+
+#: lib/parts/header-filters.php:19 lib/parts/nav-global.php:34
+msgid "Show all"
+msgstr "Toon alles"
+
+#: lib/parts/header-logo-menu.php:1
+msgid "Gerrit Schreurs - Photography & Film"
+msgstr "Gerrit Schreurs - Fotografie & Film"
+
+#: lib/parts/header-logo-menu.php:2
+msgid "Menu"
+msgstr "Menu"
+
+#: lib/parts/header-title-error.php:5
+msgid "Error"
+msgstr "Fout"
+
+#~ msgid "Comment"
+#~ msgstr "Reactie"
+
+#~ msgid "1 Comment"
+#~ msgstr "1 Reactie"
+
+#~ msgid "% Comments"
+#~ msgstr "% Reacties"
+
+#~ msgid "photography"
+#~ msgstr "fotografie"
+
+#~ msgid "film"
+#~ msgstr "film"
+
+#~ msgid "menu"
+#~ msgstr "nav"
+
+#~ msgid "Archives"
+#~ msgstr "Archieven"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"
