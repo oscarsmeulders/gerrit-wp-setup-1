@@ -90,8 +90,9 @@ $('.gallery-buttons').on('click', '.button-zoom', function() {
 		//index: count, // start with the photo which is selected in detail
 		index: $('.is-selected').attr('data-index'), // start at first slide
 		captionEl: false,
-		arrowEl: true,
+		arrowEl: false,
 		shareEl: false,
+		arrowKeys: false,
 		fullscreenEl: true,
 		counterEl: false,
 		zoomEl: true,
