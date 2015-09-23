@@ -18,7 +18,6 @@ get_header(); ?>
 
 				<?php
 					$img_id_switch = $_GET['id'];
-					echo $img_id_switch;
 					$size_s = 		'detail-s';
 					$size_m = 		'detail-m';
 					$size_l = 		'detail-l';
