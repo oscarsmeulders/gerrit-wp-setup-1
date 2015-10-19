@@ -10,19 +10,24 @@ get_header();?>
 	<?php if ( $loop->have_posts() ) : ?>
 
 		<?php get_template_part( 'lib/parts/header', 'filters' ); ?>
+
 		<?php $images = array(); ?>
+		<?php $slideshows = array(); ?>
+		<?php $cats = array(); ?>
+
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<?php
 				//$title = substr( get_the_title(), 0, 80 ) . '&hellip;';
+
 				$title = get_the_title();
 				$post_categories = get_the_terms( $loop->post->ID, 'photography_category' );
-				$cats = array();
 				$cat_list = '';
 				if ($post_categories) {
 					foreach ($post_categories as $c) {
 						$cat_list .= ' ' . $c->slug;
 					}
 				}
+
 			?>
 
 			<?php
@@ -38,14 +43,16 @@ get_header();?>
 							$cat_list_size = " item-w2 item-h2 ";
 						}
 						if (get_sub_field('thumb')) {
-							$img = 		get_sub_field('thumb');	
+							$img = 		get_sub_field('thumb');
 						} else {
-							$img = 		get_sub_field('image_obj');	
+							$img = 		get_sub_field('image_obj');
 						}
 						$img_id = 	$img['ID'];
 						$size = 	'photography-listing';
 						$img_url = 	wp_get_attachment_image_src( $img_id, $size );
 						$alt = 		$img['title'];
+
+						$terms = get_terms( 'photography_category' );
 						$string =	'<div class="item '. $cat_list . $cat_list_size .'">
 										<div>
 											<a href="'. get_the_permalink().'?id='.$id .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" /></a>
@@ -62,10 +69,38 @@ get_header();?>
 				// end images listing
 			?>
 
+			<?php // add slideshow objects ?>
+			<?php
+
+				$post_categories = get_the_terms( $loop->post->ID , 'photography_category' );
+				if ($post_categories) {
+					foreach ($post_categories as $c) {
+						if ( ! in_array( $c->slug , $cats )) {
+							echo $c->slug . ' ';
+							$string =	'<div class="item slideshow">
+											<div>
+												<a href="'. get_term_link( $c ) .'">click voor '. $c->slug .'</a>
+											</div>
+										</div>';
+							array_push( $cats, $c->slug );
+							array_push( $slideshows, $string );
+						}
+
+					}
+				}
+
+			?>
+			<?php // end slideshow objects ?>
+
+
 
 		<?php endwhile; ?>
 	<?php endif; ?>
-
+		<?php
+			foreach ($slideshows as $slides) {
+				array_push($images, $slides );
+			}
+		?>
 		<?php // cd-main-content ?>
 		<main class="cd-main-content">
 			<?php // items ?>

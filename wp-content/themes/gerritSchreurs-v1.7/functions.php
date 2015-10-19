@@ -63,7 +63,7 @@ function my_custom_dashboard_widgets() {
 	wp_add_dashboard_widget('sos_remarks', 'Install', 'custom_dashboard_sos_remarks');
 	wp_add_dashboard_widget('images_help_widget', 'Images', 'custom_dashboard_help');
 	wp_add_dashboard_widget('shortcodes_help_widget', 'Shortcodes', 'custom_dashboard_help_shortcodes');
-	
+
 }
 function custom_dashboard_sos() {
 	echo '<img src="'. get_template_directory_uri() .'/lib/sos/img/sos_logo.jpg">';
@@ -136,7 +136,7 @@ function custom_dashboard_help_shortcodes() {
 				<td valign="top">[row-end]</td>
 				<td>End a row</td>
 			</tr>
-			
+
 			<tr>
 				<td valign="top">[col]</td>
 				<td>Start a col, extra value can be <strong>[col nmb="half"]</strong>. If a half is used, be aware to alway add two, because the column will be half the size.</td>
@@ -305,8 +305,9 @@ function create_photo_tax() {
 		'photography_category',
 		array(
 			'label' => __( 'Category photography' ),
-			'rewrite' => array( 'slug' => 'photography_category' ),
-			'hierarchical' => true
+			'rewrite' => array( 'slug' => 'slideshow' ),
+			'hierarchical' => true,
+			'slug' => 'category'
 		)
 	);
 }
@@ -399,7 +400,7 @@ function gs_scripts()  {
 	wp_enqueue_style( 'gs_style',			 		get_template_directory_uri() . '/assets/css/style.css',										array('gs_style_reset', 'gs_style_flickity'), '10000', 'all' );
 	wp_enqueue_style( 'gs_style_photoswipe', 		get_template_directory_uri() . '/assets/lib/photoswipe/photoswipe.css', 					array('gs_style_reset', 'gs_style'), '10000', 'all' );
 	wp_enqueue_style( 'gs_style_photoswipe_skin', 	get_template_directory_uri() . '/assets/lib/photoswipe/gerrit-skin/gerrit-skin.css',		array('gs_style_reset', 'gs_style_photoswipe'), '10000', 'all' );
-	
+
 
 	// jquery
 	if( !is_admin()){
@@ -507,11 +508,11 @@ include_once( TEMPLATEPATH . "/lib/functions/acf_fields.php");
 /*-----------------------------------------------------------------------------------*/
 
 add_action( 'after_switch_theme', 'after_switch_theme_example' );
- 
+
 function after_switch_theme_example() {
     flush_rewrite_rules();
 }
- 
+
 
 /*-----------------------------------------------------------------------------------*/
 /*	Changing the Logo Above the Login Form
@@ -519,7 +520,7 @@ function after_switch_theme_example() {
 /*-----------------------------------------------------------------------------------*/
 add_action( 'login_enqueue_scripts', 'login_enqueue_scripts_example' );
 function login_enqueue_scripts_example() {
- 
+
     echo '<style type="text/css">'
             . '#login h1 a {'
                 . 'background-image: url(' . get_bloginfo( 'template_directory' ) . '/lib/sos/img/sos_logo.jpg);'
@@ -529,15 +530,15 @@ function login_enqueue_scripts_example() {
                 . 'height: 150px;'
             . '}'
         . '</style>';
-         
+
 }
 
 
 /*-----------------------------------------------------------------------------------*/
 /*	Redirecting User to the Homepage After Logout
-/*-----------------------------------------------------------------------------------*/ 
+/*-----------------------------------------------------------------------------------*/
 add_action( 'wp_logout', 'wp_logout_example' );
- 
+
 function wp_logout_example() {
     wp_redirect( home_url() );
     exit();
