@@ -1,6 +1,8 @@
 -----------------------
 Global
 	
+- png icon slideshow maken
+- vertaling van view via po-edit
 
 -----------------------
 Homepage

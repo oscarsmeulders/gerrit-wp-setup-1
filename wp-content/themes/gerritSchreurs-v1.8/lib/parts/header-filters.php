@@ -16,6 +16,6 @@
 				echo '<button data-filter=".'. $term->slug .'">'. $term->name .'</button>';
      		}
 		?>
-		<button id="filter-showall" class="hidden" data-filter=""><?php _e( 'Show all', 'gs_lang' ); ?></button>
+		<button id="filter-showall" class="hidden" data-filter=":not(.initially-hidden)"><?php _e( 'Show all', 'gs_lang' ); ?></button>
 	</div>
 </header>

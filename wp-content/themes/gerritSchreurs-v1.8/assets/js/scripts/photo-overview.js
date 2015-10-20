@@ -30,10 +30,21 @@ jQuery(document).ready(function($){
 
 		var filterValue = $(this).attr('data-filter');
 		changeClasses( $(this) );
-
+		
 		window.location.hash = filterValue;
-
+		//console.log ( $(this).attr('data-filter') );
+		// filter: ':not(.initially-hidden)',
 		isotopeFilter(filterValue);
+		/*
+if (filterValue == null) {
+			console.log ('filterValue : ' + filterValue);
+			isotopeFilter(filterValue);
+		} else {
+			console.log ('NO filterValue : ' + filterValue);
+			isotopeFilter(':not(.initially-hidden)');
+		}
+*/
+		
 
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 	});
@@ -133,17 +144,18 @@ jQuery(document).ready(function($){
 		return columnWidth;
 	};
 
-
+	// var PageLoadFilter = '.initial-show';
 	isotope = function () {
 		$con.isotope({
 			itemSelector: '.item',
+			filter: ':not(.initially-hidden)',
 			masonry: {
 				columnWidth: colWidth()
 			}
 		});
 	};
 	isotopeFilter = function(hash) {
-		//console.log('isotope filter : ' + hash);
+		console.log('isotope filter : ' + hash);
 		$con.isotope({ filter: hash });
 	}
 

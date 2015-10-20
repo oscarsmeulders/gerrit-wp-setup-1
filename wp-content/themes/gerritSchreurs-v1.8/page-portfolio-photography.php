@@ -55,8 +55,8 @@ get_header();?>
 						$terms = get_terms( 'photography_category' );
 						$string =	'<div class="item '. $cat_list . $cat_list_size .'">
 										<div>
-											<a href="'. get_the_permalink().'?id='.$id .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" /></a>
-											<div class="title">'. $title .'</div>
+											<a href="'. get_the_permalink().'?id='.$id .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" />
+											<div class="title">'. $title .'</div></a>
 										</div>
 									</div>';
 						if( $img_id ) {
@@ -76,12 +76,12 @@ get_header();?>
 				if ($post_categories) {
 					foreach ($post_categories as $c) {
 						if ( ! in_array( $c->slug , $cats )) {
-							echo $c->slug . ' ';
-							$string =	'<div class="item slideshow">
+							//echo $c->slug . ' ';
+							$string =	'<a href="'. get_term_link( $c ) .'"><div class="item slideshow '. $c->slug .' initially-hidden">
 											<div>
-												<a href="'. get_term_link( $c ) .'">click voor '. $c->slug .'</a>
+												'. __( 'View', 'gs_lang' ). ' ' . $c->name .'
 											</div>
-										</div>';
+										</div></a>';
 							array_push( $cats, $c->slug );
 							array_push( $slideshows, $string );
 						}
@@ -96,26 +96,27 @@ get_header();?>
 
 		<?php endwhile; ?>
 	<?php endif; ?>
-		<?php
-			foreach ($slideshows as $slides) {
-				array_push($images, $slides );
-			}
-		?>
-		<?php // cd-main-content ?>
-		<main class="cd-main-content">
-			<?php // items ?>
-			<div class="items">
-				<?php
-					foreach ($images as $obj) {
-						echo $obj;
-					}
-				?>
-			</div>
-			<?php // end items ?>
-		</main>
-		<?php // end cd-main-content ?>
+	<?php
+		foreach ($slideshows as $slides) {
+			array_push($images, $slides );
+		}
+		$reversed_images = array_reverse($images);
+	?>
+	<?php // cd-main-content ?>
+	<main class="cd-main-content">
+		<?php // items ?>
+		<div class="items">
+			<?php
+				foreach ($reversed_images as $obj) {
+					echo $obj;
+				}
+			?>
+		</div>
+		<?php // end items ?>
+	</main>
+	<?php // end cd-main-content ?>
 
-		<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
+	<?php get_template_part( 'lib/parts/nav', 'global' ); ?>
 
 
 <?php get_footer(); ?>

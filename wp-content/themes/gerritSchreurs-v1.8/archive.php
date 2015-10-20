@@ -80,7 +80,10 @@ get_header(); ?>
 		<?php endwhile; ?>
 		<?php $xml_string .= '];</script>'; ?>
 
-		<?php get_template_part( 'lib/parts/header', 'cookie-photography-category' ); ?>
+			<?php get_template_part( 'lib/parts/header', 'cookie-photography-category' ); ?>
+			
+			
+			
 
 		<?php //cd-main-content ?>
 		<main class="cd-main-content">
@@ -98,7 +101,7 @@ get_header(); ?>
 					<button class="gallery-button button-next"></button>
 				<?php endif; ?>
 				<button class="gallery-button button-zoom"></button>
-				<button class="gallery-button button-info"></button>
+				<!-- <button class="gallery-button button-info"></button> -->
 			</div>
 
 
