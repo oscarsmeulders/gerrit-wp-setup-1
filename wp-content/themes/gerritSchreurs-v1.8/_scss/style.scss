@@ -272,7 +272,7 @@ h1.light, .h1.light {
 		@include opacity(0.5);
 		@include transition(opacity 0.2s ease-in-out);
 		&:hover {
-			@include opacity(1);	
+			@include opacity(1);
 		}
 	}
 }
@@ -358,7 +358,7 @@ buttons
 	background-repeat: no-repeat;
 	@include transition(opacity 0.2s ease-in-out);
 	@include opacity(1);
-	
+
 	&.hidden {
 		@include opacity(0);
 	}
@@ -413,12 +413,12 @@ buttons
 	&.hovered { /*makes it 'elevate'*/
 		transform: scale(1) !important;
 	}
-	
+
 	.notransition{ /*used to reset the ripple without an animatiion*/
 		transition: none !important;
 	}
-	
-	.ripple { 
+
+	.ripple {
 		position: absolute;
 		border-radius: 100%;
 		width: 0;
@@ -460,11 +460,11 @@ containers
 			}
 		}
 		&.client {
-			
+
 			span {
 				@include transition(color 0.2s ease-in-out);
 				&:first-child {
-					font-weight: 700;	
+					font-weight: 700;
 					width: 50%;
 					display: block;
 					float:left;
@@ -498,7 +498,7 @@ containers
 				}
 			}
 		}
-		
+
 	}
 
 }
@@ -630,11 +630,11 @@ home
 				@extend %cursor-pointer;
 				@include transition(all 0.2s ease-in-out);
 				@include selection($color-home-button-txt, $color-home-button);
-				
+
 				font-size: em(24);
 				text-align: center;
 				text-transform: uppercase;
-				
+
 				background-color: rgba($background, 0.5);
 				line-height: 100px;
 				width: 100%;
@@ -650,7 +650,7 @@ home
 					background-color: rgba($background, 0.9);
 				}
 
-				
+
 			}
 		}
 		.right div.button {
@@ -685,7 +685,7 @@ content
 		z-index: $content-zindex;
 	}
 	.cd-main-content-fixed {
-		@extend %hideMobile; 
+		@extend %hideMobile;
 		z-index: $content-fixed-zindex;
 		position: fixed;
 		left:auto;
@@ -917,17 +917,17 @@ detail - photography, detail - video
 			text-transform: uppercase;
 			color: $main-text;
 			font-size: em(17);
-	
+
 			width: $button-detail-S;
 			height: $button-detail-S;
-	
+
 			margin: auto;
 			position: absolute;
 			@extend %top-with-sub-no-padding;
 			left: 0;
 			bottom: 0;
 			right: auto;
-	
+
 			&:focus {
 				outline:0;
 			}
@@ -947,7 +947,7 @@ detail - photography, detail - video
 			}
 		}
 	}
-	
+
 	.info {
 		position: absolute;
 		top: 0px;
@@ -957,57 +957,61 @@ detail - photography, detail - video
 		@extend %paddings-with-sub-no-padding;
 		@include transition(opacity 0.2s ease-in-out);
 		@include opacity(1);
+
 		&.hidden {
 			@include opacity(0);
 		}
 		&.displayNone {
 			display: none;
 		}
-		
+
 		.information {
-			.close {
-				position: absolute;
-				right:0px;
-				top:0px;
-				.button-close {
-					z-index: $content-nav-zindex;
-					@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
-					@extend %cursor-pointer;
-					@include selection($color-home-button-txt, $color-home-button);
-					background-color: transparent;
-					border: none;
-					text-transform: uppercase;
-					color: $main-text;
-					font-size: em(17);
-			
-					width: $button-detail-S;
-					height: $button-detail-S;
-					&:focus {
-						outline:0;
+			width: 100%;
+			>div {
+				.close {
+					position: absolute;
+					right:0px;
+					top:0px;
+					.button-close {
+						z-index: $content-nav-zindex;
+						@include transition(background-color 0.2s ease-in-out, color 0.2s ease-in-out);
+						@extend %cursor-pointer;
+						@include selection($color-home-button-txt, $color-home-button);
+						background-color: transparent;
+						border: none;
+						text-transform: uppercase;
+						color: $main-text;
+						font-size: em(17);
+
+						width: $button-detail-S;
+						height: $button-detail-S;
+						&:focus {
+							outline:0;
+						}
 					}
 				}
+				margin: auto;
+				padding: $padding-S $padding-S $padding-S/2 $padding-S;
+				width: $info-panel-width-S;
+				//height: $info-panel-height-S;
+				@include MQ(M) {
+					padding: $padding-M $padding-M $padding-M/2 $padding-M;
+					width: $info-panel-width-M;
+					//height: $info-panel-height-M;
+				}
+				@include MQ(L) {
+					padding: $padding-L $padding-L $padding-L/2 $padding-L;
+					width: $info-panel-width-L;
+					//height: $info-panel-height-L;
+				}
+
 			}
 			h1, h2, h3, h4, h5, h6 {
 				margin-right: 30px;
 			}
-			background-color: $color-info-panels-bg;
-			margin: auto;
 			position: absolute;
 			@include vertical-align;
-			
-			padding: $padding-S $padding-S $padding-S/2 $padding-S;
-			width: $info-panel-width-S;
-			//height: $info-panel-height-S;
-			@include MQ(M) {
-				padding: $padding-M $padding-M $padding-M/2 $padding-M;
-				width: $info-panel-width-M;
-				//height: $info-panel-height-M;
-			}
-			@include MQ(L) {
-				padding: $padding-L $padding-L $padding-L/2 $padding-L;
-				width: $info-panel-width-L;
-				//height: $info-panel-height-L;
-			}	
+			background-color: $color-info-panels-bg;
 		}
 	}
 	.video {
@@ -1063,7 +1067,12 @@ detail - photography, detail - video
 		}
 	}
 	.content {
-
+		&.hidden {
+			@include opacity(0);
+		}
+		&.displayNone {
+			display: none;
+		}
 	}
 
 }
@@ -1074,7 +1083,7 @@ detail - photography, detail - video
 			&:hover {
 				background-color: $color-detail-button-bg-hover !important;
 			}
-		} 
+		}
 	}
 }
 
@@ -1125,7 +1134,7 @@ portfolio - film
 					@include opacity (0);
 				}
 			}
-			
+
 			font-size: em(15);
 			line-height: em(17);
 
@@ -1137,7 +1146,7 @@ portfolio - film
 				width: 33.333333%;
 				font-size: em(15);
 				line-height: em(17);
-				
+
 			}
 		}
 		@include MQ(L) {
@@ -1219,7 +1228,7 @@ portfolio - photography
 				@include opacity(1);
 			}
 			&.slideshow {
-				
+
 				> div {
 					//background-color: #ff0000 !important;
 					background-image: url('../img/slideshow.svg');
@@ -1231,9 +1240,9 @@ portfolio - photography
 						color: #fff;
 						text-decoration: none;
 						&:hover {
-							color: $link-active;	
+							color: $link-active;
 						}
-					} 
+					}
 					&:before {
 						content:'';
 						display:inline-block;
@@ -1279,7 +1288,7 @@ portfolio - photography
 						font-size: em(17);
 						line-height: em(19);
 					}
-					
+
 				}
 			}
 			&.active {

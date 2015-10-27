@@ -33,7 +33,7 @@ get_header();?>
 			<?php
 				// images listing
 				if(have_rows('images_obj')):
-					$id = 0;
+					$idPhoto = 0;
 					while( have_rows('images_obj') ): the_row();
 
 						$double = get_sub_field_object('double_size');
@@ -51,18 +51,18 @@ get_header();?>
 						$size = 	'photography-listing';
 						$img_url = 	wp_get_attachment_image_src( $img_id, $size );
 						$alt = 		$img['title'];
-
+						// <a href="'. get_the_permalink().'?id='.$id .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" />
 						$terms = get_terms( 'photography_category' );
 						$string =	'<div class="item '. $cat_list . $cat_list_size .'">
 										<div>
-											<a href="'. get_the_permalink().'?id='.$id .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" />
+											<a href="'. get_term_link( $c ) .'?id='.$loop->post->ID .'&idPhoto='. $idPhoto .'"><img class="ll" width="100%" height="100%" src="'. get_stylesheet_directory_uri() .'/assets/img/src-empty.png" data-original="'. $img_url[0] .'" alt="'. $alt .'" />
 											<div class="title">'. $title .'</div></a>
 										</div>
 									</div>';
 						if( $img_id ) {
 							array_push($images, $string );
 						}
-						$id++;
+						$idPhoto++;
 					endwhile;
 					shuffle($images);
 				endif;
@@ -97,9 +97,11 @@ get_header();?>
 		<?php endwhile; ?>
 	<?php endif; ?>
 	<?php
+	/*
 		foreach ($slideshows as $slides) {
 			array_push($images, $slides );
 		}
+	*/
 		$reversed_images = array_reverse($images);
 	?>
 	<?php // cd-main-content ?>

@@ -6,10 +6,10 @@ $link: #ffff00;
 $link-active: #ffff00;
 
 // global background
-$background: #05171e;
+$background: #08080b; //#05171e;
 
 // bg of the header
-$color-header: #122329;
+$color-header: #17181c; //#122329;
 
 // homepage bg of the slides
 $color-home-panels-bg: #122329;
@@ -18,12 +18,12 @@ $color-home-panels-bg: #122329;
 $color-info-panels-bg: $color-header;
 
 // navigation
-$color-menu: #1e2f35;
+$color-menu: #27282b; //#1e2f35;
 $color-menu-txt: #05171e;
 $color-menu-txt-current: $link-active;
 
 // filters background in photography overview
-$color-filters: #37454b;
+$color-filters: #3a3a3f; //#37454b;
 
 // menu button right-top
 $color-home-button: #FFFFFF;
@@ -73,7 +73,7 @@ $button-detail-M: 60px;
 $button-detail-L: 60px;
 
 $info-panel-width-S: 80%;
-$info-panel-width-M: 400px;
+$info-panel-width-M: 500px;
 $info-panel-width-L: 600px;
 
 $info-panel-height-S: 80%;

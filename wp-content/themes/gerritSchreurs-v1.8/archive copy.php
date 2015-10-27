@@ -19,68 +19,6 @@
 get_header(); ?>
 <body id="detail-photography" <?php body_class(); ?> >
 
-<?php
-
-	$cat = $wp_query->get_queried_object();
-	$cat_slug = $cat->slug;
-	$idders = array();
-	$idders_new = array();
-	wp_reset_query();
-
-	$args = array(
-		'post_type' => 'photography_item',
-		'showposts' => -1,
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'photography_category',
-				'field' => 'slug',
-				'terms' => $cat_slug
-			)
-		),
-		'orderby' => 'ID',
-		'order' => 'ASC'
-	);
-	$my_query = new WP_Query($args);
-
-	if ($my_query->have_posts()) :
-		while ($my_query->have_posts()) : $my_query->the_post();
-			//$my_array[] = get_the_title(get_the_ID());
-			array_push($idders, get_the_ID() );
-		endwhile;
-	endif;
-	// debug:
-	//print_r($idders);
-	//
-	foreach ($idders as &$value){
-		if ($value == $_GET['id']) {
-			//echo 'true ' . $value;
-			array_unshift($idders_new, $value);
-		} else {
-			array_push($idders_new, $value);
-		}
-	}
-	//
-	//print_r($idders_new);
-	wp_reset_query();
-
-
-	$args2 = array(
-		'post_type' => 'photography_item',
-		'showposts' => -1,
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'photography_category',
-				'field' => 'slug',
-				'terms' => $cat_slug
-			)
-		),
-		'orderby' => 'post__in',
-		'post__in' => $idders_new
-	);
-	$my_query_new = new WP_Query($args2);
-
-?>
-
 <?php if ( have_posts() ) : ?>
 	<?php
 		$string_global = '';
@@ -100,16 +38,21 @@ get_header(); ?>
 		}else{
 			// Fallback behaviour goes here
 		}
-		// query_posts($query_string."&post_id=". $_GET['id']. "&order=ID&order=ASC" );
+		query_posts($query_string."&post_id=". $_GET['id']. "&order=ID&order=ASC" );
 	?>
-	<?php $count = 0; ?>
-	<?php while ($my_query_new->have_posts()) : $my_query_new->the_post(); ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+		<?php $count = 0; ?>
 		<?php
-			$title = get_the_title();
-			$content = get_field(description_content);
+
 			// images listing
 			if(have_rows('images_obj')):
 				while( have_rows('images_obj') ): the_row();
+					if ( $_GET['id'] == get_the_ID() ) {
+						echo 'ids equal ';
+						$count++;
+					} else {
+						$count = 999;
+					}
 
 					$img = 		get_sub_field('image_obj');
 					$img_id = 	$img['ID'];
@@ -129,7 +72,7 @@ get_header(); ?>
 							}
 						},";
 
-					$string =	'<div class="gallery-cell" data-content="'. $content .'" data-title="'. $title .'" data-id="' . get_the_ID() . '" data-index="'. ($count ) .'" data-title="'. $alt .'">
+					$string =	'<div class="gallery-cell" data-id="' . get_the_ID() . '" data-index="'. ($count) .'" data-title="'. $alt .'">
 									<img data-src="	<768:'. $img_url_s[0] .',
 													<900:'. $img_url_m[0] .',
 													<1200:'. $img_url_l[0] .',
@@ -139,7 +82,6 @@ get_header(); ?>
 					$string_global .= $string;
 
 					array_push($images_enlarge, $xml_string );
-					$count++;
 				endwhile;
 
 			endif;
@@ -167,19 +109,7 @@ get_header(); ?>
 					<button class="gallery-button button-next"></button>
 				<?php endif; ?>
 				<button class="gallery-button button-zoom"></button>
-				<button class="gallery-button button-info"></button>
-			</div>
-
-			<div class="info hidden displayNone">
-				<div class="information">
-					<div>
-						<h1 class="titleHtml"></h1>
-						<span class="contentHtml"></span>
-						<div class="close">
-							<button class="button-close"></button>
-						</div>
-					</div>
-				</div>
+				<!-- <button class="gallery-button button-info"></button> -->
 			</div>
 
 

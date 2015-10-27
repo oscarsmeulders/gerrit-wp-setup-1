@@ -456,13 +456,6 @@ acf_add_local_field_group(array (
 			array (
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'photography_item',
-			),
-		),
-		array (
-			array (
-				'param' => 'post_type',
-				'operator' => '==',
 				'value' => 'film_item',
 			),
 		),
@@ -549,7 +542,7 @@ acf_add_local_field_group(array (
 			'key' => 'field_557301a78016c',
 			'label' => 'Contents',
 			'name' => 'description_content',
-			'type' => 'wysiwyg',
+			'type' => 'textarea',
 			'instructions' => 'A brief description of the project.',
 			'required' => 0,
 			'conditional_logic' => 0,
@@ -559,9 +552,12 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'default_value' => '',
-			'tabs' => 'all',
-			'toolbar' => 'full',
-			'media_upload' => 0,
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => 'wpautop',
+			'readonly' => 0,
+			'disabled' => 0,
 		),
 	),
 	'location' => array (
@@ -570,6 +566,13 @@ acf_add_local_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'film_item',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'photography_item',
 			),
 		),
 	),
